@@ -2,15 +2,15 @@ package capitulo03.bloque01;
 
 import javax.swing.JOptionPane;
 
-public class Ejercicio01_4NumBucle {
+public class Ejercicio02_NumBucle {
 
 	public static void main(String[] args) {
-		boolean menor4;
+		boolean menorNum;
 		int acumMayor = 0;
+		int numPedir = Integer.parseInt(JOptionPane.showInputDialog("Cuantos numeros desea introducir"));
 		
-		
-		for (int i=0; i!=4; i++) { // MAXIMO DE NUMERO QUE EL USUARIO PUEDE PEDIR
-			 menor4=true;
+		for (int i=0; i<numPedir; i++) { // MAXIMO DE NUMERO QUE EL USUARIO PUEDE PEDIR
+			menorNum=true;
 			 int num = Integer.parseInt(JOptionPane.showInputDialog("Introduce un numero"));
 			 
 			 if (num >= 10) {
@@ -18,7 +18,7 @@ public class Ejercicio01_4NumBucle {
 			  						 
 			 }
 			 else {
-				 menor4=false;
+				 menorNum=false;
 				 
 			 }
 			
