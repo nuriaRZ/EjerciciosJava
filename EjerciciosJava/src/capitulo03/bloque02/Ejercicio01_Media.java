@@ -1,24 +1,26 @@
-package capitulo03.bloque01;
+package capitulo03.bloque02;
 
 import javax.swing.JOptionPane;
 
-public class Ejercicio02_NumBucle {
+public class Ejercicio01_Media {
 
 	public static void main(String[] args) {
-		
-		boolean var;
-		int acumNum = 0;
+	
+		int acumMayor = 0;
 		//PETICION DE NUMEROS AL USUARIO
 		int numPedir = Integer.parseInt(JOptionPane.showInputDialog("Cuantos numeros desea introducir"));
 		
 		for (int i=0; i<numPedir; i++) { // MAXIMO DE NUMERO QUE EL USUARIO PUEDE PEDIR
 			
 			 int num = Integer.parseInt(JOptionPane.showInputDialog("Introduce un numero"));
-								 
-			  acumNum+=num;
-				 
+			 
+			 if (num >= 10) {
+			  acumMayor+=num;
+			  						 
+			 }
+
 		}
-		//MUESTRA DE LA MEDIA AL USUARIO
-		System.out.println("La Media es: "+ acumNum/numPedir);
+		//MUESTRA DE LA SUMA MAYORES DE 10
+		System.out.println("La suma es: "+ acumMayor);
 	}
 }	
