@@ -20,13 +20,11 @@ public class Ejercicio03_NumPositivos_Negat {
 			 }
 			 else {
 				 NumNegativos++;
-				 
+				 				 
 			 }
-			
-			 
-				 
 
-	}
+		}
+		//MOSTRAR LA CUENTA DE NUMEROS
 		System.out.println("Numeros positivos introducidos: "+ NumPositivos
 							+"\nNumeros negativos introducidos: "+ NumNegativos);
 
