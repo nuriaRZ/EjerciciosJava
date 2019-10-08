@@ -6,7 +6,7 @@ public class Ejercicio01_Media {
 
 	public static void main(String[] args) {
 	
-		int acumMayor = 0;
+		float media=0;
 		//PETICION DE NUMEROS AL USUARIO
 		int numPedir = Integer.parseInt(JOptionPane.showInputDialog("Cuantos numeros desea introducir"));
 		
@@ -15,12 +15,12 @@ public class Ejercicio01_Media {
 			 int num = Integer.parseInt(JOptionPane.showInputDialog("Introduce un numero"));
 			 
 			 if (num >= 10) {
-			  acumMayor+=num;
+			  media+=num;
 			  						 
 			 }
 
 		}
 		//MUESTRA DE LA SUMA MAYORES DE 10
-		System.out.println("La suma es: "+ acumMayor);
+		System.out.println("La Media es: "+ media/numPedir);
 	}
 }	

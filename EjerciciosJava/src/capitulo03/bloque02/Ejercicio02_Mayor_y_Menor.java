@@ -22,12 +22,11 @@ public class Ejercicio02_Mayor_y_Menor {
 				 acumMenor=num;
 			 }
 			 else {
-				 if (num >= acumMayor) {
+				 if (num > acumMayor) {
 					  acumMayor=num;
 					  						 
 				}
-				 else {
-					 if (num <= acumMayor) {
+				 if (num < acumMenor) {
 						 acumMenor=num;
 				}
 					
@@ -35,12 +34,11 @@ public class Ejercicio02_Mayor_y_Menor {
 				 
 		}
 		
-
-		}
 		//MUESTRA DE LA SUMA MAYORES DE 10
-		System.out.println("El numero mayor es: "+ acumMayor
-						+"\nEl numero menor es: "+ acumMenor);	
-	}		
+				System.out.println("El numero mayor es: "+ acumMayor
+								+"\nEl numero menor es: "+ acumMenor);	
 		
+	}
+
 }
 	
