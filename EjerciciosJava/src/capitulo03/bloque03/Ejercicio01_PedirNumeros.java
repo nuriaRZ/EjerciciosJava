@@ -7,29 +7,16 @@ public class Ejercicio01_PedirNumeros {
 	public static void main(String[] args) {
 	
 		int acumNum=0;
-		int num = Integer.parseInt(JOptionPane.showInputDialog("Introduzca un numero:\nPulse 0 para terminar"));
-		acumNum+=num;
-		for (int i=0; num!=0; i++) {
+		int num = -1;
+		for (; num!=0;) {
 		num = Integer.parseInt(JOptionPane.showInputDialog("Introduzca un numero:\nPulse 0 para terminar"));
-		
-			if (i==0) {
-				acumNum+=num;
-			}
-			else {
-				if (num!=0) {
-					acumNum+=num;
-				}
-				else {
-					if (num==0) {
-						break;
-					}
-				}
-			}
-			
+		acumNum+=num;
 			
 		}
-		
 		System.out.println("La suma de los numeros es: "+ acumNum);
 	}
-
+				
 }
+		
+		
+
