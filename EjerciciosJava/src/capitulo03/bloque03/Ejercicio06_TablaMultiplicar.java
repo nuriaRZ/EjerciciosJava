@@ -2,7 +2,7 @@ package capitulo03.bloque03;
 
 import javax.swing.JOptionPane;
 
-public class Ejercicio05_TablaMultiplicar {
+public class Ejercicio06_TablaMultiplicar {
 
 	public static void main(String[] args) {
 	
@@ -12,15 +12,15 @@ public class Ejercicio05_TablaMultiplicar {
 		for (; num!=0;) {
 		num = Integer.parseInt(JOptionPane.showInputDialog("Introduzca un numero:\nPulse 0 para terminar"));
 		
-			if (i!=0) {
+			if (num !=0) {
 				tablaMultiplicar="";
 				for (int i=1; i<11; i++) {
-					tablaMultiplicar+=num+" x " + i;	
-			}
+					tablaMultiplicar+= num+" x " + i + "=" + (num*i)+"\n";	
+				}
+			}	JOptionPane.showMessageDialog(null, tablaMultiplicar);
 			
-		
 		}
-		System.out.println("El numero menor es: "+ tablamultiplicar);
+		
 	}
 
 }
