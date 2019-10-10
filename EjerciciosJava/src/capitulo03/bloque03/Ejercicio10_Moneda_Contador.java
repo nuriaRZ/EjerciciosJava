@@ -18,7 +18,7 @@ public class Ejercicio10_Moneda_Contador {
 					+"\n1->Cara"
 					+"\n2->Cruz"));
 				
-				
+			if (numUsuario!=1 && numUsuario!=2 ) JOptionPane.showMessageDialog(null, "Numero no valido");
 				if (numAzar==2 && numUsuario==2) {
 				contPersona++;
 				JOptionPane.showMessageDialog(null, "HAS ACERTADO CRUZ");
@@ -30,11 +30,11 @@ public class Ejercicio10_Moneda_Contador {
 				else {
 					if (numAzar==1 && numUsuario==2) {
 					contMaquina++;
-					JOptionPane.showMessageDialog(null, "HAS PERDIDO CRUZ");
+					JOptionPane.showMessageDialog(null, "HAS PERDIDO CARA");
 					}
 					if (numAzar==2 && numUsuario==1) {
 						contMaquina++;
-						JOptionPane.showMessageDialog(null, "HAS PERDIDO CARA");
+						JOptionPane.showMessageDialog(null, "HAS PERDIDO CRUZ");
 					}
 								
 				}
