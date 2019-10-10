@@ -1,3 +1,4 @@
+
 package capitulo03.bloque03;
 
 import javax.swing.JOptionPane;
@@ -11,29 +12,45 @@ public class Ejercicio10_Moneda_Contador {
 		int contMaquina=0;
 		
 		
-		if (contPersona!=2 && contMaquina!=2) {
-			for (;numAzar!=numUsuario;) {
-				numUsuario = Integer.parseInt(JOptionPane.showInputDialog("Elige un lado de la moneda"
+		
+			for (;contPersona!=2 && contMaquina!=2;) {
+				numUsuario = Integer.parseInt(JOptionPane.showInputDialog("Elige un lado de la moneda, \ntienes 3 intentos"
 					+"\n1->Cara"
 					+"\n2->Cruz"));
-			
-				if (numAzar==numUsuario) {
+				
+				
+				if (numAzar==2 && numUsuario==2) {
 				contPersona++;
-				JOptionPane.showMessageDialog(null, "HAS GANADO");
+				JOptionPane.showMessageDialog(null, "HAS ACERTADO CRUZ");
+				}
+				if (numAzar==1 && numUsuario==1) {
+					contPersona++;
+					JOptionPane.showMessageDialog(null, "HAS ACERTADO CARA");
 				}
 				else {
+					if (numAzar==1 && numUsuario==2) {
 					contMaquina++;
-					JOptionPane.showMessageDialog(null, "HAS PERDIDO");
+					JOptionPane.showMessageDialog(null, "HAS PERDIDO CRUZ");
+					}
+					if (numAzar==2 && numUsuario==1) {
+						contMaquina++;
+						JOptionPane.showMessageDialog(null, "HAS PERDIDO CARA");
+					}
+								
 				}
-				
+			if (contPersona==2) {
+				JOptionPane.showMessageDialog(null, "ENHORABUENA!!!! HAS GANADO");
 			}
-			JOptionPane.showMessageDialog(null, "HAS PERDIDO "+ contMaquina+" veces");
-			JOptionPane.showMessageDialog(null, "HAS GANADO "+ contPersona+" veces");
-		}
-		
+			if (contMaquina==2) {
+				JOptionPane.showMessageDialog(null, "HAS PERDIDO VUELVE A JUGAR");	
+			}
+			
+			}
 		
 		
 	}	
+		
+		
 
 }
 
