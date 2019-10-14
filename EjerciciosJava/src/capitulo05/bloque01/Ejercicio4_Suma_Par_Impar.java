@@ -12,13 +12,13 @@ public class Ejercicio4_Suma_Par_Impar {
 			num[i]=(int)Math.round(Math.random()*100);
 			System.out.print(num[i]+" ");
 			
-			//CONDICION PARA SABER SI EL NUMERO ES PAR
+			//CONDICION PARA SABER SI EL INDICE DEL NUMERO ES PAR
 			if (i%2==0) {
 				
-				par+=num[i]; //SUMA DE NUMEROS PARES
+				par+=num[i]; //SUMA DE NUMEROS CUYO INDICE ES PAR
 											
 			}
-			else { //LOS NUMEROS QUE NO CUMPLAN LA CONDICION DE IF SERAN IMPAR
+			else { //LOS NUMEROS QUE NO CUMPLAN LA CONDICION DE IF TENDRAN INDICE IMPAR
 				impar+=num[i];
 			}
 		}
