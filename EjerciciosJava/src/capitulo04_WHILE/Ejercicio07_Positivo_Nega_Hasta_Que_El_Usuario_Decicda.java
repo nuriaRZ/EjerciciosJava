@@ -9,7 +9,7 @@ public class Ejercicio07_Positivo_Nega_Hasta_Que_El_Usuario_Decicda {
 		int positivo=0;
 		int negativo=0;
 		int num=-1;		
-		for ( ; num!=0;) {
+		while ( num!=0 ) {
 		num = Integer.parseInt(JOptionPane.showInputDialog("Introduzca un numero:\nPulse 0 para terminar"));
 		
 			if (num > 0) positivo++; 
