@@ -4,7 +4,7 @@ public class Ejercicio5_Indice_Par_Impar {
 
 	public static void main(String[] args) {
 		
-		int num[]= new int[150];
+		int num[]= new int[5];
 		int par=0;
 		int impar=0;
 		
@@ -12,19 +12,19 @@ public class Ejercicio5_Indice_Par_Impar {
 			num[i]=(int)Math.round(Math.random()*100);
 			System.out.print(num[i]+" ");
 			
-			//CONDICION PARA SABER SI EL NUMERO ES PAR
-			if (num[i]%2==0) {
+			//CONDICION PARA SABER SI EL INDICE DEL NUMERO ES PAR
+			if (i%2==0) {
 				
-				par+=num[i]; //SUMA DE NUMEROS PARES
+				par+=num[i]; //SUMA DE NUMEROS CUYO INDICE ES PAR
 											
 			}
-			else { //LOS NUMEROS QUE NO CUMPLAN LA CONDICION DE IF SERAN IMPAR
+			else { //LOS NUMEROS QUE NO CUMPLAN LA CONDICION DE IF TENDRAN INDICE IMPAR
 				impar+=num[i];
 			}
 		}
 		
-		System.out.println("\nSuma de numeros pares: "+par
-						+"\nSuma de numeros impares: "+impar);
+		System.out.println("\nSuma de numeros cuyo indice es par: "+par
+						+"\nSuma de numeros cuyo indice es impar: "+impar);
 		
 	}
 

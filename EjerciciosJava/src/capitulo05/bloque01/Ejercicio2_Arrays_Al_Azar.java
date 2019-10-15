@@ -4,7 +4,7 @@ public class Ejercicio2_Arrays_Al_Azar {
 
 	public static void main(String[] args) {
 		
-		int num[]= new int[150];
+		int num[]= new int[5];
 		
 		
 		
