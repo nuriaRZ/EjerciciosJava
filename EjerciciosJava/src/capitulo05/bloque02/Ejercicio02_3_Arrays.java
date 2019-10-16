@@ -31,6 +31,10 @@ public class Ejercicio02_3_Arrays {
 		System.out.println(array3);
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	
 	private static int numAleatorio() {
 		return (int) Math.round(Math.random()*100);

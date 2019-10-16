@@ -6,32 +6,48 @@ public class Ejercicio3_Arrays_Buscar_Num_Usuario {
 
 	public static void main(String[] args) {
 		
-		int num[]= new int[150];
+		int num[]= new int[150];		
+		boolean encontrado=false;
+		
+		for (int i=0; i<num.length; i++) {
+			num[i]=(int)Math.round(Math.random()*100);
+			
+		}
+		for (int i=0; i<num.length; i++) {
+			
+			System.out.print(num[i]+" ");
+		}
 		
 		int numUsuario = Integer.parseInt(JOptionPane.showInputDialog("Introduzca un numero:"));
 		
-		boolean encontrado=false;
-		int i;
-		for ( i=0; i<num.length; i++) {
-			num[i]=(int)Math.round(Math.random()*100);
+		//linea en blanco
+		System.out.println();
+		
+		for (int i=0; i<num.length && !encontrado; i++) {
 			
-			if (numUsuario==num[i]) {
-				encontrado=true;
+			if (numUsuario==num[i]) {				
 				System.out.println("Tu numero "+numUsuario+" ha sido encontrado en la posicion "+i);
-			break;
+			encontrado=true;
 			}
-			else {
-				encontrado=false;
-				System.out.println("Tu numero "+numUsuario+" no ha sido encontrado");	
+		}	
+			if (!encontrado) {
+				
+				System.out.println("Tu numero "+numUsuario+" no ha sido encontrado");
+				
 			}
+		
+	
+		
+			
+			
 
 		
-		}
-		
-		
-
-
-
 	}
+		
+		
+
+
 
 }
+
+
