@@ -13,7 +13,7 @@ public class Ejercicio02_3_Arrays {
 			array1[i]=numAleatorio();
 			System.out.print(array1+" ");
 			
-			if (i%2!=0) {
+			if ((i &1) == 1 ) {
 				impar=array1[i];
 			}
 		}	
@@ -23,7 +23,7 @@ public class Ejercicio02_3_Arrays {
 			
 			System.out.print(array3+" ");
 			
-				if (j%2!=0) {
+				if ((j&1)==1) {
 					array3[j]=impar;
 				}
 			
