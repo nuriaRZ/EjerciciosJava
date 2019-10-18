@@ -1,3 +1,4 @@
+package programacion;
 
 public class Utils_Arrays {
 	
@@ -12,7 +13,7 @@ public class Utils_Arrays {
 	
 	
 	public static int ObtenerNumAleatorio (int limiteSup, int limiteInf) {
-		return (int) Math.round(Math.random()*(limiteInf - limiteSup))+limiteInf;
+		return (int) Math.round(Math.random()*(limiteSup - limiteInf))+limiteInf;
 		
 	}
 	
@@ -46,7 +47,7 @@ public class Utils_Arrays {
 		
 		for (int i = 0; i < array.length; i++) {
 			
-			System.out.println(array[i]+" ");
+			System.out.print(array[i]+" ");
 		}
 	}
 

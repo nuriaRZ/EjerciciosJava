@@ -1,43 +1,43 @@
 package capitulo05.bloque02;
 
+import programacion.Utils_Arrays;
+
 public class Ejercicio02_3_Arrays {
 
 	public static void main(String[] args) {
 		
-		int array1[]= new int [5];
-		int array2[]= new int [5];
+		int array1[]= Utils_Arrays.crearArrayNumAleatorio(5, 0, 100);
+		int array2[]= Utils_Arrays.crearArrayNumAleatorio(5, 0, 100);
 		int array3[]= new int [5];
-		int impar=0;
 		
-		for (int i=0; i<array1.length; i++) {
-			array1[i]=numAleatorio();
-			System.out.print(array1+" ");
-			
-			if ((i &1) == 1 ) {
-				impar=array1[i];
+		Utils_Arrays.mostrarArray(array1);
+		System.out.println();
+		Utils_Arrays.mostrarArray(array2);
+		
+		System.out.println();
+		System.out.println("Contenido del tercer array");
+		
+		for (int i = 0; i < array3.length; i++) {
+				
+			if (i%2!=0) {
+				array3[i]=array1[i];
 			}
-		}	
 			
-		for (int j=0; j<array3.length; j++) {
-			array3[j]=numAleatorio();
+			if (i%2==0) {
+				array3[i]=array2[i];
+			}
 			
-			System.out.print(array3+" ");
-			
-				if ((j&1)==1) {
-					array3[j]=impar;
-				}
+			System.out.print(array3[i]+" ");
 			
 		}
-		System.out.println(array3);
-	}
+		
+		
+		
 	
-	/**
-	 * 
-	 * @return
-	 */
-	
-	private static int numAleatorio() {
-		return (int) Math.round(Math.random()*100);
-	}
 
-}
+		
+		
+	}
+}	
+
+
