@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 import programacion.Utils_Arrays;
 
-public class ejercio03_Tabla_Multiplicar {
+public class ejercicio03_Tabla_Multiplicar {
 
 	public static void main(String[] args) {
 		
