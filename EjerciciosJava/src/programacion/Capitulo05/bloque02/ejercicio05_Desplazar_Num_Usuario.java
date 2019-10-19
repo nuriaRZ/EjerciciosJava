@@ -13,24 +13,30 @@ public class ejercicio05_Desplazar_Num_Usuario {
 				
 		
 		int num=Integer.parseInt(JOptionPane.showInputDialog("Introduzca el numero de desplazamientos que desee"));
-		int aux=array[array.length-num];
-			
+		int aux=0;
+		int i;	
+		
 		
 		System.out.println();
 		
-		for (int i= array.length-(num); i>0; i--) {
-			array[i]=array[i-(num)];
-						
+		for (int j=0; j<num;j++) {
+			aux=array[array.length-1];	
+			
+		for ( i= array.length -1; i>0; i--) {
+			array[i]=array[i-1];
+			array[i-1]=aux;
 		}
-		
-			array[0]=aux;
+				
+	}	
+			
+		array[0]=aux;
 		
 			System.out.println();
 		
-		for (int i = 0; i < array.length; i++) {
+		for ( i = 0; i < array.length; i++) {
 				System.out.print(array[i]+" ");
 		}
-			
+				
 	}	
 				
 }						
