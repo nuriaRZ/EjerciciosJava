@@ -7,32 +7,40 @@ public class Array_5elem_No_Repetir {
 	public static void main(String[] args) {
 		
 		int array[] = new int [5];
-		int i;
+		
 		int aux;
 		
 		boolean NumRepetido=false;
 		
 			
-		for (int j = 0; j>0; j++) {
+		for (int i = 0; i<array.length; i++) {
 			
-			aux=array[array.length-1];
+			aux=Utils_Arrays.ObtenerNumAleatorio(5, 0);
 			
-			for ( i = 0; i < array.length; i++) {
+			
+			for (int  j = 0; j < array.length; j++) {
 								
-				array[i]=Utils_Arrays.ObtenerNumAleatorio(0, 5);
-				array[i]=array[i-1];
-				array[i-1]=aux;		
+				if (array[j]==aux) {
+					NumRepetido=true;
+					break;
+				}
+			}
+			
+			if (NumRepetido==true) {
+				NumRepetido=false;
+				i--;//Volver a la posicion del array anterior
+			}
+			else {
+				array[i]=aux;
+			}
+			
 				
-			}
-			
-			if (array[i]==aux) {
-				array[i]=Utils_Arrays.ObtenerNumAleatorio(0, 5);
-				NumRepetido=true;
-			}
-			else NumRepetido=false;
-			
-		System.out.print(array[i]+" ");	
 		}
+		
+	for(int i=0; i<array.length;i++) {
+			System.out.print(array[i]+" ");
+	}		
+	
 
 	}
 
