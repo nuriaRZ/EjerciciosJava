@@ -1,43 +1,37 @@
 package programacion.Capitulo05.bloque02;
 
+import programacion.Utils_Arrays;
+
 public class Ejercicio01_Pasar_Positivo_Negat {
 
 	public static void main(String[] args) {
 		
-		int num[] = new int [10];
-		int par = 0;
+		int num[] = Utils_Arrays.crearArrayNumAleatorio(10, -100, 100);
+		Utils_Arrays.mostrarArray(num);
 		
-		int limite= (100-(-100));
 		
+		
+		System.out.println();
 		for (int i=0; i<num.length; i++) {
-			num[i]=(int)Math.round(Math.random()*limite+-(-100));
-			System.out.print(num[i]+" ");
-			
-			
-			
+		
 			//EN EL CASO DE QUE SEA PAR Y POSITIVO
-			if (num[i]%2==0 && num[i]>0) {
+			if (num[i]%2==0) {
 				
 				//MULTIPLICAMOS POR -1 PARA QUE SEAN NEGATIVOS
 				
-				par=num[i]*(-1);
-				
-				System.out.print(par+" ");
-														
+				num[i]=num[i]*(-1);
+																	
 			}
 			
-			else {
-				par=num[i]*(-1);
-				
-				System.out.print(par+" ");
 							
 			}
-			System.out.println("\n");
+		Utils_Arrays.mostrarArray(num);
+			
 		}
 		
 
 	
 
-	}
+	
 
 }

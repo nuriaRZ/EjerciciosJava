@@ -22,7 +22,7 @@ public class Array_5elem_Desordenar {
 			
 			
 			array2[i]=array1[i];
-			aux=array2[i];
+			aux=array2[i]; 
 					
 			}
 			

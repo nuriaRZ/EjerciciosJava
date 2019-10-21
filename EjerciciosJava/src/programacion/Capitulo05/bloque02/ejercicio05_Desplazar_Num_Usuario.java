@@ -22,12 +22,12 @@ public class ejercicio05_Desplazar_Num_Usuario {
 		for (int j=0; j<num;j++) {
 			aux=array[array.length-1];	
 			
-		for ( i= array.length -1; i>0; i--) {
-			array[i]=array[i-1];
-			array[i-1]=aux;
-		}
+			for ( i= array.length -1; i>0; i--) {
+				array[i]=array[i-1];
+				array[i-1]=aux;
+			}
 				
-	}	
+		}	
 			
 		array[0]=aux;
 		
