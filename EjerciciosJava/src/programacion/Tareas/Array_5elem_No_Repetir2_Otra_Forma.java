@@ -6,37 +6,33 @@ public class Array_5elem_No_Repetir2_Otra_Forma {
 
 	public static void main(String[] args) {
 		
-		int array[] = new int [5];
+		int array[] = new int [10];
 		
 		int aux;
-		boolean yaExiste=false;
+		
 		
 		
 			
-		for (int i = 0; i<array.length-1; i++) {
+		for (int i = 0; i<array.length; i++) {
 			
+			boolean yaExiste=false; // Bandera que indica que indique que el cantidato es utilizado
 			do {
-				array[i]=Utils_Arrays.ObtenerNumAleatorio(5, 0);
-				aux=array[i];
-				for(int j=array[i-1]; j<array.length-1; j--);
+				aux=Utils_Arrays.ObtenerNumAleatorio(9, 0);
+				// COMPRUEBO SI AUX EXISTE EN LAS POSICIONES PREVIAS A i
+				
+				
+				for(int j=0; j<i; j++);
 				
 				if (array[i]==aux) {
 					yaExiste=true;
 				}
 				
-			}while(yaExiste==true);
+			}while(yaExiste);
+			array[i]=aux;
 			
-		}	
-			
-			
-			
-				
+		}
 		
-		
-	for(int i=0; i<array.length;i++) {
-			System.out.print(array[i]+" ");
-	}		
-	
+		Utils_Arrays.mostrarArray(array);
 
 	}
 

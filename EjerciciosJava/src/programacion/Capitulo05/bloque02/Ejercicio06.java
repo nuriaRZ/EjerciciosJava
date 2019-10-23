@@ -8,7 +8,7 @@ import programacion.Utils_Arrays;
 public class Ejercicio06 {
 
 	public static void main(String[] args) {
-		int array[]=Utils_Arrays.crearArrayNumAleatorio(5, 0, 100);
+/*		int array[]=Utils_Arrays.crearArrayNumAleatorio(5, 0, 100);
 		Utils_Arrays.mostrarArray(array);
 				
 		
@@ -52,7 +52,7 @@ public class Ejercicio06 {
 		
 		for ( i = 0; i < array.length; i++) {
 				System.out.print(array[i]+" ");
-		}
+		}*/
 
 	}
 

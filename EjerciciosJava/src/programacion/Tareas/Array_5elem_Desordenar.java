@@ -6,33 +6,29 @@ public class Array_5elem_Desordenar {
 
 	public static void main(String[] args) {
 		
-		int array1[]=Utils_Arrays.crearArrayNumAleatorio(5, 0, 100);
-		Utils_Arrays.mostrarArray(array1);
-		int array2[]=new int [5];
-		int longitud= array2.length*2;
+		int array[]=Utils_Arrays.crearArrayNumAleatorio(10, 0, 100);
+		Utils_Arrays.mostrarArray(array);
+		
+		
 		
 		int aux=0;
 		
 		System.out.println();
 		
-		for (int j =0 ; j < longitud; j++) {
+		for (int i =0 ; i < array.length*2; i++) {
 			
-			aux=array2[j];
-		
-			for (int i=0; i < array2.length; i=Utils_Arrays.ObtenerNumAleatorio(5, 0)) {
-			
-			
-			array2[i]=array1[i];
-			aux=array2[i]; 
-					
-			}
-			
-			
-			System.out.print(aux+" ");	
-			
-					
+		int i1, i2;
+		 i1 = Utils_Arrays.ObtenerNumAleatorio(array.length-1, 0);
+		 i2 = Utils_Arrays.ObtenerNumAleatorio(array.length-1, 0);
+		 // REALIZO INTERCAMBIO DE VALORES
+		 aux = array[i1];
+		 array[i1]=array[i2];
+		 array[i2]=aux;
 		}
+		Utils_Arrays.mostrarArray(array);
 
+					
+		
 	}
 
 }
