@@ -10,42 +10,36 @@ public class Ejercicio01_Burbuja {
 		//MUESTRO EL ARRAY
 		Utils_Arrays.mostrarArray(array);
 		
+		boolean esMayor = false;
+		
 		int contador=0;
-		boolean esMayor = true;
 		
 		
 		do {
 			
 			esMayor=false;
-			contador++;
+			
+			
 			Utils_Arrays.mostrarArray(array);
 			for (int i = 0; i < array.length-1; i++) {
-				
 			
-				for (int j =0; j<array.length-1; j++) {
-				
-					if (array[j]<array[j+1]) {
+					if (array[i]>array[i+1]) {
 					
-						int aux = array[j+1];
-						array[j]=aux;
+						int aux = array[i];
+						array[i]=array[i+1];
+						array[i+1]=aux;
 						esMayor=true;
 					
 					
 				}
-			}	
-				
-			
 			}
-		}while(esMayor);		
+			contador++;
+			System.out.println("Vuelta nº: " + contador);
 				
-				
-					
-					
 			
-		
-		
-		
-		Utils_Arrays.mostrarArray(array);
+			
+		}while(esMayor);		
+
 		
 	}
 
