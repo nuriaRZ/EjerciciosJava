@@ -41,6 +41,22 @@ public class Utils_Arrays {
 	/**
 	 * 
 	 */
+	public static float[] crearArrayFloatNumAleatorio (int longitud, int limInf, int limSup) {
+		float array[] = new float [longitud];
+		
+		for (int i = 0; i < array.length; i++) {
+			
+			array[i] = ObtenerNumAleatorio(limInf, limSup);
+			
+		}
+		return array;		
+		
+		
+	}
+	
+	/**
+	 * 
+	 */
 	
 	public static void mostrarArray (int[] array) {
 		System.out.println("\nContenido del array");
