@@ -16,25 +16,25 @@ public class Ejercicio03_Crear_Decimal {
 		System.out.println("Array Decimal:");
 		for (int i = 0; i < arrayDecimal.length; i++) {
 			arrayDecimal[i]=arrayDecimal[i]/100;
-			System.out.print(arrayDecimal[i]);
+			System.out.print(arrayDecimal[i]+" ");
+			
+			if(arrayDecimal[i]<0.50 && arrayDecimal[i]>0.00) {
+				contador++;
+				
+			}
 			
 			
 		}
 		
-		System.out.println("Array resultante");
+		System.out.println("\nArray resultante");
 		
 		for (int i = 0; i < arrayResultado.length; i++) {
 			arrayResultado[i]=arrayEntero[i]+arrayDecimal[i];
 			System.out.print(arrayResultado[i]+" ");
 		}
 		
-		for (int i = 0; i < arrayDecimal.length; i++) {
-			if(arrayResultado<0.50 && arrayResultado>0.00) {
-				contador++;
-				
-			}
-			
-		}
+
+		System.out.println("\nCantidad de numeros cuya parte decimal se encuentra entre .00 y 0.49: "+contador);
 		
 		
 

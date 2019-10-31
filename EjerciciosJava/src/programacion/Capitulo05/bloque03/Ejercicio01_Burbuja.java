@@ -18,7 +18,7 @@ public class Ejercicio01_Burbuja {
 		do {
 			esMayor=false;
 		
-			Utils_Arrays.mostrarArray(array);
+			
 			for (int i = 0; i < array.length-1; i++) {
 			
 					if (array[i]>array[i+1]) {
@@ -31,10 +31,12 @@ public class Ejercicio01_Burbuja {
 				}
 			}
 			contador++;
-			System.out.println("Vuelta nº: " + contador);
 			
-		}while(esMayor);		
-	
+			
+		}while(esMayor);
+		
+		Utils_Arrays.mostrarArray(array);
+		System.out.println("\nNº de Vueltas: " + contador);
 	}
 
 }
