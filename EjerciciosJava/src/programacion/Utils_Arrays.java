@@ -66,5 +66,32 @@ public class Utils_Arrays {
 			System.out.print(array[i]+" ");
 		}
 	}
+	/**
+	 * 
+	 */
+	public static int[][] crearMatrizNumAleatorio (int longitud1,int longitud2, int limInf, int limSup) {
+		int matriz[][] = new int [longitud1] [longitud2];
+		
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz[i].length; j++) {
+				matriz[i][j] = ObtenerNumAleatorio(limInf, limSup);
+			}
+		}			
+		
+		return matriz;
+	}
+	/**
+	 * 
+	 */
+	public static void mostrarMatriz (int[][] matriz) {
+		System.out.println("\nContenido de la matriz");
+		
+		for (int i = 0; i < matriz.length; i++) { 
+			for (int j = 0; j < matriz[i].length; j++) { 
+				System.out.print(matriz[i][j] + "\t");
+			}
+			System.out.println();			
+		}
+	}
 
 }
