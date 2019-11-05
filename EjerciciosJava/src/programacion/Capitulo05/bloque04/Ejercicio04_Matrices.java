@@ -7,12 +7,12 @@ public class Ejercicio04_Matrices {
 	
 
 	public static void main(String[] args) {
-		
-		matrizSimetrica();	
+		int matriz[][]=new int[5][5]; // creo la matriz
+		arrayUnidimensional(matriz);	
 	
 	}
-	public static void matrizPositiva() {
-		int matriz[][]=new int[5][5]; // creo la matriz
+	public static void matrizPositiva(int matriz[][]) {
+		
 		
 		//inicializo la matriz dandole numeros al azar
 		for (int i=0; i<matriz.length; i++) {
@@ -22,7 +22,7 @@ public class Ejercicio04_Matrices {
 		}		
 		//recorro la matriz y la muestro por pantalla
 		for (int i = 0; i < matriz.length; i++) { 
-			for (int j = 0; j < matriz[i].length; j++) { 
+			for (int j = 0; j < matriz[i].length; j++) { //matriz[i].lentgh cantidad de elementos que tiene el primer array matriz[n]
 				System.out.print(matriz[i][j] + "\t");
 			}
 			System.out.println();
@@ -57,10 +57,10 @@ public class Ejercicio04_Matrices {
 			
 	}
 	
-	public static void matrizDiagonal () {
-		int matriz[][]=new int [5][5];
+	public static void matrizDiagonal (int matriz[][]) {
 		
-		//1º diagonal el numero de la fila coincide con el numero de la columna
+		
+		//1ï¿½ diagonal el numero de la fila coincide con el numero de la columna
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz[i].length; j++) {
 				if (matriz[i]==matriz[j]) {
@@ -70,7 +70,7 @@ public class Ejercicio04_Matrices {
 			}
 		}
 		
-		//2º diagonal la suma de las posiciones es igual a la longitud de la matriz
+		//2ï¿½ diagonal la suma de las posiciones es igual a la longitud de la matriz
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j<matriz[i].length; j++) {
 				if (i+j==matriz.length-1) {
@@ -81,8 +81,8 @@ public class Ejercicio04_Matrices {
 		Utils_Arrays.mostrarMatriz(matriz);			
 	}
 	
-	public static void matrizTriangularSuperior () {
-		int matriz[][]=new int [5][5];
+	public static void matrizTriangularSuperior (int matriz[][]) {
+		
 		
 		
 		for (int i = 0; i < matriz.length; i++) {//filas
@@ -96,8 +96,8 @@ public class Ejercicio04_Matrices {
 		Utils_Arrays.mostrarMatriz(matriz);		
 	}
 	
-	public static void matrizDispersa () {
-		int matriz[][]=new int [5][5];
+	public static void matrizDispersa (int matriz[][]) {
+	
 		
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz[i].length; j++) {
@@ -109,8 +109,9 @@ public class Ejercicio04_Matrices {
 		Utils_Arrays.mostrarMatriz(matriz);		
 	}
 	
-	public static void arrayUnidimensional () {
-		int matriz[][]=Utils_Arrays.crearMatrizNumAleatorio(2, 2, 0, 100);
+	public static void arrayUnidimensional (int matriz[][]) {
+		matriz=Utils_Arrays.crearMatrizNumAleatorio(5, 5, 0, 100);
+		
 		Utils_Arrays.mostrarMatriz(matriz);
 		int array[]= new int [matriz.length*matriz.length];
 		
@@ -121,6 +122,8 @@ public class Ejercicio04_Matrices {
 					array[aux]=matriz[i][j];
 					
 				}
+				
+				
 			}
 			array[k-1]=array[aux];
 			array[k]=array[k-1];
@@ -131,8 +134,8 @@ public class Ejercicio04_Matrices {
 		//Utils_Arrays.mostrarArray(array);
 	}
 	
-	public static void matrizSimetrica () {
-		int matriz[][] = new int[3][3];
+	public static void matrizSimetrica (int matriz[][]) {
+		
 		
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz.length; j++) {
