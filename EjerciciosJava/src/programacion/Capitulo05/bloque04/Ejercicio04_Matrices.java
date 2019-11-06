@@ -11,6 +11,10 @@ public class Ejercicio04_Matrices {
 		arrayUnidimensional(matriz);	
 	
 	}
+	/**
+	 * 
+	 * @param matriz
+	 */
 	public static void matrizPositiva(int matriz[][]) {
 		
 		
@@ -56,6 +60,10 @@ public class Ejercicio04_Matrices {
 			
 			
 	}
+	/**
+	 * 
+	 * @param matriz
+	 */
 	
 	public static void matrizDiagonal (int matriz[][]) {
 		
@@ -80,6 +88,10 @@ public class Ejercicio04_Matrices {
 		}
 		Utils_Arrays.mostrarMatriz(matriz);			
 	}
+	/**
+	 * 
+	 * @param matriz
+	 */
 	
 	public static void matrizTriangularSuperior (int matriz[][]) {
 		
@@ -95,6 +107,10 @@ public class Ejercicio04_Matrices {
 		}
 		Utils_Arrays.mostrarMatriz(matriz);		
 	}
+	/**
+	 * 
+	 * @param matriz
+	 */
 	
 	public static void matrizDispersa (int matriz[][]) {
 	
@@ -108,7 +124,10 @@ public class Ejercicio04_Matrices {
 		}
 		Utils_Arrays.mostrarMatriz(matriz);		
 	}
-	
+	/**
+	 * 
+	 * @param matriz
+	 */
 	public static void arrayUnidimensional (int matriz[][]) {
 		matriz=Utils_Arrays.crearMatrizNumAleatorio(5, 5, 0, 100);
 		
@@ -133,6 +152,10 @@ public class Ejercicio04_Matrices {
 		}
 		//Utils_Arrays.mostrarArray(array);
 	}
+	/**
+	 * 
+	 * @param matriz
+	 */
 	
 	public static void matrizSimetrica (int matriz[][]) {
 		
