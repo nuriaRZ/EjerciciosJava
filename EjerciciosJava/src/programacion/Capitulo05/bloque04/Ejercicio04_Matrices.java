@@ -8,7 +8,7 @@ public class Ejercicio04_Matrices {
 
 	public static void main(String[] args) {
 		int matriz[][]=new int[5][5]; // creo la matriz
-		arrayUnidimensional(matriz);	
+		matrizDispersa(matriz);
 	
 	}
 	/**
@@ -65,28 +65,34 @@ public class Ejercicio04_Matrices {
 	 * @param matriz
 	 */
 	
-	public static void matrizDiagonal (int matriz[][]) {
-		
-		
+	public static void matrizDiagonal (int matriz[][]) {		
 		//1� diagonal el numero de la fila coincide con el numero de la columna
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz[i].length; j++) {
 				if (matriz[i]==matriz[j]) {
-					matriz[i][j]=Utils_Arrays.ObtenerNumAleatorio(100, 0);
-				}
-				else matriz[i][j]=0;
+					matriz[i][j]=Utils_Arrays.ObtenerNumAleatorio(100, 0);				
+				}				
 			}
 		}
 		
 		//2� diagonal la suma de las posiciones es igual a la longitud de la matriz
-		for (int i = 0; i < matriz.length; i++) {
+/**		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j<matriz[i].length; j++) {
 				if (i+j==matriz.length-1) {
 					matriz[i][j]=Utils_Arrays.ObtenerNumAleatorio(100, 0);
 				}				
 			}
-		}
-		Utils_Arrays.mostrarMatriz(matriz);			
+		}*/
+		boolean esDiagonal=false;
+		
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz[i].length; j++) {
+				if (i!=j) esDiagonal=true;								
+			}
+		}		
+		Utils_Arrays.mostrarMatriz(matriz);	
+		if (esDiagonal==true)System.out.println("Es diagonal");
+		else System.out.println("No es diagonal");
 	}
 	/**
 	 * 
@@ -122,7 +128,16 @@ public class Ejercicio04_Matrices {
 				matriz[i][j]=Utils_Arrays.ObtenerNumAleatorio(100, 0);
 			}			
 		}
-		Utils_Arrays.mostrarMatriz(matriz);		
+		boolean esDispersa=false;
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz[i].length; j++) {
+				if (matriz[i][j]==0) esDispersa=true;				
+			}			
+		}
+		
+		Utils_Arrays.mostrarMatriz(matriz);
+		if (esDispersa==true) System.out.println("Es dispersa");
+		else System.out.println("No es dispersa");
 	}
 	/**
 	 * 
