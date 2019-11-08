@@ -7,8 +7,13 @@ public class Ejercicio04_Matrices {
 	
 
 	public static void main(String[] args) {
-		int matriz[][]=new int[5][5]; // creo la matriz
-		matrizDispersa(matriz);
+		//int matriz[][]=new int[5][5]; // creo la matriz
+		int matriz[][]= new int[][] {{1,	2,	3,	4,	5},
+			{2,	3,	4,	5, 1,	2,},
+			{3,	4,	5,	1, 2,	3,},
+			{4,	5,	1,	2, 3,	4},
+			{5,	1,	2,	3,	4,	5}};
+		matrizSimetrica(matriz);
 	
 	}
 	/**
@@ -143,47 +148,73 @@ public class Ejercicio04_Matrices {
 	 * 
 	 * @param matriz
 	 */
+	
+	//i*longitud de la fila + j para matrices cuadradas
 	public static void arrayUnidimensional (int matriz[][]) {
 		matriz=Utils_Arrays.crearMatrizNumAleatorio(5, 5, 0, 100);
 		
 		Utils_Arrays.mostrarMatriz(matriz);
-		int array[]= new int [matriz.length*matriz.length];
+		int contadorPosiciones=0;
 		
-		for (int k = array.length-1; k > 0; k--) {
-			int aux=k;
-			for ( int i = 0; i < matriz.length; i++) {				
-				for (int j = 0; j < matriz.length; j++) {
-					array[aux]=matriz[i][j];
-					
-				}
-				
-				
-			}
-			array[k-1]=array[aux];
-			array[k]=array[k-1];
-			
-			
-		System.out.print(array[k]+" ");	
+		for (int i = 0; i < matriz.length; i++) {
+			contadorPosiciones += matriz[i].length;			
 		}
-		//Utils_Arrays.mostrarArray(array);
+		int array[] = new int [contadorPosiciones];
+		
+		int k=0;
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz[i].length; j++) {
+				array[k]=matriz[i][j];
+				k++;
+			}
+		}
+		Utils_Arrays.mostrarArray(array);	
+
 	}
+		
+	
+	
 	/**
 	 * 
 	 * @param matriz
 	 */
 	
 	public static void matrizSimetrica (int matriz[][]) {
+	/**	int matriz[][]= new int[][] {{1,	2,	3,	4,	5},
+									{2,	3,	4,	5, 1,	2,},
+									{3,	4,	5,	1, 2,	3,},
+									{4,	5,	1,	2, 3,	4},
+									{5,	1,	2,	3,	4,	5}};*/
 		
-		
+		boolean esSimetrica = true;
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz.length; j++) {
-				if(matriz[i][j]==matriz[i-j][j])
-				matriz[i][j]=Utils_Arrays.ObtenerNumAleatorio(100, 0);
+				if(matriz[i][j]!=matriz[j][i])
+				esSimetrica = false;
 			}
 			
 		}
+		if (esSimetrica) System.out.println("Matriz simetrica");
+		else System.out.println("Matriz no simetrica");
 		Utils_Arrays.mostrarMatriz(matriz);
 		
 		
 	}
-}
+	/**
+	 * 
+	 */
+	//public static int[][] matrizMenosUnafila (int matriz [][], int filaAEliminar) {
+		
+		
+		//if(filaAEliminar < 0 || filaAEliminar >= matriz.length) {
+			//return matriz;
+		//}
+		
+		//int nuevaMatriz[][]
+		
+									
+									
+	//}								
+	
+}	
+
