@@ -8,18 +8,19 @@ public class Persona {
 	String direccion;
 	int  telefono;
 	
-	public Persona (){
-		
-	}
+
 	
 	public Persona(String nuevoNombre, String nuevoApellidos, String nuevoDNI, String nuevaDireccion, int  nuevoTelefono) {
-		
+
 		nombre = nuevoNombre;
 		apellidos = nuevoApellidos;
 		DNI = nuevoDNI;
 		direccion = nuevaDireccion;
 		telefono = nuevoTelefono;
+	
 	}
+	
+
 	
 	public void imprimirDatos () {
 		System.out.println("nombre:" + nombre +"\napellidos:" + apellidos + "\nDNI:" +DNI+"\nDireccion:"+direccion+"\nTelefono:"+telefono);		
