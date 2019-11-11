@@ -15,10 +15,10 @@ public class Matriz_Media {
 		}
 		Utils_Arrays.mostrarMatriz(matrizA);
 		int matrizB[][]=new int [3][3];
-		do {
+		
 		inicializarMatrizPequenia(matrizA, matrizB);
 		elementoPrincipal(matrizA, matrizB);
-		}while (matrizB[1][1]!=matrizA[i=matrizA.length-1][j=matrizA.length-1]);
+		
 	}	
 	/**
 	 * 	
