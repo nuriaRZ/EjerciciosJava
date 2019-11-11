@@ -16,7 +16,7 @@ public class Matriz_Media {
 		Utils_Arrays.mostrarMatriz(matrizA);
 		int matrizB[][]=new int [3][3];
 		do {
-		inicializarMatrizPequeña(matrizA, matrizB);
+		inicializarMatrizPequenia(matrizA, matrizB);
 		elementoPrincipal(matrizA, matrizB);
 		}while (matrizB[1][1]!=matrizA[i=matrizA.length-1][j=matrizA.length-1]);
 	}	
@@ -24,7 +24,7 @@ public class Matriz_Media {
 	 * 	
 	 */
 		
-	public static void inicializarMatrizPequeña (int matrizA[][], int matrizB [][]) {
+	public static void inicializarMatrizPequenia (int matrizA[][], int matrizB [][]) {
 	int i =0, j=0;
 			
 		
