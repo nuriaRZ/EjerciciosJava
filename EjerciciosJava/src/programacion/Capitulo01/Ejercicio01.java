@@ -5,7 +5,7 @@ public class Ejercicio01 {
 
 	public static void main(String[] args) {
 		
-		//comentario
+	
 		String var1 = JOptionPane.showInputDialog("Introduce un numero");
 		String var2 = JOptionPane.showInputDialog("Introduce otro numero");
 		
