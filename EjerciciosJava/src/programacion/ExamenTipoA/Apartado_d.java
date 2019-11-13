@@ -12,8 +12,6 @@ public class Apartado_d {
 		
 		int array2[] = new int [5];
 		
-		
-		
 		for (int i = 0; i < array2.length; i++) {
 			int posicion;
 			boolean posicionYaSalida;
@@ -30,9 +28,7 @@ public class Apartado_d {
 			
 			}while(posicionYaSalida);
 
-			array2[i]=posicion;
-			
-			
+			array2[i]=posicion;			
 		}
 		Utils_Arrays.mostrarArray(array2);
 		

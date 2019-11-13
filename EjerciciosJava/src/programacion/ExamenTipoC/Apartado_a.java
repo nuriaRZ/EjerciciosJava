@@ -1,4 +1,4 @@
-package programacion.ExamenTipoA;
+package programacion.ExamenTipoC;
 
 import programacion.Utils_Arrays;
 
