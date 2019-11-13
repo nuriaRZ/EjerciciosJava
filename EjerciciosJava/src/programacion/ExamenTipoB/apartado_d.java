@@ -9,7 +9,7 @@ public class apartado_d {
 		
 		int contador=0;
 		
-		for (int i = 0; i < array.length; i++) {
+		for (int i = 0; i <= 10; i++) {
 			int posicion;
 			boolean existePosicion;
 			
@@ -18,11 +18,11 @@ public class apartado_d {
 				existePosicion=false;
 				
 				for (int j = 0; j < array.length; j++) {
-					contador++;
+					
 					if (array[j]==posicion) existePosicion=true;
 				}				
 				
-			}while(existePosicion && contador<10);
+			}while(existePosicion);
 		
 			array[posicion]=1;
 		}
