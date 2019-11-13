@@ -12,24 +12,37 @@ public class Apartado_d {
 		
 		int array2[] = new int [5];
 		
-		boolean posicionYaSalida=false;
+		
 		
 		for (int i = 0; i < array2.length; i++) {
-			int posicion = Utils_Arrays.ObtenerNumAleatorio(array.length-1, 0);
+			int posicion;
+			boolean posicionYaSalida;
 			do {
+				posicion = Utils_Arrays.ObtenerNumAleatorio(array.length-1, 0);
+				 posicionYaSalida=false;
 				
-			if(array[i]==posicion) posicionYaSalida=true;
+				for (int j = 0; j < i; j++) {
+					
+					if(array2[j]==posicion) {
+						posicionYaSalida=true;
+					}				
+				}			
 			
-			
-			}while(posicionYaSalida==false);
+			}while(posicionYaSalida);
 
+			array2[i]=posicion;
 			
-			for (int j = 0; j < array.length; j++) {
-				array2[i]=array[posicion];
-			}
+			
 		}
 		Utils_Arrays.mostrarArray(array2);
-
+		
+		int arrayFinal[]= new int [array.length];
+		
+		for (int i = 0; i < array2.length; i++) {
+			arrayFinal[i] = array[array2[i]];
+			
+		}
+		Utils_Arrays.mostrarArray(arrayFinal);
 	}
 
 }
