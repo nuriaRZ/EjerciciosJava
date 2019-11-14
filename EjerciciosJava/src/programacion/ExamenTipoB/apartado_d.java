@@ -7,7 +7,7 @@ public class apartado_d {
 	public static void main(String[] args) {
 		int array []= new int[100];
 		
-		int contador=0;
+		
 		
 		for (int i = 0; i <= 10; i++) {
 			int posicion;
