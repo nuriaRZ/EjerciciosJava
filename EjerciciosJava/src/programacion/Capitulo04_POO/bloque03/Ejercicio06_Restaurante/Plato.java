@@ -12,7 +12,17 @@ public class Plato {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
+	}	
+	/**
+	 * 
+	 */
+	public Plato() {
+		super();
+		this.nombre = "Plato sin nombre";
+		this.precio = 0.01f;
 	}
+
+
 	/**
 	 * @return the nombre
 	 */
