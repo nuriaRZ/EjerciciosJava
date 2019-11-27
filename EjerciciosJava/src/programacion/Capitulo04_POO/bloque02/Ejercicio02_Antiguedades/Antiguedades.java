@@ -8,11 +8,16 @@ public abstract class Antiguedades {
 	protected int anioFabricacion;
 	protected String origen;
 	protected float precioVenta;
+	
+	public Antiguedades() {
+		
+	}
 	/**
 	 * @param anioFabricacion
 	 * @param origen
 	 * @param precioVenta
 	 */
+	
 	public Antiguedades(int anioFabricacion, String origen, float precioVenta) {
 		super();
 		this.anioFabricacion = anioFabricacion;

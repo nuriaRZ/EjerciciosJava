@@ -3,12 +3,23 @@ package programacion.Capitulo04_POO.bloque02.Ejercicio02_Antiguedades;
 public class Libros extends Antiguedades {
 	private String autor;
 	private String titulo;
+	
+	public Libros () {
+		
+	}
 
 	public Libros(int anioFabricacion, String origen, float precioVenta, String autor, String titulo ) {
 		super(anioFabricacion, origen, precioVenta);
 		this.autor = autor;
 		this.titulo = titulo;
 		
+	}
+	
+
+	@Override
+	public String toString() {
+		return "Libros [autor=" + autor + ", titulo=" + titulo + ", getAnioFabricacion()=" + getAnioFabricacion()
+				+ ", getOrigen()=" + getOrigen() + ", getPrecioVenta()=" + getPrecioVenta() + "]";
 	}
 
 	/**

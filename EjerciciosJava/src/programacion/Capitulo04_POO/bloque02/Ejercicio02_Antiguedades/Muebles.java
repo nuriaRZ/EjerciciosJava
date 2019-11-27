@@ -4,11 +4,23 @@ public class Muebles extends Antiguedades {
 	protected String material;
 	protected String color;
 	
+	public Muebles() {
+		
+	}
+	
 
 	public Muebles(int anioFabricacion, String origen, float precioVenta, String material, String color) {
 		super(anioFabricacion, origen, precioVenta);
 		this.material = material;
 		this.color = color;
+	}
+	
+
+
+	@Override
+	public String toString() {
+		return "Muebles [material=" + material + ", color=" + color + ", getAnioFabricacion()=" + getAnioFabricacion()
+				+ ", getOrigen()=" + getOrigen() + ", getPrecioVenta()=" + getPrecioVenta() + "]";
 	}
 
 
