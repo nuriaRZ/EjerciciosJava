@@ -3,6 +3,11 @@ package programacion.Capitulo04_POO.bloque02.Ejercicio01_Articulos;
 public class Articulos_Perecederos extends Articulos {
 	
 	private String fecha_caducidad;
+	
+	public Articulos_Perecederos () {
+		
+	}
+	
 	/**
 	 * 
 	 * @param codigo
@@ -11,25 +16,28 @@ public class Articulos_Perecederos extends Articulos {
 	 * @param fecha_caducidad
 	 */
 	
-	
-
 	public Articulos_Perecederos(String codigo, String nombre, float precio, String fecha_caducidad) {
 		super(codigo, nombre, precio);
 		this.fecha_caducidad = fecha_caducidad;
 	}
 	/**
 	 * 
-	 */
-	public void imprimirPerecedero() {
-		System.out.println("codigo: "+ codigo + " nombre: "+ nombre + " precio: "+ precio
-							+"\nFecha Caducidad: "+fecha_caducidad);
+	 */	
+
+	@Override
+	public String toString() {
+		return "Articulos_Perecederos [fecha_caducidad=" + fecha_caducidad + ", getCodigo()=" + getCodigo()
+				+ ", getNombre()=" + getNombre() + ", getPrecio()=" + getPrecio() + "]";
 	}
+
 	/**
 	 * @return the fecha_caducidad
 	 */
 	public String getFecha_caducidad() {
 		return fecha_caducidad;
 	}
+
+
 	/**
 	 * @param fecha_caducidad the fecha_caducidad to set
 	 */

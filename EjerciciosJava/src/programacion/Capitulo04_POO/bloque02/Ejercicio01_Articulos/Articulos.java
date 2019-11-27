@@ -4,14 +4,22 @@ import javax.swing.JOptionPane;
 
 public class Articulos {
 	
-		protected String codigo;
-		protected String nombre;
-		protected float precio;
+		private String codigo;
+		private String nombre;
+		private float precio;
+		
+		/**
+		 * 
+		 */
+		public Articulos () {
+			
+		}
 		/**
 		 * @param codigo
 		 * @param nombre
 		 * @param precio
 		 */
+
 		public Articulos(String codigo, String nombre, float precio) {
 			super();
 			this.codigo = codigo;
@@ -22,12 +30,15 @@ public class Articulos {
 		 * 
 		 * @return
 		 */
-		
-		public void imprimir() {
-			System.out.println("codigo: "+ codigo + " nombre: "+ nombre + " precio: "+ precio);
+
+		@Override
+		public String toString() {
+			return "Articulos [codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio + "]";
 		}
-
-
+		/**
+		 * 
+		 * @return
+		 */
 		public String getCodigo() {
 			return codigo;
 		}
