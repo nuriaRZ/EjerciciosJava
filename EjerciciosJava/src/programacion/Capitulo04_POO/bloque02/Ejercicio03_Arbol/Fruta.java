@@ -8,8 +8,8 @@ public class Fruta extends ElementoDeArbol {
 		
 	}
 
-	public Fruta(String tronco, String ramas, String hojas, String frutos, String nombre) {
-		super(tronco, ramas, hojas, frutos);
+	public Fruta(String nombre) {
+		super();
 		this.nombre = nombre;
 		
 	}

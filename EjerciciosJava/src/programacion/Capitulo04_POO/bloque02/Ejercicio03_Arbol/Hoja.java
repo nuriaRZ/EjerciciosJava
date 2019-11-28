@@ -7,8 +7,8 @@ public class Hoja extends ElementoDeArbol {
 		
 	}
 
-	public Hoja(String tronco, String ramas, String hojas, String frutos, String color) {
-		super(tronco, ramas, hojas, frutos);
+	public Hoja(String color) {
+		super();
 		this.color = color;
 	}
 
