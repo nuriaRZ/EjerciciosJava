@@ -14,7 +14,6 @@ public class Fruta extends ElementoDeArbol {
 		
 	}
 	
-
 	@Override
 	public String toString() {
 		return "Fruta [nombre=" + nombre + "]";

@@ -12,6 +12,12 @@ public class Hoja extends ElementoDeArbol {
 		this.color = color;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Hoja [color=" + color + "]";
+	}
+
 	/**
 	 * @return the color
 	 */

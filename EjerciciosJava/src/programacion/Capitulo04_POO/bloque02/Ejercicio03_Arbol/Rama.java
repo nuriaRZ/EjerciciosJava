@@ -6,6 +6,8 @@ public class Rama extends ElementoDeArbol {
 	private ElementoDeArbol el2;
 	private ElementoDeArbol el3;
 	
+	
+	
 
 	public Rama() {
 	}
@@ -18,6 +20,14 @@ public class Rama extends ElementoDeArbol {
 		this.el3 = el3;		
 	}
 	
+
+
+	@Override
+	public String toString() {
+		return "Rama [el1=" + el1 + ", el2=" + el2 + ", el3=" + el3 + "]";
+	}
+
+
 	/**
 	 * 
 	 */
