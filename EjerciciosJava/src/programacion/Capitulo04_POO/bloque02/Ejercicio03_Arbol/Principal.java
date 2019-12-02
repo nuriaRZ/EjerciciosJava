@@ -12,8 +12,8 @@ public class Principal {
 		
 		Rama rama = new Rama(f1, h2, rama2);
 		
+		
 		System.out.println(rama.toString());
-		System.out.println(rama2.toString());
 		
 
 	}

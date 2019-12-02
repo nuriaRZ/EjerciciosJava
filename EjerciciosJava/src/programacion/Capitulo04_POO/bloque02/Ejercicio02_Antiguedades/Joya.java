@@ -1,14 +1,21 @@
 package programacion.Capitulo04_POO.bloque02.Ejercicio02_Antiguedades;
 
-public class Joyas extends Antiguedades {
+public class Joya extends Antiguedad {
 	
 	private String material;
 	
-	public Joyas () {
+	public Joya () {
 		
 	}
+	/**
+	 * 
+	 * @param anioFabricacion
+	 * @param origen
+	 * @param precioVenta
+	 * @param material
+	 */
 
-	public Joyas(int anioFabricacion, String origen, float precioVenta, String material) {
+	public Joya(int anioFabricacion, String origen, float precioVenta, String material) {
 		super(anioFabricacion, origen, precioVenta);
 		this.material = material;
 		
@@ -17,7 +24,7 @@ public class Joyas extends Antiguedades {
 
 	@Override
 	public String toString() {
-		return "Joyas [material=" + material + ", getAnioFabricacion()=" + getAnioFabricacion() + ", getOrigen()="
+		return "Joya [material=" + material + ", getAnioFabricacion()=" + getAnioFabricacion() + ", getOrigen()="
 				+ getOrigen() + ", getPrecioVenta()=" + getPrecioVenta() + "]";
 	}
 

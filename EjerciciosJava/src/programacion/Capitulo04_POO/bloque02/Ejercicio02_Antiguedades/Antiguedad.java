@@ -1,15 +1,12 @@
 package programacion.Capitulo04_POO.bloque02.Ejercicio02_Antiguedades;
 
-public abstract class Antiguedades {
-	protected  Antiguedades joya;
-	protected  Antiguedades cuadro;
-	protected  Antiguedades libro;
-	protected  Antiguedades mueble;
-	protected int anioFabricacion;
-	protected String origen;
-	protected float precioVenta;
+public abstract class Antiguedad {
+
+	private int anioFabricacion;
+	private String origen;
+	private float precioVenta;
 	
-	public Antiguedades() {
+	public Antiguedad() {
 		
 	}
 	/**
@@ -18,7 +15,7 @@ public abstract class Antiguedades {
 	 * @param precioVenta
 	 */
 	
-	public Antiguedades(int anioFabricacion, String origen, float precioVenta) {
+	public Antiguedad(int anioFabricacion, String origen, float precioVenta) {
 		super();
 		this.anioFabricacion = anioFabricacion;
 		this.origen = origen;
@@ -27,14 +24,7 @@ public abstract class Antiguedades {
 	/**
 	 * 
 	 */
-	public Antiguedades (Antiguedades joya, Antiguedades cuadro, Antiguedades libro, Antiguedades mueble) {
-		super();
-		this.joya = joya;
-		this.cuadro = cuadro;
-		this.libro = libro;
-		this.mueble = mueble;
-		
-	}
+
 	/**
 	 * @return the anioFabricacion
 	 */
@@ -73,7 +63,7 @@ public abstract class Antiguedades {
 	}
 	@Override
 	public String toString() {
-		return "Antiguedades [anioFabricacion=" + anioFabricacion + ", origen=" + origen + ", precioVenta="
+		return "Antiguedad [anioFabricacion=" + anioFabricacion + ", origen=" + origen + ", precioVenta="
 				+ precioVenta + "]";
 	}
 	

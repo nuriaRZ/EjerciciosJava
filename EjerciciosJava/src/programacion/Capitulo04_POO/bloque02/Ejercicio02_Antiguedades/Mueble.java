@@ -1,15 +1,15 @@
 package programacion.Capitulo04_POO.bloque02.Ejercicio02_Antiguedades;
 
-public class Muebles extends Antiguedades {
+public class Mueble extends Antiguedad {
 	protected String material;
 	protected String color;
 	
-	public Muebles() {
+	public Mueble() {
 		
 	}
 	
 
-	public Muebles(int anioFabricacion, String origen, float precioVenta, String material, String color) {
+	public Mueble(int anioFabricacion, String origen, float precioVenta, String material, String color) {
 		super(anioFabricacion, origen, precioVenta);
 		this.material = material;
 		this.color = color;
@@ -19,7 +19,7 @@ public class Muebles extends Antiguedades {
 
 	@Override
 	public String toString() {
-		return "Muebles [material=" + material + ", color=" + color + ", getAnioFabricacion()=" + getAnioFabricacion()
+		return "Mueble [material=" + material + ", color=" + color + ", getAnioFabricacion()=" + getAnioFabricacion()
 				+ ", getOrigen()=" + getOrigen() + ", getPrecioVenta()=" + getPrecioVenta() + "]";
 	}
 

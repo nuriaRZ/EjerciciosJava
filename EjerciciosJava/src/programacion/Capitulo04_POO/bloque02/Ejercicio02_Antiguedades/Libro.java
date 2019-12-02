@@ -1,33 +1,27 @@
 package programacion.Capitulo04_POO.bloque02.Ejercicio02_Antiguedades;
 
-public class Cuadros extends Antiguedades {
+public class Libro extends Antiguedad {
 	private String autor;
 	private String titulo;
 	
-	public Cuadros () {
+	public Libro () {
 		
 	}
-	/**
-	 * 
-	 * @param anioFabricacion
-	 * @param origen
-	 * @param precioVenta
-	 * @param autor
-	 * @param titulo
-	 */
 
-	public Cuadros(int anioFabricacion, String origen, float precioVenta, String autor, String titulo) {
+	public Libro(int anioFabricacion, String origen, float precioVenta, String autor, String titulo ) {
 		super(anioFabricacion, origen, precioVenta);
 		this.autor = autor;
 		this.titulo = titulo;
+		
 	}
 	
 
 	@Override
 	public String toString() {
-		return "Cuadros [autor=" + autor + ", titulo=" + titulo + ", getAnioFabricacion()=" + getAnioFabricacion()
+		return "Libro [autor=" + autor + ", titulo=" + titulo + ", getAnioFabricacion()=" + getAnioFabricacion()
 				+ ", getOrigen()=" + getOrigen() + ", getPrecioVenta()=" + getPrecioVenta() + "]";
 	}
+
 	/**
 	 * @return the autor
 	 */
