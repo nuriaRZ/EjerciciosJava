@@ -17,7 +17,7 @@ public class Opc_Correcta extends Cuestion {
 	 */
 	public Opc_Correcta(String enunciado, int respCorrecta, String opciones[]) {
 		super(enunciado, respCorrecta);
-		this.opciones
+		
 		
 	}
 	
