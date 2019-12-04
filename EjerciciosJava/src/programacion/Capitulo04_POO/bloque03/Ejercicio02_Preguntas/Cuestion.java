@@ -4,6 +4,7 @@ public abstract class Cuestion {
 	private String enunciado;
 	private int respCorrecta;
 	
+	
 	public Cuestion () {
 		
 	}	

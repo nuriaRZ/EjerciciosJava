@@ -1,9 +1,8 @@
 package programacion.Capitulo04_POO.bloque03.Ejercicio02_Preguntas;
 
 public class Opc_Correcta extends Cuestion {
-	private String Pregunta01;
-	private String Pregunta02;
-	private String opciones[] = new String[4];
+
+	private String opciones[];
 	
 
 	public Opc_Correcta() {
