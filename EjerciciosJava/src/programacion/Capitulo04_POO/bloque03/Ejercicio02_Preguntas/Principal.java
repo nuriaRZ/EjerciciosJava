@@ -3,20 +3,13 @@ package programacion.Capitulo04_POO.bloque03.Ejercicio02_Preguntas;
 public class Principal {
 
 	public static void main(String[] args) {
-		Cuestion pregunta01 = new Cuestion() {
+		
+		Cuestion cuestiones[] = new Cuestion[5];
+		
+		cuestiones[0] = new Verd_o_Falso("Madrid es la capital de España", 1); 
+		
 			
-			@Override
-			public void mostrarEnPantalla() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void evaluarRespuesta() {
-				// TODO Auto-generated method stub
-				
-			}
-		};
+
 		
 
 	}

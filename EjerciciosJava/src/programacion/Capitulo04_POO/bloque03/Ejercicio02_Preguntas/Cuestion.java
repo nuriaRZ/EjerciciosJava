@@ -1,8 +1,9 @@
 package programacion.Capitulo04_POO.bloque03.Ejercicio02_Preguntas;
 
 public abstract class Cuestion {
-	private String enunciado;
-	private int respCorrecta;
+	protected String enunciado;
+	protected int respCorrecta;
+	
 	
 	
 	public Cuestion () {
@@ -17,20 +18,20 @@ public abstract class Cuestion {
 		super();
 		this.enunciado = enunciado;
 		this.respCorrecta = respCorrecta;
+		
 	}
-	
-
-
 
 	/**
 	 * 
 	 */
 	
-	public abstract void mostrarEnPantalla();
+	public abstract int mostrarEnPantalla();
 	/**
 	 * 
 	 */
-	public abstract void evaluarRespuesta();
+	public boolean evaluarRespuesta(int respUsuario) {
+		return this.respCorrecta==respUsuario;
+	}
 	/**
 	 * @param string 
 	 * @return the enunciado

@@ -26,15 +26,11 @@ public class Opc_Correcta extends Cuestion {
 
 
 	@Override
-	public void mostrarEnPantalla() {
+	public int mostrarEnPantalla() {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
-	public void evaluarRespuesta() {
-		// TODO Auto-generated method stub
 
-	}
 
 }
