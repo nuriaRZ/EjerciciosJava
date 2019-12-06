@@ -36,7 +36,7 @@ public abstract class Cuestion {
 	 * @param string 
 	 * @return the enunciado
 	 */
-	public String getEnunciado(String string) {
+	public String getEnunciado(String enunciado) {
 		return enunciado;
 	}
 	/**

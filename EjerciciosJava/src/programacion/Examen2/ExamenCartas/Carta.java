@@ -1,4 +1,4 @@
-package programacion.Examen2;
+package programacion.Examen2.ExamenCartas;
 
 public class Carta {
 	private int valor;

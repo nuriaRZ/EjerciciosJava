@@ -25,10 +25,7 @@ public class ejercicio04_Desplazar_Num {
 		
 		for (int i = 0; i < array.length; i++) {
 			System.out.print(array[i]+" ");
-		}
-				
-						
-			
+		}			
 			
 			
 	}

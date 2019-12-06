@@ -14,6 +14,7 @@ public class Verd_o_Falso extends Cuestion {
 	 */
 	public Verd_o_Falso(String enunciado, int respCorrecta) {
 		super(enunciado, respCorrecta);
+		this.enunciado = enunciado;
 		
 	}
 	/**
@@ -25,7 +26,7 @@ public class Verd_o_Falso extends Cuestion {
 
 	@Override
 	public int mostrarEnPantalla() {
-		return Integer.parseInt(this.enunciado + JOptionPane.showInputDialog("1.-Verdadero\n2.-Falso"));
+		return Integer.parseInt(JOptionPane.showInputDialog(this.enunciado + "\n1.-Verdadero\n2.-Falso"));
 	}
 	/**
 	 * @param enunciado
