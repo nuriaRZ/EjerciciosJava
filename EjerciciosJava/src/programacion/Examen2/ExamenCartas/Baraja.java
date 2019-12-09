@@ -111,11 +111,17 @@ public class Baraja {
 	public void repartirMano(Jugador jugador) {
 		Carta mano[] = new Carta[5];
 		for (int i = 0; i < mano.length; i++) {
-			mezclarBaraja();
-			mano[i]= cartas[i];
+			int aux= 0;			
+			
+			do {
+				aux=  (int)Math.round(Math.random()*(cartas.length-1));				
+			}while (cartas[aux]==null);
+						
+			mano[i]=cartas[aux];
+			cartas[aux]=null;//sacar la carta de la baraja			
 		}
 		
-		jugador.setCartas(mano);
+		jugador.setMano(mano);
 		
 	}
 	

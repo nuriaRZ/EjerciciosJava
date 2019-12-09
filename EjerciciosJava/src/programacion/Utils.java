@@ -19,6 +19,17 @@ public class Utils {
 	/**
 	 * 
 	 */
+	public static int ObtenerNumAleatorioEntreLimites (int limiteSup, int limiteInf) {
+		return (int) Math.round(Math.random()*(limiteSup - limiteInf))+limiteInf;
+		
+	}
+	/**
+	 * 
+	 * @param mensaje
+	 * @param minimo
+	 * @param maximo
+	 * @return
+	 */
 	public static int obtenerNumUsuarioEntreLimites (String mensaje, int minimo, int maximo ) {
 		
 		int num;
