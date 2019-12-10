@@ -2,7 +2,7 @@ package programacion.Examen2.Repaso.RepasoMarcianos;
 
 import programacion.Utils;
 
-public class Malvado{
+public class Malvado extends Ser{
 	private String nombre;
 	private int puntosVida = Utils.ObtenerNumAleatorioEntreLimites(100, 50);
 	private boolean estaVivo;
@@ -12,13 +12,15 @@ public class Malvado{
 	public Malvado() {
 		
 	}
-
+	
 	/**
 	 * @param nombre
+	 * @param puntosVida
+	 * @param estaVivo
 	 */
 	public Malvado(String nombre) {
-		super();
-		this.nombre = nombre;
+		super(nombre);
+		
 	}
 	/**
 	 * 

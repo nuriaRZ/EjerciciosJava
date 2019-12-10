@@ -6,9 +6,18 @@ import programacion.Utils_Arrays;
 public class CampoBatalla {
 	private String nombre;
 	
-	Humano humanos[] = new Humano[20];
-	Malvado malvados[] = new Malvado[20];
+	Ser humanos[] = new Humano[20];
+	Ser malvados[] = new Malvado[20];	
 	
+	
+	/**
+	 * @param nombre
+	 */
+	public CampoBatalla(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+
 	public CampoBatalla() {
 		for (int i = 0; i < humanos.length; i++) {
 			humanos[i] = new Humano ("Humano "+(i+1));
@@ -31,7 +40,7 @@ public class CampoBatalla {
 	
 	public void mezclar() {
 		System.out.println("Mezclar humanos");
-		Humano aux= new Humano();		
+		Ser aux= new Ser();		
 		
 		for (int i =0 ; i < humanos.length*2; i++) {			
 		int i1, i2;
@@ -44,7 +53,7 @@ public class CampoBatalla {
 		}
 		
 		System.out.println("Mezclar humanos");		
-		Malvado aux2= new Malvado();		
+		Ser aux2= new Malvado();		
 		for (int i =0 ; i < malvados.length*2; i++) {			
 		int i1, i2;
 		 i1 = Utils_Arrays.ObtenerNumAleatorio(malvados.length-1, 0);
@@ -96,6 +105,28 @@ public class CampoBatalla {
 		}
 		humanos[primerHumanoVivo].setPuntosVida(humanos[primerHumanoVivo].getPuntosVida()-disparo);
 		System.out.println("Disparo de malvado: "+malvados[primerHumanoVivo].getNombre()+" hacia humano: "+humanos[primerMalvadoVivo].getNombre()+"y le quita: "+humanos[primerMalvadoVivo].getPuntosVida());
-	}
 
+	}
+	
+	public void tiroteo() {
+			for (int i = 0; i < humanos.length; i++) {
+				if(humanos[i].vivo()==false) {
+					humanos[i]=null;
+				}
+				dispararHumano();
+					
+			}
+			for (int j = 0; j < malvados.length; j++) {
+				if(malvados[j].vivo()==false) {
+					malvados[j]=null;
+				}
+				dispararMalvado();
+			}	
+			
+	}
+		
 }
+	
+
+
+
