@@ -21,6 +21,9 @@ public class Humano {
 		this.nombre = nombre;
 		
 	}
+	public Humano(String string) {
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * @return the puntosVida
 	 */

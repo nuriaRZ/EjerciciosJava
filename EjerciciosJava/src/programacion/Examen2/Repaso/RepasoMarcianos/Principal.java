@@ -7,9 +7,7 @@ public class Principal {
 		batalla.mostrar();
 		batalla.mezclar();
 		batalla.mostrar();
-		batalla.dispararHumano();		
-		batalla.dispararMalvado();
-		batalla.tiroteo();
+		
 		
 			
 		

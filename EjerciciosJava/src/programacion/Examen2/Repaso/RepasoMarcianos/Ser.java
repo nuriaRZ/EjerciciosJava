@@ -4,8 +4,8 @@ import programacion.Utils;
 
 public class Ser {
 	private String nombre;
-	private int puntosVida = Utils.ObtenerNumAleatorioEntreLimites(100, 50);
-	private boolean estaVivo=true;
+	private int puntosVida;
+	private boolean estaVivo;
 	/**
 	 * 
 	 */
@@ -17,20 +17,15 @@ public class Ser {
 	public Ser(String nombre) {
 		super();
 		this.nombre = nombre;
+		this.puntosVida = Utils.ObtenerNumAleatorioEntreLimites(100, 50);
+		this.estaVivo = true;
 		
 	}
 	public Ser() {
 		
 	}
-	/**
-	 * 
-	 */
-	public boolean vivo() {
-		if (this.puntosVida<=0) {
-			return false;
-		}
-		return true;
-	}
+
+
 	/**
 	 * @return the nombre
 	 */
@@ -69,7 +64,7 @@ public class Ser {
 	}
 	@Override
 	public String toString() {
-		return "Ser [nombre=" + nombre + ", puntosVida=" + puntosVida + ", estaVivo=" + this.vivo() + "]";
+		return "Ser [nombre=" + nombre + ", puntosVida=" + puntosVida + ", estaVivo=" + estaVivo + "]";
 	}
 	
 	
