@@ -15,6 +15,16 @@ public class Principal {
 			
 			
 		}while(!batalla.esFinDeJuego());
+		System.out.println();
+		
+		if(batalla.malvadosVivos()==true) {
+			System.out.println("HAN GANADO LOS DROIDES");
+		}
+		else {
+			System.out.println("HAN GANADO LOS TROOPERS");
+		}
+		
+		
 		//imprimir estadisticas
 		System.out.println();
 		System.out.println();
