@@ -16,7 +16,7 @@ public class Menu {
 		this.postre = postre;
 	}
 	/**
-	 * 
+	 * CALCULAR EL PRECIO
 	 * @return
 	 */
 	public float getPrecio() {

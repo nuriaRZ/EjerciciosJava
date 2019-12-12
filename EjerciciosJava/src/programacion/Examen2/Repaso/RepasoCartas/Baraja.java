@@ -102,6 +102,10 @@ public class Baraja {
 		}while(esMayor);
 		mostrar();
 	}
+	/**
+	 * 
+	 * @param jugador
+	 */
 	
 	public void repartirMano(Jugador jugador) {
 		Carta mano[] = new Carta[5];

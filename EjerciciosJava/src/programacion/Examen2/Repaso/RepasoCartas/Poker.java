@@ -14,7 +14,7 @@ public class Poker {
 		jugadores[1] = new Jugador("B");
 		jugadores[2] = new Jugador("C");
 		jugadores[3] = new Jugador("D");
-		jugadores[4] = new Jugador("A");
+		jugadores[4] = new Jugador("E");
 		
 		for (int i = 0; i < jugadores.length; i++) {
 			baraja.repartirMano(jugadores[i]);
