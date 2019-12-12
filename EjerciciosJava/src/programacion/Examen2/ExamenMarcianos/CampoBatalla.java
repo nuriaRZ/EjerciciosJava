@@ -1,109 +1,189 @@
 package programacion.Examen2.ExamenMarcianos;
 
-import java.util.Arrays;
-
-import programacion.Utils;
 import programacion.Utils_Arrays;
 
 public class CampoBatalla {
 	private String nombre;
-	Malvado malvados[] = new Malvado[20];
-	Humano humanos[] = new Humano[20];
+	private static int LONGITUD_ARRAY = 20;
+	Malvado battleDroid[] = new Malvado[LONGITUD_ARRAY];
+	Humano troopers[] = new Humano[LONGITUD_ARRAY];
+
 	/**
+	 * 
 	 * @param nombre
-	 * @param malvados
-	 * @param humanos
 	 */
-	public CampoBatalla(String nombre, Malvado[] malvados, Humano[] humanos) {
-		super();
+
+	public CampoBatalla(String nombre) {
 		this.nombre = nombre;
-		this.malvados = malvados;
-		this.humanos = humanos;
-	}
-	
-	
-	public CampoBatalla() {
-		for (int i = 0; i < humanos.length; i++) {
-			humanos[i]=new Humano(Utils.ObtenerNumAleatorioEntreLimites(50, 100), " humano "+(i+1));
+		for (int i = 0; i < battleDroid.length; i++) {
+			battleDroid[i] = new Malvado("BDroid-" + (i + 1));
+			troopers[i] = new Humano("Tropp-" + (i + 1));
 		}
-		for (int i = 0; i < malvados.length; i++) {
-			malvados[i] = new Malvado(Utils.ObtenerNumAleatorioEntreLimites(50, 100), " Malvado "+(i+1));
+		duplicarPuntosVida(troopers);
+		duplicarPuntosVida(battleDroid);
+		mezclarBichosArray(troopers);
+		mezclarBichosArray(battleDroid);
+
+	}
+
+	/**
+	 * 
+	 * @param array
+	 */
+	public void duplicarPuntosVida(Bicharraco array[]) {
+		array[array.length - 1].setPuntosVida(array[array.length - 1].getPuntosVida() * 2);
+	}
+
+	/**
+	 * 
+	 */
+	public void mostrarSituacionActual() {
+		System.out.println();
+		System.out.println();
+		for (int i = 0; i < battleDroid.length; i++) {			
+			if (battleDroid[i].isVivo()==false) {
+				System.out.print("X"+"  ");
+			}
+			else {
+			System.out.print(battleDroid[i].getNombre()+":"+battleDroid[i].getPuntosVida()+"  ");
+			}
+		}
+		System.out.println();
+		
+		for (int i = 0; i < troopers.length; i++) {			
+			if (troopers[i].isVivo()==false) {
+				System.out.print("X"+"  ");
+			}
+			else {
+			System.out.print(troopers[i].getNombre()+":"+troopers[i].getPuntosVida()+"  ");
+			}
+		}	
+			
+
+	}
+
+	/**
+	 * 
+	 */
+	public void mezclarBichosArray(Bicharraco array[]) {
+		Bicharraco aux;
+
+		for (int i = 0; i < array.length * 2; i++) {
+
+			int i1, i2;
+			i1 = Utils_Arrays.ObtenerNumAleatorio(array.length - 1, 0);
+			i2 = Utils_Arrays.ObtenerNumAleatorio(array.length - 1, 0);
+			// REALIZO INTERCAMBIO DE VALORES
+			aux = array[i1];
+			array[i1] = array[i2];
+			array[i2] = aux;
 		}
 	}
 
-	public void mostrar() {
-		System.out.println("Humanos");
-		for (int i = 0; i < humanos.length; i++) {
-			System.out.println(humanos[i]);
+	/**
+	 * @return 
+	 * 
+	 */
+	public Bicharraco getPrimerBichoVivoArray (Bicharraco array[]) {
+		for (Bicharraco b : array) {
+			if (b.isVivo()) {
+				return b;
+			}			
 		}
-		System.out.println("Malvados");
-		for (int i = 0; i < malvados.length; i++) {
-			System.out.println(malvados[i]);
-		}
+		return null;
 	}
-	
-	public void ultimo() {
-		System.out.println("Cambiar puntos de vida del ultimo elemento");
-		for (int i = 0; i < humanos.length; i++) {
-			if (i==humanos.length-1) {
-				int aux = humanos[i].getPuntosVida()*2;
-				humanos[i].setPuntosVida(aux);
-			}
+	/**
+	 * 
+	 */
+	public boolean malvadosVivos () {
+		if (getPrimerBichoVivoArray(battleDroid)!=null) {
+			return true; //quedan troopers vivos
 		}
-		for (int i = 0; i < malvados.length; i++) {
-			if (i==malvados.length-1) {
-				int aux = malvados[i].getPuntosVida()*2;
-				malvados[i].setPuntosVida(aux);
-			}
-		}
-		mostrar();
+		return false; //no quedan vivos	
 	}
-	
-	public void mezclar() {
-		Humano aux;		
-		System.out.println("Mezclar humanos");
-		
-		for (int i =0 ; i < humanos.length*2; i++) {
-			
-		int i1, i2;
-		 i1 = Utils_Arrays.ObtenerNumAleatorio(humanos.length-1, 0);
-		 i2 = Utils_Arrays.ObtenerNumAleatorio(humanos.length-1, 0);
-		 // REALIZO INTERCAMBIO DE VALORES
-		 aux = humanos[i1];
-		 humanos[i1]=humanos[i2];
-		 humanos[i2]=aux;
+	/**
+	 * 
+	 */
+	public boolean humanosVivos () {
+		if (getPrimerBichoVivoArray(troopers)!=null) {
+			return true; //quedan troopers vivos
 		}
-		Malvado aux2;		
-		System.out.println("Mezclar malvados");
-		
-		for (int i =0 ; i < malvados.length*2; i++) {
-			
-		int i1, i2;
-		 i1 = Utils_Arrays.ObtenerNumAleatorio(malvados.length-1, 0);
-		 i2 = Utils_Arrays.ObtenerNumAleatorio(malvados.length-1, 0);
-		 // REALIZO INTERCAMBIO DE VALORES
-		 aux2 = malvados[i1];
-		 malvados[i1]=malvados[i2];
-		 malvados[i2]=aux2;
-		}
-		mostrar();
+		return false; //no quedan vivos	
 	}
-	
-	public void disparar() {
-		System.out.println("\nDisparar");
-		for (int i = 0; i < humanos.length; i++) {
-				do {
-					for (int j = 0; j < malvados.length; j++) {
-						if(malvados[j].vivo(true)) {
-							int aux = Utils.ObtenerNumAleatorioEntreLimites(25, 5);
-							malvados[j].setPuntosVida(aux);
-						}
-					}
-				}while (humanos[i].getPuntosVida()==0);
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean esFinDeJuego () {
+		if(!humanosVivos()||!malvadosVivos()) {
+			return true;
 		}
-		mostrar();
+		return false;
 	}
-	
+	/**
+	 * 
+	 */
+	public Bicharraco bichoConMayorNumDisparos(Bicharraco array[]) {
+		Bicharraco bichoMayorNumDisparos = array[0];
+		for (int i = 1; i < array.length ; i++) {
+			if (array[i-1].getDisparosRecibidos() < array[i].getDisparosRecibidos()) {
+				 bichoMayorNumDisparos = array[i];
+			}					
+		}
+		return bichoMayorNumDisparos;
+	}
+	/**
+	 * 
+	 */
+	public Bicharraco bichoConMenorNumDisparos(Bicharraco array[]) {
+		Bicharraco bichoMenorNumDisparos = array[0];
+		for (int i = 1; i < array.length ; i++) {
+			if (array[i-1].getDisparosRecibidos() > array[i].getDisparosRecibidos()) {
+				 bichoMenorNumDisparos = array[i];
+			}					
+		}
+		return bichoMenorNumDisparos;
+	}
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
 
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	/**
+	 * @return the battleDroid
+	 */
+	public Malvado[] getBattleDroid() {
+		return battleDroid;
+	}
+
+	/**
+	 * @param battleDroid the battleDroid to set
+	 */
+	public void setBattleDroid(Malvado[] battleDroid) {
+		this.battleDroid = battleDroid;
+	}
+
+	/**
+	 * @return the troopers
+	 */
+	public Humano[] getTroopers() {
+		return troopers;
+	}
+
+	/**
+	 * @param troopers the troopers to set
+	 */
+	public void setTroopers(Humano[] troopers) {
+		this.troopers = troopers;
+	}
 
 }

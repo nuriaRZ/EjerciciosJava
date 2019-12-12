@@ -1,4 +1,4 @@
-package programacion.Examen2.RepasoMarcianos2;
+package programacion.Examen2.ExamenMarcianos;
 
 import programacion.Utils;
 
