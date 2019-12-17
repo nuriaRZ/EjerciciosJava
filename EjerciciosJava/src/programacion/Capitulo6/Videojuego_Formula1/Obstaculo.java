@@ -16,7 +16,7 @@ public class Obstaculo {
 		this.posicion = Utils.ObtenerNumAleatorioEntreLimites(80, 0);
 		this.espacio = Utils.ObtenerNumAleatorioEntreLimites(3, 1);
 		this.posicion+=this.espacio;
-		this.impulso = 5;
+		this.impulso = impulso;
 	}
 	/**
 	 * 

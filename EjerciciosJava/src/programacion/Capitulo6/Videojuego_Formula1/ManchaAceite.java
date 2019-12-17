@@ -2,9 +2,20 @@ package programacion.Capitulo6.Videojuego_Formula1;
 
 public class ManchaAceite extends Obstaculo {
 
+	/**
+	 * @param impulso
+	 */
 	public ManchaAceite() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
+	/**
+	 * 
+	 */
+	public int resbalar() {
+		return -3;
+	}
+
+
 
 }
