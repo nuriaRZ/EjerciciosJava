@@ -24,6 +24,7 @@ public class Race {
 	public void avanzar() {
 		for (int i = 0; i < vehiculos.size(); i++) {
 			vehiculos.get(i).seMueve();
+			vehiculos.get(i).caerEnObstaculo();			
 			System.out.println("Vehiculo: "+vehiculos.get(i).getNombre()+" posicion: "+vehiculos.get(i).getPosicion());
 		}
 		System.out.println();
@@ -31,9 +32,7 @@ public class Race {
 	/**
 	 * 
 	 */
-	public void caerEnObstaculo() {
-		
-	}
+	
 	/**
 	 * 
 	 * @return

@@ -1,5 +1,7 @@
 package programacion.Capitulo6.Videojuego_Formula1;
 
+import java.io.ObjectInputStream.GetField;
+
 import programacion.Utils;
 
 public abstract class Vehiculo {
@@ -28,12 +30,9 @@ public abstract class Vehiculo {
 	/**
 	 * 
 	 */
+	public abstract void caerEnObstaculo();
 	
 	
-	/**
-	 * @return 
-	 * 
-	 */
 	public abstract void paint();
 	/**
 	 * @return the nombre
@@ -57,7 +56,7 @@ public abstract class Vehiculo {
 	 * @param posicion the posicion to set
 	 */
 	public void setPosicion(int posicion) {
-		this.posicion = posicion;
+		this.posicion += posicion;
 	}
 	/**
 	 * @return the color
@@ -70,6 +69,18 @@ public abstract class Vehiculo {
 	 */
 	public void setColor(String color) {
 		this.color = color;
+	}
+	/**
+	 * @return the p
+	 */
+	public Pista getP() {
+		return p;
+	}
+	/**
+	 * @param p the p to set
+	 */
+	public void setP(Pista p) {
+		this.p = p;
 	}
 	
 	

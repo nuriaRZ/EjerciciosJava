@@ -3,9 +3,10 @@ package programacion.Capitulo6.Videojuego_Formula1;
 import programacion.Utils;
 
 public class Obstaculo {
-	private int posicion;
+	private int posicionInicial;
 	private int espacio;
 	private int impulso;
+	private int posicionFinal;
 	
 	/**
 	 * @param posicion
@@ -13,10 +14,12 @@ public class Obstaculo {
 	 */
 	public Obstaculo() {
 		super();
-		this.posicion = Utils.ObtenerNumAleatorioEntreLimites(80, 0);
+		this.posicionInicial = Utils.ObtenerNumAleatorioEntreLimites(80, 0);
 		this.espacio = Utils.ObtenerNumAleatorioEntreLimites(3, 1);
-		this.posicion+=this.espacio;
+		this.posicionFinal = this.posicionInicial+this.espacio;
 		this.impulso = impulso;
+		
+		
 	}
 	/**
 	 * 
@@ -25,14 +28,14 @@ public class Obstaculo {
 	/**
 	 * @return the posicion
 	 */
-	public int getPosicion() {
-		return posicion;
+	public int getPosicionInicial() {
+		return posicionInicial;
 	}
 	/**
 	 * @param posicion the posicion to set
 	 */
-	public void setPosicion(int posicion) {
-		this.posicion = posicion;
+	public void setPosicionInicial(int posicionInicial) {
+		this.posicionInicial = posicionInicial;
 	}
 	/**
 	 * @return the espacio
@@ -60,6 +63,22 @@ public class Obstaculo {
 	public void setImpulso(int impulso) {
 		this.impulso = impulso;
 	}
+
+	/**
+	 * @return the posicionFinal
+	 */
+	public int getPosicionFinal() {
+		return posicionFinal;
+	}
+
+	/**
+	 * @param posicionFinal the posicionFinal to set
+	 */
+	public void setPosicionFinal(int posicionFinal) {
+		this.posicionFinal = posicionFinal;
+	}
+	
+	
 	
 	
 

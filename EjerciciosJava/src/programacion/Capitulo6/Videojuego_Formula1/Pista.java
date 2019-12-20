@@ -33,6 +33,50 @@ public class Pista {
 	public void paint (Graphics g) {
 		
 	}
+
+	/**
+	 * @return the obstaculos
+	 */
+	public List<Obstaculo> getObstaculos() {
+		return obstaculos;
+	}
+
+	/**
+	 * @param obstaculos the obstaculos to set
+	 */
+	public void setObstaculos(List<Obstaculo> obstaculos) {
+		this.obstaculos = obstaculos;
+	}
+
+	/**
+	 * @return the wEIDTH
+	 */
+	public int getWEIDTH() {
+		return WEIDTH;
+	}
+
+	/**
+	 * @param wEIDTH the wEIDTH to set
+	 */
+	public void setWEIDTH(int wEIDTH) {
+		WEIDTH = wEIDTH;
+	}
+
+	/**
+	 * @return the hEIGH
+	 */
+	public int getHEIGH() {
+		return HEIGH;
+	}
+
+	/**
+	 * @param hEIGH the hEIGH to set
+	 */
+	public void setHEIGH(int hEIGH) {
+		HEIGH = hEIGH;
+	}
+	
+	
 	
 	
 

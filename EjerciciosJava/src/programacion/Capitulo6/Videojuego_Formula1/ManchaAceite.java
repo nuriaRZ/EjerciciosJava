@@ -1,3 +1,5 @@
+
+
 package programacion.Capitulo6.Videojuego_Formula1;
 
 public class ManchaAceite extends Obstaculo {
@@ -13,7 +15,7 @@ public class ManchaAceite extends Obstaculo {
 	 * 
 	 */
 	public int resbalar() {
-		return -3;
+		return -2;
 	}
 
 
