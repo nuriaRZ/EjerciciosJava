@@ -12,6 +12,5 @@ public class Coche extends Vehiculo {
 		// TODO Auto-generated method stub
 
 	}
-	
 
 }

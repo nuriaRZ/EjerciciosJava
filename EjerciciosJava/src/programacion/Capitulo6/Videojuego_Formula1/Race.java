@@ -1,25 +1,30 @@
 package programacion.Capitulo6.Videojuego_Formula1;
 
-public class Race {
-	Vehiculo vehiculos[] = new Vehiculo[4];
-	
+import java.util.ArrayList;
+import java.util.List;
 
+public class Race {
+	Vehiculo vehiculo1 = new Coche("Ana");
+	Vehiculo vehiculo2 = new Coche("Nuria");
+	Vehiculo vehiculo3 = new Moto("Arturo");
+	Vehiculo vehiculo4 = new Moto("Medina");
+	List<Vehiculo> vehiculos= new ArrayList<Vehiculo>();
+	
 	public Race() {
-		super();
-		vehiculos[0] = new Coche("Ana");
-		vehiculos[1] = new Coche("Nuria");
-		vehiculos[2] = new Moto("Arturo");
-		vehiculos[3] = new Moto("Medina");
-		
+		super();		
+		vehiculos.add(vehiculo1);
+		vehiculos.add(vehiculo2);
+		vehiculos.add(vehiculo3);
+		vehiculos.add(vehiculo4);
 		
 	}
 	/**
 	 * 
 	 */
 	public void avanzar() {
-		for (int i = 0; i < vehiculos.length; i++) {
-			vehiculos[i].seMueve();
-			System.out.println("Vehiculo: "+vehiculos[i].getNombre()+" posicion: "+vehiculos[i].getPosicion());
+		for (int i = 0; i < vehiculos.size(); i++) {
+			vehiculos.get(i).seMueve();
+			System.out.println("Vehiculo: "+vehiculos.get(i).getNombre()+" posicion: "+vehiculos.get(i).getPosicion());
 		}
 		System.out.println();
 	}
@@ -34,9 +39,9 @@ public class Race {
 	 * @return
 	 */
 	public boolean esFinDeJuego() {
-		for (int i = 0; i < vehiculos.length; i++) {
-			if (vehiculos[i].getPosicion()>=100) {				
-				System.out.println("Ha ganado el vehiculo: "+ vehiculos[i].getNombre());
+		for (int i = 0; i < vehiculos.size(); i++) {
+			if (vehiculos.get(i).getPosicion()>=100) {				
+				System.out.println("Ha ganado el vehiculo: "+ vehiculos.get(i).getNombre());
 				return true;
 			}
 		}
@@ -45,15 +50,7 @@ public class Race {
 	/**
 	 * @return the vehiculos
 	 */
-	public Vehiculo[] getVehiculos() {
-		return vehiculos;
-	}
-	/**
-	 * @param vehiculos the vehiculos to set
-	 */
-	public void setVehiculos(Vehiculo[] vehiculos) {
-		this.vehiculos = vehiculos;
-	}
+
 	
 	
 
