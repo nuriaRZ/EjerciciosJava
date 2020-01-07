@@ -11,7 +11,7 @@ public class Coche extends Vehiculo {
 
 	@Override
 	public void paint() {
-		// TODO Auto-generated method stub
+		
 
 	}
 	

@@ -39,8 +39,8 @@ public class Race {
 	 */
 	public boolean esFinDeJuego() {
 		for (int i = 0; i < vehiculos.size(); i++) {
-			if (vehiculos.get(i).getPosicion()>=100) {				
-				System.out.println("Ha ganado el vehiculo: "+ vehiculos.get(i).getNombre());
+			if (vehiculos.get(i).getPosicion() >= 100) {
+				System.out.println("Ha ganado el vehiculo: " + vehiculos.get(i).getNombre());
 				return true;
 			}
 		}

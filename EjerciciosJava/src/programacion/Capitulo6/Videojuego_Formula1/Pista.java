@@ -1,15 +1,19 @@
 package programacion.Capitulo6.Videojuego_Formula1;
 
+import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
 import programacion.Utils;
 
-public class Pista {
+public class Pista extends Canvas {
 	List<Obstaculo> obstaculos = new ArrayList <Obstaculo>();
-	private int WEIDTH; //ANCHO
+	private int WIDTH; //ANCHO
 	private int HEIGH; //ALTO 
+	private int X_POSITION, Y_POSITION;
+	private int esquinaSupIzq_X, esquinaSupIzq_Y;
 	/**
 	 * @param obstaculos
 	 * @param longitud
@@ -17,7 +21,7 @@ public class Pista {
 	public Pista() {
 		super();
 		this.obstaculos = obstaculos;
-		this.WEIDTH = 100;
+		
 		
 		for (int i = 0; i < 4; i++) {
 			int num = Utils.ObtenerNumAleatorioEntreLimites(1, 0);
@@ -29,9 +33,15 @@ public class Pista {
 			}
 		}
 	}
-	
+	@Override
 	public void paint (Graphics g) {
-		
+		super.paint(g);
+		WIDTH = Frame.getInstance().getWidth()/4;
+		HEIGH = Frame.getInstance().getHeight();
+		esquinaSupIzq_X = this.X_POSITION * WIDTH;
+		esquinaSupIzq_Y = this.Y_POSITION * HEIGH;
+		g.setColor(Color.BLACK);
+		g.fillRect(esquinaSupIzq_X, esquinaSupIzq_Y, WIDTH, HEIGH);		
 	}
 
 	/**
@@ -51,15 +61,15 @@ public class Pista {
 	/**
 	 * @return the wEIDTH
 	 */
-	public int getWEIDTH() {
-		return WEIDTH;
+	public int getWIDTH() {
+		return WIDTH;
 	}
 
 	/**
 	 * @param wEIDTH the wEIDTH to set
 	 */
-	public void setWEIDTH(int wEIDTH) {
-		WEIDTH = wEIDTH;
+	public void setWIDTH(int wIDTH) {
+		WIDTH = wIDTH;
 	}
 
 	/**
