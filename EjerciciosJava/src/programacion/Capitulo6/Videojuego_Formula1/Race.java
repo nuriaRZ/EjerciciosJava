@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
+	public List<Vehiculo> vehiculos= new ArrayList<Vehiculo>();
 	Vehiculo vehiculo1 = new Coche("Ana",0, Color.RED);
 	Vehiculo vehiculo2 = new Coche("Nuria",1, Color.BLUE);
 	Vehiculo vehiculo3 = new Moto("Arturo",2, Color.GREEN);
-	Vehiculo vehiculo4 = new Moto("Medina",3, Color.MAGENTA);
-	public List<Vehiculo> vehiculos= new ArrayList<Vehiculo>();
+	Vehiculo vehiculo4 = new Moto("Medina",3, Color.MAGENTA);	
 	private List <Integer> ordenSegunTiradas = new ArrayList<Integer>();
 	protected List <Vehiculo> podium = new ArrayList<Vehiculo>();
 	
@@ -31,7 +31,7 @@ public class Race {
 			System.out.println("Vehiculo: "+vehiculos.get(i).getNombre()+" posicion: "+vehiculos.get(i).getPosicion());
 			if (seHaProducidoDesplazamiento == false) {
 				podium.add(vehiculos.get(i));
-				vehiculos.remove(i);
+			vehiculos.remove(i);
 			}
 		}
 		System.out.println();

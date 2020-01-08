@@ -8,22 +8,23 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
+
+
 public class Frame extends Canvas {
 	Race kart = new Race();
 	
 	JFrame frame = new JFrame("SeepdRace");
-	private static final int WIDTH = 1000;
-	private static final int HEIGHT = 400;
+	protected static final int WIDTH = 1000;
+	protected static final int HEIGHT = 400;
 	private static Frame instance = null;
-	List <Pista> pista = new ArrayList<Pista>();
+	
 	
 	public Frame() {
 		JPanel panel = (JPanel) frame.getContentPane();
@@ -38,8 +39,8 @@ public class Frame extends Canvas {
 				super.mouseClicked(e);
 				if (e.getButton() == MouseEvent.BUTTON1) {
 					kart.avanzar();
-					frame.repaint();
-					frame.revalidate();
+					Frame.getInstance().repaint();
+					Frame.getInstance().revalidate();
 				}
 				
 			}
@@ -59,7 +60,7 @@ public class Frame extends Canvas {
 	
 	public void closeApplication(WindowEvent e) {
 		String options[] = {"Aceptar", "Cancelar"};
-		int choice = JOptionPane.showOptionDialog(frame, "ï¿½Desea terminar la partida?", "Salir del juego", JOptionPane.YES_NO_OPTION 
+		int choice = JOptionPane.showOptionDialog(frame, "¿Desea terminar la partida?", "Salir del juego", JOptionPane.YES_NO_OPTION 
 				,JOptionPane.QUESTION_MESSAGE, null, options, "Aceptar");
 		if (choice == JOptionPane.YES_OPTION) {
 			System.exit(0);
@@ -70,20 +71,19 @@ public class Frame extends Canvas {
 	public void paint(Graphics g) {		
 		super.paint(g);
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, this.getWidth(), this.getHeight());
+		g.fillRect(0, 0, Frame.getInstance().getWidth(), Frame.getInstance().getHeight());
 		
-		for (Vehiculo vehiculo : kart.vehiculos ) {
-			vehiculo.paint(g);
+		for (Vehiculo v : kart.vehiculos ) {
+			v.paint(g);
 		}
 		
-		if (kart.esFinDeJuego()) {
-			g.setColor(Color.WHITE);
-			g.fillRect(0, 0, this.getWidth(), this.getHeight());
-		}
+//		if (kart.esFinDeJuego()) {
+//			g.setColor(Color.WHITE);
+//			g.fillRect(0, 0, this.getWidth(), this.getHeight());
+//		}
 	}
 	/**
-	 * 
-	 * @return
+	 * @return the instance
 	 */
 	public static Frame getInstance() {
 		if (instance == null) {
@@ -91,7 +91,6 @@ public class Frame extends Canvas {
 		}
 		return instance;
 	}
-
 	/**
 	 * @return the kart
 	 */
@@ -120,39 +119,5 @@ public class Frame extends Canvas {
 		this.frame = frame;
 	}
 
-	/**
-	 * @return the pista
-	 */
-	public List<Pista> getPista() {
-		return pista;
-	}
-
-	/**
-	 * @param pista the pista to set
-	 */
-	public void setPista(List<Pista> pista) {
-		this.pista = pista;
-	}
-
-	/**
-	 * @return the width
-	 */
-	public int getWidth() {
-		return Frame.WIDTH;
-	}
-
-	/**
-	 * @return the height
-	 */
-	public int getHeight() {
-		return Frame.HEIGHT;
-	}
-
-	/**
-	 * @param instance the instance to set
-	 */
-	public static void setInstance(Frame instance) {
-		Frame.instance = instance;
-	}
 	
 }

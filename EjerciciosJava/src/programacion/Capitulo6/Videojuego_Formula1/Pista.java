@@ -10,10 +10,10 @@ import programacion.Utils;
 
 public class Pista {
 	List<Obstaculo> obstaculos = new ArrayList <Obstaculo>();
-	private int WIDTH = 100; //ANCHO
-	private int HEIGH; //ALTO 
-	private int X_POSITION = 0, Y_POSITION = 0;
-	private int esquinaSupIzq_X = 0, esquinaSupIzq_Y = 0;
+	protected int WIDTH = 100; //ANCHO
+	protected int HEIGH; //ALTO 
+	protected int X_POSITION = 0, Y_POSITION = 0;
+	protected int esquinaSupIzq_X = 0, esquinaSupIzq_Y = 0;
 	/**
 	 * @param obstaculos
 	 * @param longitud
@@ -21,6 +21,11 @@ public class Pista {
 	public Pista(int Y_POSITION) {
 		super();		
 		this.Y_POSITION = Y_POSITION;
+		crearObstaculo();
+	
+	}
+	
+	public void crearObstaculo() {
 		for (int i = 0; i < 4; i++) {
 			int num = Utils.ObtenerNumAleatorioEntreLimites(10, 0);
 			if (num <= 5) {
