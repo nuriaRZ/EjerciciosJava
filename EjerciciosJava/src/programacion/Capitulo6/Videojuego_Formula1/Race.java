@@ -14,7 +14,7 @@ public class Race {
 	protected List <Vehiculo> podium = new ArrayList<Vehiculo>();
 	
 	public Race() {
-		super();		
+				
 		vehiculos.add(vehiculo1);
 		vehiculos.add(vehiculo2);
 		vehiculos.add(vehiculo3);

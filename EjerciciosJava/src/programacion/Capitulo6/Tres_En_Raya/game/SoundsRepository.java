@@ -9,9 +9,9 @@ public class SoundsRepository {
 	private HashMap<String, AudioClip> sounds = new HashMap<String, AudioClip>();
 	private static SoundsRepository instance = null;
 	private static String RESOURCES_FOLDER = "../resources/sounds/";
-	public static String BACKGROUND_SOUND = "musica.wav";
-	public static String SOUND_PLAYER_1 = "missile.wav";
-	public static String SOUND_PLAYER_2 = "photon.wav";
+	public static String BACKGROUND_SOUND = "star_wars_sound.wav";
+	public static String SOUND_PLAYER_1 = "vader_breath.wav";
+	public static String SOUND_PLAYER_2 = "lightsab.wav";
 	/**
 	 * 
 	 */

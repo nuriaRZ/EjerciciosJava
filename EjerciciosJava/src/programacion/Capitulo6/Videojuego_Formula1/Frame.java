@@ -125,6 +125,12 @@ public class Frame extends Canvas {
 	public static void setInstance(Frame instance) {
 		Frame.instance = instance;
 	}
+	
+	public static int getWidht() {
+		return Frame.WIDTH;
+	}
+	
+
 
 	
 }
