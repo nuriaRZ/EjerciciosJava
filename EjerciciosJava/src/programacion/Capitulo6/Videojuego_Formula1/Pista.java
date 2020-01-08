@@ -8,40 +8,44 @@ import java.util.List;
 
 import programacion.Utils;
 
-public class Pista extends Canvas {
+public class Pista {
 	List<Obstaculo> obstaculos = new ArrayList <Obstaculo>();
-	private int WIDTH; //ANCHO
+	private int WIDTH = 100; //ANCHO
 	private int HEIGH; //ALTO 
-	private int X_POSITION, Y_POSITION;
-	private int esquinaSupIzq_X, esquinaSupIzq_Y;
+	private int X_POSITION = 0, Y_POSITION = 0;
+	private int esquinaSupIzq_X = 0, esquinaSupIzq_Y = 0;
 	/**
 	 * @param obstaculos
 	 * @param longitud
 	 */
-	public Pista() {
-		super();
-		this.obstaculos = obstaculos;
-		
-		
+	public Pista(int Y_POSITION) {
+		super();		
+		this.Y_POSITION = Y_POSITION;
 		for (int i = 0; i < 4; i++) {
-			int num = Utils.ObtenerNumAleatorioEntreLimites(1, 0);
-			if (num < 0.5f) {
-				obstaculos.add(new Rampa());
+			int num = Utils.ObtenerNumAleatorioEntreLimites(10, 0);
+			if (num <= 5) {
+				obstaculos.add(new Rampa("Rampa", this.Y_POSITION));
 			}
-			if (num > 0.5f) {
-				obstaculos.add(new ManchaAceite());
+			if (num > 5) {
+				obstaculos.add(new ManchaAceite("Mancha", this.Y_POSITION));
 			}
+			System.out.println("el obstaculo " + obstaculos.get(i).getNombre() + " está en la posición " 
+					+ obstaculos.get(i).getPosicion() + " El obstaculo ocupa un espacio de:" + obstaculos.get(i).getEspacio());
 		}
 	}
-	@Override
+	
 	public void paint (Graphics g) {
-		super.paint(g);
-		WIDTH = Frame.getInstance().getWidth()/4;
-		HEIGH = Frame.getInstance().getHeight();
-		esquinaSupIzq_X = this.X_POSITION * WIDTH;
-		esquinaSupIzq_Y = this.Y_POSITION * HEIGH;
-		g.setColor(Color.BLACK);
-		g.fillRect(esquinaSupIzq_X, esquinaSupIzq_Y, WIDTH, HEIGH);		
+		
+		WIDTH = Frame.getInstance().getWidth();
+		HEIGH = Frame.getInstance().getHeight()/4;
+		esquinaSupIzq_X = this.X_POSITION;
+		esquinaSupIzq_Y = this.Y_POSITION;
+		g.setColor(Color.GRAY);
+		g.fillRect(esquinaSupIzq_X, esquinaSupIzq_Y, WIDTH, HEIGH);	
+		
+		for (Obstaculo o: obstaculos) {
+			o.paint(g);
+		}
 	}
 
 	/**

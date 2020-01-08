@@ -1,42 +1,46 @@
 package programacion.Capitulo6.Videojuego_Formula1;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 import programacion.Utils;
 
-public class Obstaculo {
-	private int posicionInicial;
-	private int espacio;
-	private int impulso;
-	private int posicionFinal;
+public abstract class Obstaculo {
+	protected String nombre;
+	protected int posicion;
+	protected int espacio;
+	protected int impulso;	
+	protected int Y_COORD;
+	protected Color color;
+
+	
 	
 	/**
+	 * @param nombre
 	 * @param posicion
 	 * @param espacio
+	 * @param impulso
+	 * @param posicionFinal
+	 * @param y_COORD
 	 */
-	public Obstaculo() {
+	public Obstaculo(String nombre) {
 		super();
-		this.posicionInicial = Utils.ObtenerNumAleatorioEntreLimites(80, 0);
+		this.nombre = nombre;
+		this.posicion = Utils.ObtenerNumAleatorioEntreLimites(80, 0);
 		this.espacio = Utils.ObtenerNumAleatorioEntreLimites(3, 1);
-		this.posicionFinal = this.posicionInicial+this.espacio;
-		this.impulso = impulso;
-		
-		
+		this.impulso = impulso;		
+		Y_COORD = Y_COORD;
 	}
 	/**
 	 * 
+	 * @param g
 	 */
-	
+
+	public abstract void paint(Graphics g);
 	/**
 	 * @return the posicion
 	 */
-	public int getPosicionInicial() {
-		return posicionInicial;
-	}
-	/**
-	 * @param posicion the posicion to set
-	 */
-	public void setPosicionInicial(int posicionInicial) {
-		this.posicionInicial = posicionInicial;
-	}
+
 	/**
 	 * @return the espacio
 	 */
@@ -65,23 +69,41 @@ public class Obstaculo {
 	}
 
 	/**
-	 * @return the posicionFinal
+	 * @return the nombre
 	 */
-	public int getPosicionFinal() {
-		return posicionFinal;
+	public String getNombre() {
+		return nombre;
 	}
-
 	/**
-	 * @param posicionFinal the posicionFinal to set
+	 * @param nombre the nombre to set
 	 */
-	public void setPosicionFinal(int posicionFinal) {
-		this.posicionFinal = posicionFinal;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	
-	
-	
-	
+	/**
+	 * @return the posicion
+	 */
+	public int getPosicion() {
+		return posicion;
+	}
+	/**
+	 * @param posicion the posicion to set
+	 */
+	public void setPosicion(int posicion) {
+		this.posicion = posicion;
+	}
+	/**
+	 * @return the y_COORD
+	 */
+	public int getY_COORD() {
+		return Y_COORD;
+	}
+	/**
+	 * @param y_COORD the y_COORD to set
+	 */
+	public void setY_COORD(int y_COORD) {
+		Y_COORD = y_COORD;
+	}
 
-	
 
 }
