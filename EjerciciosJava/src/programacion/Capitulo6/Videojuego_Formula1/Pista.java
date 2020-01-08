@@ -10,8 +10,8 @@ import programacion.Utils;
 
 public class Pista {
 	List<Obstaculo> obstaculos = new ArrayList <Obstaculo>();
-	protected int WIDTH = 100; //ANCHO
-	protected int HEIGH; //ALTO 
+	protected int longitud = 100; 
+	protected int WIDTH, HEIGH; 
 	protected int X_POSITION = 0, Y_POSITION = 0;
 	protected int esquinaSupIzq_X = 0, esquinaSupIzq_Y = 0;
 	/**
@@ -93,6 +93,20 @@ public class Pista {
 	 */
 	public void setHEIGH(int hEIGH) {
 		HEIGH = hEIGH;
+	}
+
+	/**
+	 * @return the longitud
+	 */
+	public int getLongitud() {
+		return longitud;
+	}
+
+	/**
+	 * @param longitud the longitud to set
+	 */
+	public void setLongitud(int longitud) {
+		this.longitud = longitud;
 	}
 	
 	

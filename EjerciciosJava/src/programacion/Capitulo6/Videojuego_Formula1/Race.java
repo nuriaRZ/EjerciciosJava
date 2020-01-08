@@ -31,7 +31,7 @@ public class Race {
 			System.out.println("Vehiculo: "+vehiculos.get(i).getNombre()+" posicion: "+vehiculos.get(i).getPosicion());
 			if (seHaProducidoDesplazamiento == false) {
 				podium.add(vehiculos.get(i));
-			vehiculos.remove(i);
+				vehiculos.remove(i);
 			}
 		}
 		System.out.println();

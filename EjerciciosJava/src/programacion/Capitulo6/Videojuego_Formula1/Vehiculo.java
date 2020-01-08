@@ -37,7 +37,7 @@ public abstract class Vehiculo {
 	 */
 	public boolean seMueve() {
 		boolean seMueve = true;
-		if(this.posicion < p.getWIDTH()) {
+		if(this.posicion < p.getLongitud()) {
 			this.posicion += Utils.ObtenerNumAleatorioEntreLimites(6, 1); 
 			for (int i = 0; i < p.getObstaculos().size(); i++) {
 				if (p.getObstaculos().get(i).getPosicion() == posicion) { // si el vehiculo cae sobre el obstaculo le agregamos a su posicion actual
@@ -59,7 +59,7 @@ public abstract class Vehiculo {
 			System.out.println("El vehiculo " + this.nombre + " ha llegado a meta");
 		}
 		
-		return seMueve();		
+		return seMueve;		
 	}
 	/**
 	 * 

@@ -56,12 +56,12 @@ public class Frame extends Canvas  {
 							esTresEnRaya();
 							endInATie();
 							if (turn == PLAYER_1) {
-								SoundsRepository.getInstance().playSound("missile.wav");
+								SoundsRepository.getInstance().playSound("vader_breath.wav");
 								turn = PLAYER_2;
 								
 							}
 							else {
-								SoundsRepository.getInstance().playSound("photon.wav");
+								SoundsRepository.getInstance().playSound("lightsab.wav");
 								turn = PLAYER_1;
 								cuentaDeClicDelP1++;
 								
@@ -73,7 +73,7 @@ public class Frame extends Canvas  {
 			
 		});
 		
-		SoundsRepository.getInstance().loopSound("musica.wav");
+		SoundsRepository.getInstance().loopSound("star_wars_sound.wav");
 		
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.addWindowListener(new WindowAdapter() {

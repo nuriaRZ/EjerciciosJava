@@ -73,8 +73,8 @@ public class Frame extends Canvas {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, Frame.getInstance().getWidth(), Frame.getInstance().getHeight());
 		
-		for (Vehiculo v : kart.vehiculos ) {
-			v.paint(g);
+		for (Vehiculo vehiculo : kart.vehiculos ) {
+			vehiculo.paint(g);
 		}
 		
 //		if (kart.esFinDeJuego()) {
@@ -117,6 +117,13 @@ public class Frame extends Canvas {
 	 */
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
+	}
+
+	/**
+	 * @param instance the instance to set
+	 */
+	public static void setInstance(Frame instance) {
+		Frame.instance = instance;
 	}
 
 	
