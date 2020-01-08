@@ -1,4 +1,4 @@
-package programacion.Capitulo6.Videojuego_Formula1;
+package programacion.Capitulo6.Videojuego_Formula1.game;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -29,7 +29,7 @@ public abstract class Obstaculo {
 		this.posicion = Utils.ObtenerNumAleatorioEntreLimites(80, 0);
 		this.espacio = Utils.ObtenerNumAleatorioEntreLimites(3, 1);
 		this.impulso = impulso;		
-		Y_COORD = Y_COORD;
+		this.Y_COORD = Y_COORD;
 	}
 	/**
 	 * 

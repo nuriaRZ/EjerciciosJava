@@ -1,4 +1,4 @@
-package programacion.Capitulo6.Videojuego_Formula1;
+package programacion.Capitulo6.Videojuego_Formula1.game;
 
 public class Main {
 	
