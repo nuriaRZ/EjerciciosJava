@@ -59,7 +59,7 @@ public class Frame extends Canvas {
 	
 	public void closeApplication(WindowEvent e) {
 		String options[] = {"Aceptar", "Cancelar"};
-		int choice = JOptionPane.showOptionDialog(frame, "¿Desea terminar la partida?", "Salir del juego", JOptionPane.YES_NO_OPTION 
+		int choice = JOptionPane.showOptionDialog(frame, "ï¿½Desea terminar la partida?", "Salir del juego", JOptionPane.YES_NO_OPTION 
 				,JOptionPane.QUESTION_MESSAGE, null, options, "Aceptar");
 		if (choice == JOptionPane.YES_OPTION) {
 			System.exit(0);
