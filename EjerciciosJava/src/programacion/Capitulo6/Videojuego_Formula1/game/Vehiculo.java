@@ -80,7 +80,7 @@ public abstract class Vehiculo {
 	 * @return
 	 */
 	public int construirPista() {
-		Y_COORD = (numPista*Frame.getInstance().getHeight()/4);
+		Y_COORD = (numPista*500/4);
 		return Y_COORD;
 	}
 	/**
