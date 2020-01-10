@@ -11,13 +11,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class Arkanoid extends Canvas {
+public class Frame extends Canvas {
 	JFrame frame = new JFrame("Arkanoid");
 	private static final int WIDTH = 300;
 	private static final int HEIGHT = 500;
-	private static Arkanoid instance = null;
+	private static Frame instance = null;
 	
-	public Arkanoid() {
+	public Frame() {
 		JPanel panel = (JPanel) frame.getContentPane();
 		panel.setLayout(new BorderLayout());
 		panel.add(this, BorderLayout.CENTER);		
@@ -59,12 +59,11 @@ public class Arkanoid extends Canvas {
 		
 	}
 	
-	public static Arkanoid getInstance() {
+	public static Frame getInstance() {
 		if (instance == null) {
-			instance = new Arkanoid();
+			instance = new Frame();
 		}
 		return instance;
-	
 	}
 	
 	
