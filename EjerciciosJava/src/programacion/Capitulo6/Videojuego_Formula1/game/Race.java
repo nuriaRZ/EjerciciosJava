@@ -34,6 +34,7 @@ public class Race {
 				vehiculos.remove(i);
 			}
 		}
+		
 		System.out.println();
 	}
 	

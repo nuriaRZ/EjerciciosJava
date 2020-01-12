@@ -1,17 +1,36 @@
 package programacion.Capitulo6.Arkanoid.version1;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 public class Ladrillo extends Objeto {
+	
 
-	public Ladrillo(Color color, int x_coord, int y_coord, int width, int height) {
-		super(color, x_coord, y_coord, width, height);
+	public Ladrillo() {
+		super();
 		this.x_coord = 0;
 		this.y_coord = 0;
 		this.color = Color.WHITE;
-		this.width = 10;
-		this.height = 20;
+		this.width = 20;
+		this.height = 10;
+		
 	}
+
+	@Override
+	public void paint(Graphics g) {
+		g.setColor(getColor());
+		g.fillRect(this.x_coord+10, this.y_coord+10, this.width, this.height);
+		
+	}
+
+	@Override
+	public void movimiento() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	
 	
 	
 

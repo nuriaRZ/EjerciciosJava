@@ -8,6 +8,7 @@ public abstract class Objeto {
 	protected Color color;
 	protected int x_coord, y_coord;
 	protected int width, height;
+	
 	/**
 	 * @param nombre
 	 * @param color
@@ -16,7 +17,7 @@ public abstract class Objeto {
 	 * @param width
 	 * @param height
 	 */
-	public Objeto(Color color, int x_coord, int y_coord, int width, int height) {
+	public Objeto() {
 		super();
 		
 		this.color = color;
@@ -25,9 +26,18 @@ public abstract class Objeto {
 		this.width = width;
 		this.height = height;
 	}
+	/**
+	 * 
+	 * @param g
+	 */	
 	public abstract void paint(Graphics g);
 	/**
 	 * @return the color
+	 */
+	public abstract void movimiento();
+	/**
+	 * 
+	 * @return
 	 */
 	public Color getColor() {
 		return color;

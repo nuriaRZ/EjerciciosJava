@@ -41,11 +41,13 @@ public class Frame extends Canvas {
 					kart.avanzar();
 					Frame.getInstance().repaint();
 					Frame.getInstance().revalidate();
+					
 				}
 				
 			}
 			
 		});
+		SoundsRepository.getInstance().loopSound(SoundsRepository.sonido_avanzar);
 				
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.addWindowListener(new WindowAdapter() {
@@ -77,10 +79,11 @@ public class Frame extends Canvas {
 			vehiculo.paint(g);
 		}
 		
-//		if (kart.esFinDeJuego()) {
-//			g.setColor(Color.WHITE);
-//			g.fillRect(0, 0, this.getWidth(), this.getHeight());
-//		}
+		if (kart.esFinDeJuego()) {
+			g.setColor(Color.WHITE);
+			g.fillRect(0, 0, this.getWidth(), this.getHeight());
+			
+		}
 	}
 	/**
 	 * @return the instance

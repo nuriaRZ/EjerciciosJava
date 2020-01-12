@@ -2,7 +2,6 @@ package programacion.Capitulo6.Videojuego_Formula1.game;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.io.ObjectInputStream.GetField;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,10 +45,10 @@ public abstract class Vehiculo {
 					+ p.getObstaculos().get(i).getPosicion());
 				}
 				
-				//if (p.getObstaculos().get(i).getImpulso() < 0) {
-					//FALTA SONIDO SI CAE EN MANCHA
-			//	}
-				//else ; //FALTA SONIDO SI CAE EN RAMPA
+				if (p.getObstaculos().get(i).getImpulso() < 0) {
+					SoundsRepository.getInstance().playSound(SoundsRepository.sonido_mancha);
+				}
+				else SoundsRepository.getInstance().playSound(SoundsRepository.sonido_rampa);
 			}
 			this.tiradasNecesarias.add(this.posicion); //Controla la posicion del vehiculo y el numero de tiradas que ha necesitado
 			//cada uno hasta llegar a la meta, esto me ayudara para el podium
@@ -80,7 +79,7 @@ public abstract class Vehiculo {
 	 * @return
 	 */
 	public int construirPista() {
-		Y_COORD = (numPista*500/4);
+		Y_COORD = (numPista*400/4);
 		return Y_COORD;
 	}
 	/**

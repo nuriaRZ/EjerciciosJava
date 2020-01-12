@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.List;
 
+import javax.swing.plaf.basic.BasicLookAndFeel;
+
 import programacion.Utils;
 
 public class Moto extends Vehiculo {
@@ -20,9 +22,12 @@ public class Moto extends Vehiculo {
 	}
 	
 	public void paintMe(Graphics g) {
-		g.setColor(Color.BLUE);
-		g.fillOval(this.getPosicion()*Frame.getInstance().getWidth()/100, this.getY_COORD(), 40, 5);
-
+		g.setColor(this.getColor());
+		g.fillRect((this.getPosicion()*Frame.getWidht()/100)+10, this.getY_COORD()+50, 40, 10);
+		g.setColor(Color.BLACK);
+		g.fillArc((this.getPosicion()*Frame.getWidht()/100)+30, this.getY_COORD()+50, 30, 30, 45, 45);
+		g.fillOval((this.getPosicion()*Frame.getInstance().getWidth()/100)+30, this.getY_COORD()+55, 15, 15);
+		g.fillOval((this.getPosicion()*Frame.getInstance().getWidth()/100)+10, this.getY_COORD()+55, 15, 15);
 	}
 
 	@Override

@@ -41,14 +41,14 @@ public class Square extends Canvas{
 	 * 
 	 */
 //	private void drawVectorImage(Graphics g) {
-//		if (this.ownerPlayer == Frame.PLAYER_1) {
+//		if (this.ownerPlayer == Arkanoid.PLAYER_1) {
 //			g.setColor(Color.YELLOW);
 //			g.drawLine(this.esquinaSupIzquierda_X, this.esquinaSupIzquierda_Y, 
 //					this.esquinaSupIzquierda_X + this.WIDTH, this.esquinaSupIzquierda_Y + HEIGH);
 //			g.drawLine(this.esquinaSupIzquierda_X, this.esquinaSupIzquierda_Y + HEIGH, 
 //					this.esquinaSupIzquierda_X + this.WIDTH, this.esquinaSupIzquierda_Y);
 //		}
-//		if (this.ownerPlayer == Frame.PLAYER_2) {
+//		if (this.ownerPlayer == Arkanoid.PLAYER_2) {
 //			g.setColor(Color.GREEN);	
 //			g.drawOval(this.esquinaSupIzquierda_X, this.esquinaSupIzquierda_Y, this.WIDTH, this.HEIGH);
 //		}
