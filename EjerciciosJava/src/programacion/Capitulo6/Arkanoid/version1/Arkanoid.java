@@ -30,7 +30,7 @@ public class Arkanoid extends Canvas {
 	
 	private long usedTime; //Tiempo usado en cada iteracion del bucle principal
 	private static final int SPEED_FPS = 60; //VELOCIDAD DE FOTOGRAMAS
-	
+	private BufferStrategy strategy;
 	
 	
 	public Arkanoid() {
@@ -38,7 +38,7 @@ public class Arkanoid extends Canvas {
 		panel.setLayout(new BorderLayout());
 		panel.add(this, BorderLayout.CENTER);		
 		frame.setBounds(0, 0, WIDTH, HEIGHT);
-		
+		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.addWindowListener(new WindowAdapter() {
 
@@ -52,8 +52,9 @@ public class Arkanoid extends Canvas {
 			
 		});
 		frame.setIgnoreRepaint(true);
-		
-		frame.setVisible(true);		
+		this.createBufferStrategy(2);
+		strategy = getBufferStrategy();
+				
 		this.requestFocus();
 		
 	}
@@ -74,24 +75,24 @@ public class Arkanoid extends Canvas {
 		//creo fila de ladrillos
 		for (int i = 0; i < 10; i++) {
 			Ladrillo l = new Ladrillo();			
-			objetos.add(l);
-			this.ball.setVx((int)(Math.random() * (20 - 2) + 2));
-			Arkanoid.getInstance().repaint();
+			objetos.add(l);			
+			
 		}
 		
 	}
 	
 	public void updateWorld() {
-	ball.movimiento();	
+	ball.act();	
 		
 	}
 	
 	public void game() {
-		initWorld();
-		updateWorld();
+		initWorld();		
 		
 		while (isVisible()) {
 			long startTime = System.currentTimeMillis(); //guardo los milis antes de crear el siguiente frame
+			updateWorld();
+			paintWorld();
 			usedTime = System.currentTimeMillis()-startTime;
 			try {
 				int millisToSleep = (int) (1000/SPEED_FPS - usedTime);
@@ -108,18 +109,20 @@ public class Arkanoid extends Canvas {
 	
 	
 	
-	public void paint(Graphics g) {
-		super.paint(g);
+	public void paintWorld() {
+		Toolkit.getDefaultToolkit().sync();
+		Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
+		
 		
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
 		for (Objeto o : this.objetos) {			
 			o.paint(g);
-		}
-		
+		}		
 		ball.paint(g);
 		nave.paint(g);
+		strategy.show();
 		
 		
 	}

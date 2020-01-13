@@ -2,6 +2,7 @@ package programacion.Capitulo6.Arkanoid.version1;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public abstract class Objeto {
 	
@@ -30,11 +31,11 @@ public abstract class Objeto {
 	 * 
 	 * @param g
 	 */	
-	public abstract void paint(Graphics g);
+	public abstract void paint(Graphics2D g);
 	/**
 	 * @return the color
 	 */
-	public abstract void movimiento();
+	public abstract void act();
 	/**
 	 * 
 	 * @return

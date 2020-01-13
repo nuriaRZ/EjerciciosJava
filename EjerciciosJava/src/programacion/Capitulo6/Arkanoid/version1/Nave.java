@@ -2,6 +2,7 @@ package programacion.Capitulo6.Arkanoid.version1;
 
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 public class Nave extends Objeto{
@@ -17,7 +18,7 @@ public class Nave extends Objeto{
 	}
 
 	@Override
-	public void paint(Graphics g) {
+	public void paint(Graphics2D g) {
 		drawImage(g);
 	
 	}
@@ -27,7 +28,7 @@ public class Nave extends Objeto{
 	}
 
 	@Override
-	public void movimiento() {
+	public void act() {
 		// TODO Auto-generated method stub
 		
 	}

@@ -2,6 +2,8 @@ package programacion.Capitulo6.Arkanoid.version1;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 
 public class Pelota extends Objeto {
 	
@@ -14,22 +16,23 @@ public class Pelota extends Objeto {
 		this.y_coord = 250;
 		this.height = 15;
 		this.width = 15;
+		this.vx = (int)Math.round(Math.random() * (50 - 2) + 2);
 	}
 
 	@Override
-	public void paint(Graphics g) {
+	public void paint(Graphics2D g) {
 		g.setColor(getColor());
 		g.fillOval(this.x_coord, this.y_coord, this.width, this.height);
 		
 	}
 	
-	public void movimiento() {
+	public void act() {
 		this.x_coord += this.vx;
 		//this.y_coord += this.vy;
 		
 		if (this.x_coord < 0 || this.x_coord > (Arkanoid.getInstance().getWidth() - this.getWidth()) );
 				//|| this.y_coord < 0 || this.y_coord > (Arkanoid.getInstance().getHeight() - this.getHeight()));
-		vx = -vx;
+			vx = -vx;
 		//vy = -vy;
 	}
 

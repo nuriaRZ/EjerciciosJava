@@ -2,6 +2,7 @@ package programacion.Capitulo6.Arkanoid.version1;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class Ladrillo extends Objeto {
 	
@@ -17,14 +18,14 @@ public class Ladrillo extends Objeto {
 	}
 
 	@Override
-	public void paint(Graphics g) {
+	public void paint(Graphics2D g) {
 		g.setColor(getColor());
 		g.fillRect(this.x_coord+10, this.y_coord+10, this.width, this.height);
 		
 	}
 
 	@Override
-	public void movimiento() {
+	public void act() {
 		// TODO Auto-generated method stub
 		
 	}
