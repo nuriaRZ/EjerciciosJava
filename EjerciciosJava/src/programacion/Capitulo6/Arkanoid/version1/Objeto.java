@@ -31,7 +31,7 @@ public abstract class Objeto {
 	 * 
 	 * @param g
 	 */	
-	public abstract void paint(Graphics2D g);
+	public abstract void paint(Graphics g);
 	/**
 	 * @return the color
 	 */

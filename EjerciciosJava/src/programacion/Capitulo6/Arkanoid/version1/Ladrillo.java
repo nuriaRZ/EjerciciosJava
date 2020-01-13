@@ -18,7 +18,7 @@ public class Ladrillo extends Objeto {
 	}
 
 	@Override
-	public void paint(Graphics2D g) {
+	public void paint(Graphics g) {
 		g.setColor(getColor());
 		g.fillRect(this.x_coord+10, this.y_coord+10, this.width, this.height);
 		

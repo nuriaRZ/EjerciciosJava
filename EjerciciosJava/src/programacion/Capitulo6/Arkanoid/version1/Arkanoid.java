@@ -23,7 +23,7 @@ public class Arkanoid extends Canvas {
 	private static final int WIDTH = 300;
 	private static final int HEIGHT = 500;
 	private static Arkanoid instance = null;
-	public List<Objeto> objetos = new ArrayList<Objeto>();
+	public List<Ladrillo> wall = new ArrayList<Ladrillo>();
 	Pelota ball = new Pelota();
 	Objeto nave = new Nave();
 	
@@ -75,7 +75,7 @@ public class Arkanoid extends Canvas {
 		//creo fila de ladrillos
 		for (int i = 0; i < 10; i++) {
 			Ladrillo l = new Ladrillo();			
-			objetos.add(l);			
+			wall.add(l);			
 			
 		}
 		
@@ -90,39 +90,35 @@ public class Arkanoid extends Canvas {
 		initWorld();		
 		
 		while (isVisible()) {
-			long startTime = System.currentTimeMillis(); //guardo los milis antes de crear el siguiente frame
+			
 			updateWorld();
-			paintWorld();
-			usedTime = System.currentTimeMillis()-startTime;
+			ball.paint(this.getGraphics());
+			paintWorld(this.getGraphics());
+			
 			try {
-				int millisToSleep = (int) (1000/SPEED_FPS - usedTime);
-				if (millisToSleep < 0) {
-					millisToSleep = 0;
-				}
-				Thread.sleep(millisToSleep);
-			}catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+				Thread.sleep(SPEED_FPS);
+				
+			}catch (InterruptedException e) {}
 			
 		}
 	}
 	
 	
 	
-	public void paintWorld() {
-		Toolkit.getDefaultToolkit().sync();
-		Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
-		
-		
+	public void paintWorld(Graphics g) {
+		super.paint(g);
+//		Toolkit.getDefaultToolkit().sync();
+//		Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
+				
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
-		for (Objeto o : this.objetos) {			
-			o.paint(g);
+		for (Ladrillo l : this.wall) {			
+			l.paint(g);
 		}		
 		ball.paint(g);
 		nave.paint(g);
-		strategy.show();
+		//strategy.show();
 		
 		
 	}
@@ -137,6 +133,25 @@ public class Arkanoid extends Canvas {
 	
 	public static void main(String[] args) {
 		Arkanoid.getInstance().game();
+	}
+	/**
+	 * @return the frame
+	 */
+	public JFrame getFrame() {
+		return frame;
+	}
+	/**
+	 * @param frame the frame to set
+	 */
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	/**
+	 * @param instance the instance to set
+	 */
+	public static void setInstance(Arkanoid instance) {
+		Arkanoid.instance = instance;
 	}
 
 	

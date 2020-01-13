@@ -18,7 +18,7 @@ public class Nave extends Objeto{
 	}
 
 	@Override
-	public void paint(Graphics2D g) {
+	public void paint(Graphics g) {
 		drawImage(g);
 	
 	}

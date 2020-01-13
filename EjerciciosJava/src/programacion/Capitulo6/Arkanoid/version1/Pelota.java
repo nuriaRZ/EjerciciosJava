@@ -8,19 +8,21 @@ import java.awt.Graphics2D;
 public class Pelota extends Objeto {
 	
 	protected int vx;
+	protected int vy;
 
 	public Pelota() {
 		super();
 		this.color = Color.WHITE;
-		this.x_coord = 135;
-		this.y_coord = 250;
+		this.x_coord = 240;
+		this.y_coord = 140;
 		this.height = 15;
 		this.width = 15;
-		this.vx = (int)Math.round(Math.random() * (50 - 2) + 2);
+		this.vx = 5;
+		this.vy = 5;
 	}
 
 	@Override
-	public void paint(Graphics2D g) {
+	public void paint(Graphics g) {
 		g.setColor(getColor());
 		g.fillOval(this.x_coord, this.y_coord, this.width, this.height);
 		
@@ -28,13 +30,20 @@ public class Pelota extends Objeto {
 	
 	public void act() {
 		this.x_coord += this.vx;
+		this.y_coord += this.vy;
 		//this.y_coord += this.vy;
 		
-		if (this.x_coord < 0 || this.x_coord > (Arkanoid.getInstance().getWidth() - this.getWidth()) );
-				//|| this.y_coord < 0 || this.y_coord > (Arkanoid.getInstance().getHeight() - this.getHeight()));
+		if (this.x_coord < 0 || this.x_coord > (Arkanoid.getInstance().getWidth() - this.getWidth()) ) {
+				
 			vx = -vx;
-		//vy = -vy;
-	}
+			
+		}
+		if (this.y_coord < 0 || this.y_coord > (Arkanoid.getInstance().getHeight() - this.getHeight())) {
+			vy = -vy;
+		}
+	}	
+		
+	
 
 	/**
 	 * @return the vx
