@@ -7,11 +7,11 @@ import java.awt.Graphics2D;
 public class Ladrillo extends Objeto {
 	
 
-	public Ladrillo() {
+	public Ladrillo(/*int x_coord, int y_coord*/) {
 		super();
 		this.x_coord = 0;
 		this.y_coord = 0;
-		this.color = Color.WHITE;
+		this.color = color.RED;
 		this.width = 20;
 		this.height = 10;
 		
@@ -20,7 +20,7 @@ public class Ladrillo extends Objeto {
 	@Override
 	public void paint(Graphics g) {
 		g.setColor(getColor());
-		g.fillRect(this.x_coord+10, this.y_coord+10, this.width, this.height);
+		g.fillRect(this.x_coord, this.y_coord, this.width, this.height);
 		
 	}
 
@@ -29,6 +29,8 @@ public class Ladrillo extends Objeto {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 	
 	
 	

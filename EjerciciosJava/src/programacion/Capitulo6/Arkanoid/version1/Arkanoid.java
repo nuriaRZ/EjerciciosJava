@@ -28,6 +28,7 @@ public class Arkanoid extends Canvas {
 	Objeto nave = new Nave();
 	
 	
+	
 	private long usedTime; //Tiempo usado en cada iteracion del bucle principal
 	private static final int SPEED_FPS = 60; //VELOCIDAD DE FOTOGRAMAS
 	private BufferStrategy strategy;
@@ -72,12 +73,76 @@ public class Arkanoid extends Canvas {
 	}
 	
 	public void initWorld() {
+		int x_coord = 10;
+		int y_coord = 10;
 		//creo fila de ladrillos
-		for (int i = 0; i < 10; i++) {
-			Ladrillo l = new Ladrillo();			
+		for (int i = 0; i < 12; i++) {
+			Ladrillo l = new Ladrillo();
+			l.setColor(Color.RED);
+			l.setX_coord(x_coord);
+			l.setY_coord(y_coord);
+			wall.add(l);			
+			x_coord += l.getWidth() + 2;
+		}
+		x_coord = 10;
+		y_coord += 12;
+		for (int i = 0; i < 12; i++) {
+			Ladrillo l = new Ladrillo();
+			l.setColor(Color.YELLOW);
+			l.setX_coord(x_coord);
+			l.setY_coord(y_coord);
+			x_coord += l.getWidth() + 2;
 			wall.add(l);			
 			
 		}
+		
+		x_coord = 10;
+		y_coord += 12;
+		for (int i = 0; i < 12; i++) {
+			Ladrillo l = new Ladrillo();
+			l.setColor(Color.BLUE);
+			l.setX_coord(x_coord);
+			l.setY_coord(y_coord);
+			x_coord += l.getWidth() + 2;
+			wall.add(l);			
+			
+		}
+		
+		x_coord = 10;
+		y_coord += 12;
+		for (int i = 0; i < 12; i++) {
+			Ladrillo l = new Ladrillo();
+			l.setColor(Color.PINK);
+			l.setX_coord(x_coord);
+			l.setY_coord(y_coord);
+			x_coord += l.getWidth() + 2;
+			wall.add(l);			
+			
+		}
+		
+		x_coord = 10;
+		y_coord += 12;
+		for (int i = 0; i < 12; i++) {
+			Ladrillo l = new Ladrillo();
+			l.setColor(Color.GREEN);
+			l.setX_coord(x_coord);
+			l.setY_coord(y_coord);
+			x_coord += l.getWidth() + 2;
+			wall.add(l);			
+			
+		}
+		x_coord = 10;
+		y_coord += 12;
+		for (int i = 0; i < 12; i++) {
+			Ladrillo l = new Ladrillo();
+			l.setColor(Color.CYAN);
+			l.setX_coord(x_coord);
+			l.setY_coord(y_coord);
+			x_coord += l.getWidth() + 2;
+			wall.add(l);			
+			
+		}
+		
 		
 	}
 	

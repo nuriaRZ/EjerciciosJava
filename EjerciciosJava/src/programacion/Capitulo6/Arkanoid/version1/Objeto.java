@@ -6,9 +6,9 @@ import java.awt.Graphics2D;
 
 public abstract class Objeto {
 	
-	protected Color color;
-	protected int x_coord, y_coord;
-	protected int width, height;
+	public Color color;
+	public int x_coord, y_coord;
+	public int width, height;
 	
 	/**
 	 * @param nombre
