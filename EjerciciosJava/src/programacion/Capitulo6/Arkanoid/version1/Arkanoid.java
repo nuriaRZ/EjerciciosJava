@@ -33,6 +33,9 @@ public class Arkanoid extends Canvas {
 	private static final int SPEED_FPS = 60; //VELOCIDAD DE FOTOGRAMAS
 	private BufferStrategy strategy;
 	
+	/**
+	 * 
+	 */
 	
 	public Arkanoid() {
 		JPanel panel = (JPanel) frame.getContentPane();
@@ -52,12 +55,12 @@ public class Arkanoid extends Canvas {
 			
 			
 		});
+		frame.setResizable(false);
 		frame.setIgnoreRepaint(true);
 		this.createBufferStrategy(2);
 		strategy = getBufferStrategy();
 				
-		this.requestFocus();
-		
+		this.requestFocus();	
 	}
 	/**
 	 * 
@@ -71,7 +74,9 @@ public class Arkanoid extends Canvas {
 			System.exit(0);
 			}
 	}
-	
+	/**
+	 * 
+	 */
 	public void initWorld() {
 		int x_coord = 10;
 		int y_coord = 10;
@@ -142,23 +147,24 @@ public class Arkanoid extends Canvas {
 			wall.add(l);			
 			
 		}
-		
-		
 	}
-	
+	/**
+	 * 
+	 */
 	public void updateWorld() {
 	ball.act();	
 		
 	}
-	
+	/**
+	 * 
+	 */
 	public void game() {
 		initWorld();		
 		
 		while (isVisible()) {
 			
-			updateWorld();
-			ball.paint(this.getGraphics());
-			paintWorld(this.getGraphics());
+			updateWorld();			
+			paintWorld();
 			
 			try {
 				Thread.sleep(SPEED_FPS);
@@ -167,13 +173,13 @@ public class Arkanoid extends Canvas {
 			
 		}
 	}
-	
-	
-	
-	public void paintWorld(Graphics g) {
-		super.paint(g);
-//		Toolkit.getDefaultToolkit().sync();
-//		Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
+/**
+ * 
+ */
+	public void paintWorld() {
+		
+		Toolkit.getDefaultToolkit().sync();
+		Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
 				
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -183,8 +189,7 @@ public class Arkanoid extends Canvas {
 		}		
 		ball.paint(g);
 		nave.paint(g);
-		//strategy.show();
-		
+		strategy.show();		
 		
 	}
 	
@@ -194,11 +199,6 @@ public class Arkanoid extends Canvas {
 		}
 		return instance;
 	}	
-	
-	
-	public static void main(String[] args) {
-		Arkanoid.getInstance().game();
-	}
 	/**
 	 * @return the frame
 	 */
@@ -218,6 +218,11 @@ public class Arkanoid extends Canvas {
 	public static void setInstance(Arkanoid instance) {
 		Arkanoid.instance = instance;
 	}
+	
+	public static void main(String[] args) {
+		Arkanoid.getInstance().game();
+	}
+
 
 	
 	

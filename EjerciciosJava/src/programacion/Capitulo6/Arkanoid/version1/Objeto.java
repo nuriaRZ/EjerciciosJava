@@ -51,7 +51,7 @@ public abstract class Objeto {
 	}
 	/**
 	 * @return the x_coord
-	 */
+	 *
 	public int getX_coord() {
 		return x_coord;
 	}

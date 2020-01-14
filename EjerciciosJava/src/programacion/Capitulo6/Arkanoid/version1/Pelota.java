@@ -31,9 +31,9 @@ public class Pelota extends Objeto {
 	public void act() {
 		this.x_coord += this.vx;
 		this.y_coord += this.vy;
-		//this.y_coord += this.vy;
 		
-		if (this.x_coord < 0 || this.x_coord > (Arkanoid.getInstance().getWidth() - this.getWidth()) ) {
+		
+		if (this.x_coord < 0 || this.x_coord > (Arkanoid.getInstance().getWidth() - this.getWidth())) {
 				
 			vx = -vx;
 			

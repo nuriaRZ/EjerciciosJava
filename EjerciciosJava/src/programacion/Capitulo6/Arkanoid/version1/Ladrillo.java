@@ -7,11 +7,10 @@ import java.awt.Graphics2D;
 public class Ladrillo extends Objeto {
 	
 
-	public Ladrillo(/*int x_coord, int y_coord*/) {
+	public Ladrillo() {
 		super();
 		this.x_coord = 0;
-		this.y_coord = 0;
-		this.color = color.RED;
+		this.y_coord = 0;		
 		this.width = 20;
 		this.height = 10;
 		
