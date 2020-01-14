@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-public abstract class Objeto {
+public abstract class Actor {
 	
 	public Color color;
 	public int x_coord, y_coord;
@@ -18,7 +18,7 @@ public abstract class Objeto {
 	 * @param width
 	 * @param height
 	 */
-	public Objeto() {
+	public Actor() {
 		super();
 		
 		this.color = color;

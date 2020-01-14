@@ -4,15 +4,15 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-public class Ladrillo extends Objeto {
+public class Brick extends Actor {
 	
 
-	public Ladrillo() {
+	public Brick() {
 		super();
 		this.x_coord = 0;
 		this.y_coord = 0;		
-		this.width = 20;
-		this.height = 10;
+		this.width = 25;
+		this.height = 15;
 		
 	}
 

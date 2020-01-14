@@ -20,12 +20,12 @@ import programacion.Utils;
 
 public class Arkanoid extends Canvas {
 	JFrame frame = new JFrame("Arkanoid");
-	private static final int WIDTH = 300;
+	private static final int WIDTH = 350;
 	private static final int HEIGHT = 500;
 	private static Arkanoid instance = null;
-	public List<Ladrillo> wall = new ArrayList<Ladrillo>();
-	Pelota ball = new Pelota();
-	Objeto nave = new Nave();
+	public List<Actor> actors = new ArrayList<Actor>();
+	Ball ball = null;
+	Nave nave = null;
 	
 	
 	
@@ -51,9 +51,6 @@ public class Arkanoid extends Canvas {
 				closeApplication(e);
 				super.windowClosing(e);
 			}
-			
-			
-			
 		});
 		frame.setResizable(false);
 		frame.setIgnoreRepaint(true);
@@ -75,101 +72,121 @@ public class Arkanoid extends Canvas {
 			}
 	}
 	/**
-	 * 
+	 * Metodo responsable de inicializar el juego de 0
 	 */
 	public void initWorld() {
 		int x_coord = 10;
 		int y_coord = 10;
-		//creo fila de ladrillos
+		//creacion de ladrillos
 		for (int i = 0; i < 12; i++) {
-			Ladrillo l = new Ladrillo();
-			l.setColor(Color.RED);
-			l.setX_coord(x_coord);
-			l.setY_coord(y_coord);
-			wall.add(l);			
-			x_coord += l.getWidth() + 2;
+			Brick b = new Brick();
+			b.setColor(Color.RED);
+			b.setX_coord(x_coord);
+			b.setY_coord(y_coord);
+			actors.add(b);	//cada ladrillo creado lo añado a la lista de actors		
+			x_coord += b.getWidth() + 2; //separacion entre los ladrillos de la misma fila
 		}
-		x_coord = 10;
-		y_coord += 12;
+		x_coord = 10; // posicion inicial de la x donde debe empezar cada fila
+		y_coord += 17; //incremento de la y para crear filas
 		for (int i = 0; i < 12; i++) {
-			Ladrillo l = new Ladrillo();
-			l.setColor(Color.YELLOW);
-			l.setX_coord(x_coord);
-			l.setY_coord(y_coord);
-			x_coord += l.getWidth() + 2;
-			wall.add(l);			
+			Brick b = new Brick();
+			b.setColor(Color.YELLOW); //le asigno el color 
+			b.setX_coord(x_coord); //le asigno la nueva x
+			b.setY_coord(y_coord); // le asigno la nueva y
+			x_coord += b.getWidth() + 2; //separacion entre los ladrillos de la misma fila
+			actors.add(b);	//cada ladrillo creado lo añado a la lista de actors	
 			
 		}
 		
 		x_coord = 10;
-		y_coord += 12;
+		y_coord += 17;
 		for (int i = 0; i < 12; i++) {
-			Ladrillo l = new Ladrillo();
-			l.setColor(Color.BLUE);
-			l.setX_coord(x_coord);
-			l.setY_coord(y_coord);
-			x_coord += l.getWidth() + 2;
-			wall.add(l);			
+			Brick b = new Brick();
+			b.setColor(Color.BLUE); //le asigno el color
+			b.setX_coord(x_coord); //le asigno la nueva x
+			b.setY_coord(y_coord); // le asigno la nueva y
+			x_coord += b.getWidth() + 2; //separacion entre los ladrillos de la misma fila
+			actors.add(b);	//cada ladrillo creado lo añado a la lista de actors		
 			
 		}
 		
 		x_coord = 10;
-		y_coord += 12;
+		y_coord += 17;
 		for (int i = 0; i < 12; i++) {
-			Ladrillo l = new Ladrillo();
-			l.setColor(Color.PINK);
-			l.setX_coord(x_coord);
-			l.setY_coord(y_coord);
-			x_coord += l.getWidth() + 2;
-			wall.add(l);			
+			Brick b = new Brick();
+			b.setColor(Color.PINK); //le asigno el color
+			b.setX_coord(x_coord); //le asigno la nueva x
+			b.setY_coord(y_coord); // le asigno la nueva y
+			x_coord += b.getWidth() + 2; //separacion entre los ladrillos de la misma fila
+			actors.add(b);	//cada ladrillo creado lo añado a la lista de actors		
 			
 		}
 		
 		x_coord = 10;
-		y_coord += 12;
+		y_coord += 17;
 		for (int i = 0; i < 12; i++) {
-			Ladrillo l = new Ladrillo();
-			l.setColor(Color.GREEN);
-			l.setX_coord(x_coord);
-			l.setY_coord(y_coord);
-			x_coord += l.getWidth() + 2;
-			wall.add(l);			
+			Brick b = new Brick();
+			b.setColor(Color.GREEN); //le asigno el color
+			b.setX_coord(x_coord); //le asigno la nueva x
+			b.setY_coord(y_coord); // le asigno la nueva y
+			x_coord += b.getWidth() + 2; //separacion entre los ladrillos de la misma fila
+			actors.add(b);	//cada ladrillo creado lo añado a la lista de actors	
 			
 		}
 		x_coord = 10;
-		y_coord += 12;
+		y_coord += 17;
 		for (int i = 0; i < 12; i++) {
-			Ladrillo l = new Ladrillo();
-			l.setColor(Color.CYAN);
-			l.setX_coord(x_coord);
-			l.setY_coord(y_coord);
-			x_coord += l.getWidth() + 2;
-			wall.add(l);			
+			Brick b = new Brick();
+			b.setColor(Color.CYAN); //le asigno el color
+			b.setX_coord(x_coord); //le asigno la nueva x
+			b.setY_coord(y_coord); // le asigno la nueva y
+			x_coord += b.getWidth() + 2; //separacion entre los ladrillos de la misma fila
+			actors.add(b);	//cada ladrillo creado lo añado a la lista de actors		
 			
 		}
+		Ball ball = new Ball(); //creo una pelota
+		this.actors.add(ball); //añado la pelota a la lista de actors
+		
+		Nave nave = new Nave(); //creo una nave
+		this.actors.add(nave); //añado la nave a la lista de actors
+		this.nave = nave; //puntero hacia la nave
+		this.addKeyListener(nave); //le agrego un listener de teclado
 	}
 	/**
 	 * 
 	 */
 	public void updateWorld() {
-	ball.act();	
+		//llamo al metodo act de todos los objetos agregados a mi lista de actors
+		for (Actor a: this.actors) {
+			a.act();
+		}
+	
 		
 	}
 	/**
 	 * 
 	 */
 	public void game() {
-		initWorld();		
-		
+		//inicio del juego
+		initWorld(); 		
+		//el juego se ejecutará mientras el canvas sea visible
 		while (isVisible()) {
-			
+			long startTime = System.currentTimeMillis(); // capturo los milis antes de crear el siguiente frame
+			//actualizo y pinto escena
 			updateWorld();			
 			paintWorld();
-			
-			try {
-				Thread.sleep(SPEED_FPS);
+			usedTime = System.currentTimeMillis() - startTime;
+			//hago que el bucle pare unos millis antes de crear la siguiente escena
+			try { 
+				int millisToSleep = (int) (1000/SPEED_FPS - usedTime);
+				if (millisToSleep < 0) {
+					millisToSleep = 0;
+				}
+				Thread.sleep(millisToSleep);
 				
-			}catch (InterruptedException e) {}
+			}catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			
 		}
 	}
@@ -180,15 +197,13 @@ public class Arkanoid extends Canvas {
 		
 		Toolkit.getDefaultToolkit().sync();
 		Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
-				
+		//pinto el fondo con un rectangulo negro ocupand todo el canvas		
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
-		
-		for (Ladrillo l : this.wall) {			
-			l.paint(g);
-		}		
-		ball.paint(g);
-		nave.paint(g);
+		//llamo al metodo paint de todos los objetos de la lista actors para que se representen
+		for (Actor a : this.actors) {			
+			a.paint(g);
+		}
 		strategy.show();		
 		
 	}

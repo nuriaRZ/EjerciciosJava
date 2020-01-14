@@ -5,12 +5,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 
-public class Pelota extends Objeto {
+public class Ball extends Actor {
 	
-	protected int vx;
+	protected int vx; // cantidad de pixeles que aumentará en su movimiento
 	protected int vy;
 
-	public Pelota() {
+	public Ball() {
 		super();
 		this.color = Color.WHITE;
 		this.x_coord = 240;
@@ -29,14 +29,12 @@ public class Pelota extends Objeto {
 	}
 	
 	public void act() {
+		//movimento de la pelota sobre el eje x y el eje y
 		this.x_coord += this.vx;
 		this.y_coord += this.vy;
-		
-		
-		if (this.x_coord < 0 || this.x_coord > (Arkanoid.getInstance().getWidth() - this.getWidth())) {
-				
-			vx = -vx;
-			
+	//control de la pelota para que no salga del margen de la ventana
+		if (this.x_coord < 0 || this.x_coord > (Arkanoid.getInstance().getWidth() - this.getWidth())) {				
+			vx = -vx;	// en caso de que toque el limite se le cambia la direccion		
 		}
 		if (this.y_coord < 0 || this.y_coord > (Arkanoid.getInstance().getHeight() - this.getHeight())) {
 			vy = -vy;
