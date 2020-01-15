@@ -3,12 +3,17 @@ package programacion.Capitulo6.Arkanoid.version1;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 public abstract class Actor {
 	
 	public Color color;
 	public int x_coord, y_coord;
 	public int width, height;
+	protected boolean markedForRemoval = false; //cuando el objeto deba ser eliminado se pondra a true
+	
+	
+
 	
 	/**
 	 * @param nombre
@@ -26,16 +31,24 @@ public abstract class Actor {
 		this.y_coord = y_coord;
 		this.width = width;
 		this.height = height;
-	}
+	}	
+		
+
 	/**
 	 * 
 	 * @param g
 	 */	
 	public abstract void paint(Graphics g);
+
 	/**
 	 * @return the color
 	 */
 	public abstract void act();
+	/**
+	 * 
+	 */
+	public void collisionWith (Actor actorCollisioned) {}
+
 	/**
 	 * 
 	 * @return
@@ -51,7 +64,7 @@ public abstract class Actor {
 	}
 	/**
 	 * @return the x_coord
-	 *
+	 */
 	public int getX_coord() {
 		return x_coord;
 	}
@@ -97,6 +110,22 @@ public abstract class Actor {
 	public void setHeight(int height) {
 		this.height = height;
 	}
+	/**
+	 * @return the markedForRemoval
+	 */
+	public boolean isMarkedForRemoval() {
+		return markedForRemoval;
+	}
+	/**
+	 * @param markedForRemoval the markedForRemoval to set
+	 */
+	public void setMarkedForRemoval(boolean markedForRemoval) {
+		this.markedForRemoval = markedForRemoval;
+	}
+
+
+	
+	
 	
 	
 

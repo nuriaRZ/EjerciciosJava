@@ -5,6 +5,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -24,6 +25,7 @@ public class Arkanoid extends Canvas {
 	private static final int HEIGHT = 500;
 	private static Arkanoid instance = null;
 	public List<Actor> actors = new ArrayList<Actor>();
+	public List<Actor> newActors = new ArrayList<Actor>();
 	Ball ball = null;
 	Nave nave = null;
 	
@@ -151,17 +153,49 @@ public class Arkanoid extends Canvas {
 		this.actors.add(nave); //añado la nave a la lista de actors
 		this.nave = nave; //puntero hacia la nave
 		this.addKeyListener(nave); //le agrego un listener de teclado
+		
 	}
 	/**
 	 * 
 	 */
 	public void updateWorld() {
+		List<Actor> actorsForRemoval = new ArrayList<Actor>();
+		for (Actor a: this.actors) {
+			if (a.isMarkedForRemoval()) {
+				actorsForRemoval.add(a);
+			}
+		}
+		
+		for (Actor a: actorsForRemoval) {
+			actors.remove(a);
+		}
+		actorsForRemoval.clear();
+		
+		this.actors.addAll(newActors);
+		this.newActors.clear();
+		
 		//llamo al metodo act de todos los objetos agregados a mi lista de actors
+
+		for (Actor actor1: this.actors) {
+			
+			Rectangle rect1 = new Rectangle(actor1.getX_coord(), actor1.getY_coord(), actor1.getWidth(), actor1.getHeight());
+		
+			
+			for (Actor actor2: this.actors) {
+				
+					Rectangle rect2 = new Rectangle(actor2.getX_coord(), actor2.getY_coord(), actor2.getWidth(), actor2.getHeight());
+					
+					if (rect1.intersects(rect2)) {
+						actor1.collisionWith(actor2);
+						actor2.collisionWith(actor1);
+						
+						
+					}
+			}
+		}
 		for (Actor a: this.actors) {
 			a.act();
 		}
-	
-		
 	}
 	/**
 	 * 

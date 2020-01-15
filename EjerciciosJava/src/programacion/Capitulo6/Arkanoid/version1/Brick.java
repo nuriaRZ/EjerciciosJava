@@ -16,7 +16,7 @@ public class Brick extends Actor {
 		
 	}
 
-	@Override
+
 	public void paint(Graphics g) {
 		g.setColor(getColor());
 		g.fillRect(this.x_coord, this.y_coord, this.width, this.height);
@@ -28,12 +28,15 @@ public class Brick extends Actor {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
-	
-	
-	
-	
 
+	@Override
+	public void collisionWith(Actor actorCollisioned) {
+		super.collisionWith(actorCollisioned);
+		
+		if (actorCollisioned instanceof Ball) {
+			this.setMarkedForRemoval(true);
+			
+		}
+	}
+	
 }

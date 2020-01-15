@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
 public class Nave extends Actor implements KeyListener{
@@ -15,7 +17,7 @@ public class Nave extends Actor implements KeyListener{
 	protected static final int SPEED = 4; // VELOCIDAD DEL MOVIMIENTO DE LA NAVE
 
 	public Nave() {
-		super();
+		
 		//definicion de coordenadas del inicio del juego
 		this.x_coord = 165;
 		this.y_coord = 400;
@@ -29,7 +31,6 @@ public class Nave extends Actor implements KeyListener{
 		drawImage(g);
 	
 	}
-	
 	private void drawImage (Graphics g) {
 		g.drawImage(this.image, this.x_coord, this.y_coord, null);
 	}
@@ -84,17 +85,12 @@ public class Nave extends Actor implements KeyListener{
 		if (left) vx = -SPEED;
 		if (right) vx = SPEED;
 	}
-		
-	
 
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
-		
+
 
 }
