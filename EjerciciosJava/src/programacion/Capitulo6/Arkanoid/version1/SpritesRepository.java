@@ -11,7 +11,7 @@ public class SpritesRepository {
 	private HashMap<String, BufferedImage> sprites = new HashMap<String, BufferedImage>();
 	private static SpritesRepository instance = null;
 	private static String RESOURCES_FOLDER = "../res/";
-	public static String NAVE_IMAGE = "nave-25x7.png";
+	public static String NAVE_IMAGE = "nave-50x15.png";
 	
 
 	/**

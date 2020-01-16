@@ -21,7 +21,7 @@ public class Nave extends Actor implements KeyListener{
 		//definicion de coordenadas del inicio del juego
 		this.x_coord = 165;
 		this.y_coord = 400;
-		image = SpritesRepository.getInstance().getSprite("nave-25x7.png"); //carga de la imagen para mas fluidez
+		image = SpritesRepository.getInstance().getSprite("nave-50x15.png"); //carga de la imagen para mas fluidez
 		this.width = this.image.getWidth();
 		this.height = this.image.getHeight();
 		
