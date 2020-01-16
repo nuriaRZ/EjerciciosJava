@@ -22,6 +22,8 @@ public class Nave extends Actor implements KeyListener{
 		this.x_coord = 165;
 		this.y_coord = 400;
 		image = SpritesRepository.getInstance().getSprite("nave-25x7.png"); //carga de la imagen para mas fluidez
+		this.width = this.image.getWidth();
+		this.height = this.image.getHeight();
 		
 		
 	}
@@ -37,7 +39,7 @@ public class Nave extends Actor implements KeyListener{
 
 	@Override 
 	public void act() {
-		//la nave solo se moverá sobre el eje x
+		//la nave solo se moverï¿½ sobre el eje x
 		this.x_coord += this.vx;
 		
 		//limitacion del movimiento de la nave de manera que si llega a los bordes de la ventana no salga de la pantalla
