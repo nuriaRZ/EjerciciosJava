@@ -59,11 +59,7 @@ public class Ball extends Actor {
 			// this.x_coord *= -this.getVx();
 			System.out.println("colision " + this.vy);
 		}
-//		if (actorCollisioned instanceof Nave) {
-//			vx = -vx;
-//			vy = -vy;
-//			System.out.println("colision con Nave" + this.vy);
-//		}
+
 	}
 
 	/**

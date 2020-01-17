@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
@@ -52,6 +54,9 @@ public class Arkanoid extends Canvas {
 				super.windowClosing(e);
 			}
 		});
+
+		
+		
 		frame.setResizable(false);
 		frame.setIgnoreRepaint(true);
 		this.createBufferStrategy(2);
@@ -153,6 +158,7 @@ public class Arkanoid extends Canvas {
 		this.actors.add(nave); // a�ado la nave a la lista de actors
 		this.nave = nave; // puntero hacia la nave
 		this.addKeyListener(nave); // le agrego un listener de teclado
+		this.addMouseMotionListener(nave);
 
 	}
 

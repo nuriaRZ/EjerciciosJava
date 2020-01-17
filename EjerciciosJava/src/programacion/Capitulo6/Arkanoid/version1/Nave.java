@@ -7,9 +7,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 
-public class Nave extends Actor implements KeyListener{
+public class Nave extends Actor implements KeyListener, MouseMotionListener{
 	
 	private BufferedImage image;
 	private boolean left, right; //BANDERAS QUE QUE APUNTARAN A LAS TECLAS CON LAS QUE SE MOVERA LA NAVE
@@ -44,8 +45,8 @@ public class Nave extends Actor implements KeyListener{
 		
 		//limitacion del movimiento de la nave de manera que si llega a los bordes de la ventana no salga de la pantalla
 		if (this.x_coord < 0 ) { this.x_coord = 0; }
-		if (this.x_coord > (Arkanoid.getInstance().getWidth() - 25)) {
-			this.x_coord = Arkanoid.getInstance().getWidth() - 25;
+		if (this.x_coord > (Arkanoid.getInstance().getWidth() - this.getWidth())) {
+			this.x_coord = Arkanoid.getInstance().getWidth() - this.getWidth();
 		}
 	}
 	/**
@@ -57,7 +58,7 @@ public class Nave extends Actor implements KeyListener{
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_RIGHT: right = true; break; 	
 		case KeyEvent.VK_LEFT: left = true; break;	
-
+		
 		default:
 			break;
 		}
@@ -92,6 +93,17 @@ public class Nave extends Actor implements KeyListener{
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		setX_coord(e.getX());
 	}
 
 
