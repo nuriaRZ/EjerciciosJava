@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Actor {
 	
@@ -11,7 +13,10 @@ public abstract class Actor {
 	public int x_coord, y_coord;
 	public int width, height;
 	protected boolean markedForRemoval = false; //cuando el objeto deba ser eliminado se pondra a true
-	
+	public List <BufferedImage> sprites = new ArrayList<BufferedImage>();
+	protected BufferedImage spriteActual = null;
+	private int unidadDeTiempo = 0;
+	protected int velocidadDeCambioDeSprite = 0;
 	
 
 	
@@ -31,7 +36,56 @@ public abstract class Actor {
 		this.y_coord = y_coord;
 		this.width = width;
 		this.height = height;
-	}	
+	}
+	/**
+	 * 
+	 * @param spriteNames
+	 */
+	public Actor (String spriteNames[]) {
+		this.velocidadDeCambioDeSprite = 1;
+		cargarImagenesDeSprite(spriteNames);
+	}
+	/**
+	 * 
+	 * @param spriteNames
+	 * @param velocidadDeCambioDeSprite
+	 */
+	public Actor(String spriteNames[], int velocidadDeCambioDeSprite) {
+		this.velocidadDeCambioDeSprite = velocidadDeCambioDeSprite;
+		cargarImagenesDeSprite(spriteNames);
+	}
+	/**
+	 * 
+	 * @param spriteNames
+	 */
+	private void cargarImagenesDeSprite(String spriteNames[]) {
+		for (String sprite : spriteNames) {
+			this.sprites.add(SpritesRepository.getInstance().getSprite(sprite));
+		}
+		
+		if (this.sprites.size() > 0) {
+			this.spriteActual = this.sprites.get(0);
+		}
+		adjustHeightAndWidth();
+	}
+	/**
+	 * 
+	 */
+	private void adjustHeightAndWidth() {
+		if (this.sprites.size() > 0) {
+			this.height = this.sprites.get(0).getHeight();
+			this.width = this.sprites.get(0).getWidth();			
+		}
+		
+		for (BufferedImage sprite: this.sprites) {
+			if (this.spriteActual.getHeight() > this.width) {
+				this.width = sprite.getWidth();
+			}
+			if (this.spriteActual.getHeight() > this.height) {
+				this.height = sprite.getHeight();
+			}
+		}
+	}
 		
 
 	/**
@@ -43,7 +97,19 @@ public abstract class Actor {
 	/**
 	 * @return the color
 	 */
-	public abstract void act();
+	public void act() {
+		if (this.sprites != null && this.sprites.size() > 1) {
+			unidadDeTiempo++;
+			
+			if (unidadDeTiempo % velocidadDeCambioDeSprite == 0) {
+				unidadDeTiempo = 0;
+				
+				int indiceSpriteActual = sprites.indexOf(this.spriteActual);
+				int indiceNextSprite = (indiceSpriteActual + 1) % sprites.size();
+				this.spriteActual = sprites.get(indiceNextSprite);
+			}
+		}
+	}
 	/**
 	 * 
 	 */
