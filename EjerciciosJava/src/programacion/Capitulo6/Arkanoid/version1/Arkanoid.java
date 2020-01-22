@@ -27,7 +27,7 @@ public class Arkanoid extends Canvas {
 	private static final int HEIGHT = 500;
 	private static Arkanoid instance = null;
 	public List<Actor> actors = new ArrayList<Actor>();
-	public List<Actor> newActors = new ArrayList<Actor>();
+	public List<Actor> newIteractionActors = new ArrayList<Actor>();
 	Ball ball = null;
 	Nave nave = null;
 
@@ -82,75 +82,31 @@ public class Arkanoid extends Canvas {
 	 * Metodo responsable de inicializar el juego de 0
 	 */
 	public void initWorld() {
+		SoundsRepository.getInstance().playSound("Arkanoid-start-of-stage.wav");
 		int x_coord = 10;
 		int y_coord = 10;
 		// creacion de ladrillos
-		for (int i = 0; i < 12; i++) {
-			Brick b = new Brick();
-			b.setColor(Color.RED);
-			b.setX_coord(x_coord);
-			b.setY_coord(y_coord);
-			actors.add(b); // cada ladrillo creado lo aï¿½ado a la lista de actors
-			x_coord += b.getWidth() + 2; // separacion entre los ladrillos de la misma fila
-		}
-		x_coord = 10; // posicion inicial de la x donde debe empezar cada fila
-		y_coord += 17; // incremento de la y para crear filas
-		for (int i = 0; i < 12; i++) {
-			Brick b = new Brick();
-			b.setColor(Color.YELLOW); // le asigno el color
-			b.setX_coord(x_coord); // le asigno la nueva x
-			b.setY_coord(y_coord); // le asigno la nueva y
-			x_coord += b.getWidth() + 2; // separacion entre los ladrillos de la misma fila
-			actors.add(b); // cada ladrillo creado lo aï¿½ado a la lista de actors
-
-		}
-
-		x_coord = 10;
-		y_coord += 17;
-		for (int i = 0; i < 12; i++) {
-			Brick b = new Brick();
-			b.setColor(Color.BLUE); // le asigno el color
-			b.setX_coord(x_coord); // le asigno la nueva x
-			b.setY_coord(y_coord); // le asigno la nueva y
-			x_coord += b.getWidth() + 2; // separacion entre los ladrillos de la misma fila
-			actors.add(b); // cada ladrillo creado lo aï¿½ado a la lista de actors
-
+		for (int i = 0; i < 6; i++) { //bucle por filas
+			for (int j = 0; j < 12; j++) {//bucle por columnas
+				Brick b = new Brick(); //creo un nuevo ladrillo
+				b.setX_coord(x_coord); //le asigno la coordenada X
+				b.setY_coord(y_coord); //le asigno la coordenada y
+				actors.add(b); //lo añado a la lista de actores
+				x_coord += b.getWidth()+2; //por cada ladrillo a la coordenada x le sumo su ancho mas 2u de separacion entre ladrillos
+				 //asigno los colores segun las filas
+				if (i==0) b.setColor(Color.BLUE); 
+				if (i==1) b.setColor(Color.RED);
+				if (i==2) b.setColor(Color.ORANGE);
+				if (i==3) b.setColor(Color.GREEN);
+				if (i==4) b.setColor(Color.YELLOW);
+				if (i==5) b.setColor(Color.CYAN);
+				
+			}
+			
+			x_coord = 10;
+			y_coord += 17;
 		}
 
-		x_coord = 10;
-		y_coord += 17;
-		for (int i = 0; i < 12; i++) {
-			Brick b = new Brick();
-			b.setColor(Color.PINK); // le asigno el color
-			b.setX_coord(x_coord); // le asigno la nueva x
-			b.setY_coord(y_coord); // le asigno la nueva y
-			x_coord += b.getWidth() + 2; // separacion entre los ladrillos de la misma fila
-			actors.add(b); // cada ladrillo creado lo aï¿½ado a la lista de actors
-
-		}
-
-		x_coord = 10;
-		y_coord += 17;
-		for (int i = 0; i < 12; i++) {
-			Brick b = new Brick();
-			b.setColor(Color.GREEN); // le asigno el color
-			b.setX_coord(x_coord); // le asigno la nueva x
-			b.setY_coord(y_coord); // le asigno la nueva y
-			x_coord += b.getWidth() + 2; // separacion entre los ladrillos de la misma fila
-			actors.add(b); // cada ladrillo creado lo aï¿½ado a la lista de actors
-
-		}
-		x_coord = 10;
-		y_coord += 17;
-		for (int i = 0; i < 12; i++) {
-			Brick b = new Brick();
-			b.setColor(Color.CYAN); // le asigno el color
-			b.setX_coord(x_coord); // le asigno la nueva x
-			b.setY_coord(y_coord); // le asigno la nueva y
-			x_coord += b.getWidth() + 2; // separacion entre los ladrillos de la misma fila
-			actors.add(b); // cada ladrillo creado lo aï¿½ado a la lista de actors
-
-		}
 		Ball ball = new Ball(); // creo una pelota
 		this.actors.add(ball); // aï¿½ado la pelota a la lista de actors
 
@@ -166,25 +122,31 @@ public class Arkanoid extends Canvas {
 	 * 
 	 */
 	public void updateWorld() {
+		
+		//lista donde añado los actores que seran eliminados al colisionar
 		List<Actor> actorsForRemoval = new ArrayList<Actor>();
 		for (Actor a : this.actors) {
 			if (a.isMarkedForRemoval()) {
 				actorsForRemoval.add(a);
 			}
 		}
-
+		
+		//eliminino los actores marcados para borrar
 		for (Actor a : actorsForRemoval) {
 			actors.remove(a);
 		}
+		//limpio la lista de actores a borrar
 		actorsForRemoval.clear();
+		//en esta lista se añadiran actores que tambien seran borrados como las explosiones
+		this.actors.addAll(newIteractionActors);
+		this.newIteractionActors.clear();
 
-		this.actors.addAll(newActors);
-		this.newActors.clear();
-
-		// llamo al metodo act de todos los objetos agregados a mi lista de actors
+		
 
 		for (Actor actor1 : this.actors) {
-			if (actor1 instanceof Ball) {
+			//si el actor 1 es una pelota creo un rectangulo con sus dimensiones y recorro el otro bucle que creará rectangulos
+			// con las dimensiones de los demas objetos
+			if (actor1 instanceof Ball) { 
 				Rectangle rect1 = new Rectangle(actor1.getX_coord(), actor1.getY_coord(), actor1.getWidth(),
 						actor1.getHeight());
 
@@ -192,7 +154,8 @@ public class Arkanoid extends Canvas {
 					if (!actor2.equals(actor1) && !actor2.isMarkedForRemoval() && !actor1.isMarkedForRemoval()) {
 						Rectangle rect2 = new Rectangle(actor2.getX_coord(), actor2.getY_coord(), actor2.getWidth(),
 								actor2.getHeight());
-
+						
+						//si un rectangulo intersecta con el otro, se producira una colision
 						if (rect1.intersects(rect2)) {
 							actor1.collisionWith(actor2);
 							actor2.collisionWith(actor1);
@@ -207,6 +170,8 @@ public class Arkanoid extends Canvas {
 
 			}
 		}
+		
+		// llamo al metodo act de todos los objetos agregados a mi lista de actors
 		for (Actor a : this.actors) {
 			a.act();
 		}

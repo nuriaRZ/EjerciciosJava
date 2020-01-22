@@ -29,12 +29,12 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener{
 		
 	}
 
-	@Override //metodo en el que se pinta la imagen de la nave
-	public void paint(Graphics g) {
+	 //metodo en el que se pinta la imagen de la nave
+	public void paint(Graphics2D g) {
 		drawImage(g);
 	
 	}
-	private void drawImage (Graphics g) {
+	private void drawImage (Graphics2D g) {
 		g.drawImage(this.image, this.x_coord, this.y_coord, null);
 	}
 

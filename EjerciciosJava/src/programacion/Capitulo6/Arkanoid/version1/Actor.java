@@ -14,9 +14,9 @@ public abstract class Actor {
 	public int width, height;
 	protected boolean markedForRemoval = false; //cuando el objeto deba ser eliminado se pondra a true
 	public List <BufferedImage> sprites = new ArrayList<BufferedImage>();
-	protected BufferedImage spriteActual = null;
-	private int unidadDeTiempo = 0;
-	protected int velocidadDeCambioDeSprite = 0;
+	protected BufferedImage currentSprite = null; //sprite actual
+	private int timeUnit = 0; //unidad de tiempo que aumentara cada vez que se llama al metodo act
+	protected int spriteChangeSpeed = 0; //nos indica cada cuanto tiempo debemos mostrar el siguiente sprite
 	
 
 	
@@ -29,20 +29,21 @@ public abstract class Actor {
 	 * @param height
 	 */
 	public Actor() {
-		super();
-		
-		this.color = color;
-		this.x_coord = x_coord;
-		this.y_coord = y_coord;
-		this.width = width;
-		this.height = height;
+		super();	
+	}
+	
+	//para cuando el actor solo tiene un unico sprite
+	
+	Actor(String spriteName){
+		this.spriteChangeSpeed = 1;
+		cargarImagenesDeSprite(new String[] { spriteName });
 	}
 	/**
-	 * 
+	 *indica los nombres de los sprites que utiliza el actor
 	 * @param spriteNames
 	 */
 	public Actor (String spriteNames[]) {
-		this.velocidadDeCambioDeSprite = 1;
+		this.spriteChangeSpeed = 1;
 		cargarImagenesDeSprite(spriteNames);
 	}
 	/**
@@ -50,26 +51,26 @@ public abstract class Actor {
 	 * @param spriteNames
 	 * @param velocidadDeCambioDeSprite
 	 */
-	public Actor(String spriteNames[], int velocidadDeCambioDeSprite) {
-		this.velocidadDeCambioDeSprite = velocidadDeCambioDeSprite;
+	public Actor(String spriteNames[], int spriteChangeSpeed) {
+		this.spriteChangeSpeed = spriteChangeSpeed;
 		cargarImagenesDeSprite(spriteNames);
 	}
 	/**
-	 * 
+	 * cargar la lista de imagenes que constituyen el sprite
 	 * @param spriteNames
 	 */
 	private void cargarImagenesDeSprite(String spriteNames[]) {
 		for (String sprite : spriteNames) {
 			this.sprites.add(SpritesRepository.getInstance().getSprite(sprite));
 		}
-		
+		//ajusto el primer sprite del actor
 		if (this.sprites.size() > 0) {
-			this.spriteActual = this.sprites.get(0);
+			this.currentSprite = this.sprites.get(0);
 		}
 		adjustHeightAndWidth();
 	}
 	/**
-	 * 
+	 * ajusta el tamaño de los sprites segun su height and width
 	 */
 	private void adjustHeightAndWidth() {
 		if (this.sprites.size() > 0) {
@@ -78,10 +79,10 @@ public abstract class Actor {
 		}
 		
 		for (BufferedImage sprite: this.sprites) {
-			if (this.spriteActual.getHeight() > this.width) {
+			if (sprite.getWidth() > this.width) {
 				this.width = sprite.getWidth();
 			}
-			if (this.spriteActual.getHeight() > this.height) {
+			if (sprite.getHeight() > this.height) {
 				this.height = sprite.getHeight();
 			}
 		}
@@ -89,24 +90,27 @@ public abstract class Actor {
 		
 
 	/**
-	 * 
+	 * pinta el sprite actual en las coordenadas establecidas
 	 * @param g
 	 */	
-	public abstract void paint(Graphics g);
+	public void paint(Graphics2D g) {
+		g.drawImage(this.currentSprite, this.x_coord, this.y_coord, null);
+	}
 
 	/**
+	 * metodo que hace que realiza la animacion de las imagenes con el calculo de unidades de tiempo y cambio de imagen
 	 * @return the color
 	 */
 	public void act() {
 		if (this.sprites != null && this.sprites.size() > 1) {
-			unidadDeTiempo++;
+			timeUnit++;
 			
-			if (unidadDeTiempo % velocidadDeCambioDeSprite == 0) {
-				unidadDeTiempo = 0;
+			if (timeUnit % spriteChangeSpeed == 0) {
+				timeUnit = 0;
 				
-				int indiceSpriteActual = sprites.indexOf(this.spriteActual);
-				int indiceNextSprite = (indiceSpriteActual + 1) % sprites.size();
-				this.spriteActual = sprites.get(indiceNextSprite);
+				int indexCurrentSprite = sprites.indexOf(this.currentSprite);
+				int indiceNextSprite = (indexCurrentSprite + 1) % sprites.size();
+				this.currentSprite = sprites.get(indiceNextSprite);
 			}
 		}
 	}
@@ -187,6 +191,15 @@ public abstract class Actor {
 	 */
 	public void setMarkedForRemoval(boolean markedForRemoval) {
 		this.markedForRemoval = markedForRemoval;
+	}
+	
+	public BufferedImage getImage() {
+		return currentSprite;
+	}
+	
+	public void setImage (BufferedImage image) {
+		this.currentSprite = image;
+		this.adjustHeightAndWidth();
 	}
 
 

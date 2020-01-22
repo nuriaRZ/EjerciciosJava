@@ -24,7 +24,7 @@ public class Ball extends Actor {
 		// this.getWidth(), this.getHeight());
 	}
 
-	public void paint(Graphics g) {
+	public void paint(Graphics2D g) {
 		g.setColor(getColor());
 		g.fillOval(this.x_coord, this.y_coord, this.width, this.height);
 
@@ -56,8 +56,8 @@ public class Ball extends Actor {
 			vx = -vx;
 			vy = -vy;
 
-			// this.x_coord *= -this.getVx();
-			System.out.println("colision " + this.vy);
+			SoundsRepository.getInstance().playSound("Arkanoid-SFX-01.wav");
+			
 		}
 
 	}
