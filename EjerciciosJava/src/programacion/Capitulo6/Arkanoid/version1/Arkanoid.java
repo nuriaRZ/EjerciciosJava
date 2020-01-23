@@ -91,7 +91,7 @@ public class Arkanoid extends Canvas {
 				Brick b = new Brick(); //creo un nuevo ladrillo
 				b.setX_coord(x_coord); //le asigno la coordenada X
 				b.setY_coord(y_coord); //le asigno la coordenada y
-				actors.add(b); //lo añado a la lista de actores
+				actors.add(b); //lo aï¿½ado a la lista de actores
 				x_coord += b.getWidth()+2; //por cada ladrillo a la coordenada x le sumo su ancho mas 2u de separacion entre ladrillos
 				 //asigno los colores segun las filas
 				if (i==0) b.setColor(Color.BLUE); 
@@ -110,11 +110,15 @@ public class Arkanoid extends Canvas {
 		Ball ball = new Ball(); // creo una pelota
 		this.actors.add(ball); // aï¿½ado la pelota a la lista de actors
 
+
 		Nave nave = new Nave(); // creo una nave
 		this.actors.add(nave); // aï¿½ado la nave a la lista de actors
 		this.nave = nave; // puntero hacia la nave
 		this.addKeyListener(nave); // le agrego un listener de teclado
 		this.addMouseMotionListener(nave);
+		
+		ball.setX_coord(nave.getX_coord());
+		ball.setY_coord(nave.getY_coord()-(nave.getHeight()+2));
 
 	}
 
@@ -123,7 +127,7 @@ public class Arkanoid extends Canvas {
 	 */
 	public void updateWorld() {
 		
-		//lista donde añado los actores que seran eliminados al colisionar
+		//lista donde aï¿½ado los actores que seran eliminados al colisionar
 		List<Actor> actorsForRemoval = new ArrayList<Actor>();
 		for (Actor a : this.actors) {
 			if (a.isMarkedForRemoval()) {
@@ -137,14 +141,14 @@ public class Arkanoid extends Canvas {
 		}
 		//limpio la lista de actores a borrar
 		actorsForRemoval.clear();
-		//en esta lista se añadiran actores que tambien seran borrados como las explosiones
+		//en esta lista se aï¿½adiran actores que tambien seran borrados como las explosiones
 		this.actors.addAll(newIteractionActors);
 		this.newIteractionActors.clear();
 
 		
 
 		for (Actor actor1 : this.actors) {
-			//si el actor 1 es una pelota creo un rectangulo con sus dimensiones y recorro el otro bucle que creará rectangulos
+			//si el actor 1 es una pelota creo un rectangulo con sus dimensiones y recorro el otro bucle que crearï¿½ rectangulos
 			// con las dimensiones de los demas objetos
 			if (actor1 instanceof Ball) { 
 				Rectangle rect1 = new Rectangle(actor1.getX_coord(), actor1.getY_coord(), actor1.getWidth(),
@@ -255,5 +259,21 @@ public class Arkanoid extends Canvas {
 	public static void main(String[] args) {
 		Arkanoid.getInstance().game();
 	}
+
+	/**
+	 * @return the ball
+	 */
+	public Ball getBall() {
+		return ball;
+	}
+
+	/**
+	 * @param ball the ball to set
+	 */
+	public void setBall(Ball ball) {
+		this.ball = ball;
+	}
+	
+	
 
 }

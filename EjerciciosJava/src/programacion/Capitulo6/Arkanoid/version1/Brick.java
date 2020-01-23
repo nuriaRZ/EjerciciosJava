@@ -39,9 +39,9 @@ public class Brick extends Actor {
 			Explosion ex = new Explosion();
 			ex.setX_coord(this.x_coord + (this.width / 2) - ex.getWidth() / 2);
 			ex.setY_coord(this.y_coord + (this.height / 2) - ex.getHeight() / 2);
-			//lo añado a la lista de siguiente iteraccion de actores
+			//lo aï¿½ado a la lista de siguiente iteraccion de actores
 			Arkanoid.getInstance().newIteractionActors.add(ex);
-			//SoundsRepository.getInstance().playSound("explosion.wav");
+			SoundsRepository.getInstance().playSound("explosion.wav");
 			
 		}
 	}

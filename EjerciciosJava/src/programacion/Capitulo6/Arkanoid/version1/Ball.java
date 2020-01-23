@@ -9,13 +9,12 @@ public class Ball extends Actor {
 
 	protected int vx; // cantidad de pixeles que aumentar� en su movimiento
 	protected int vy;
-	public Rectangle dimensionBola = null;
+	protected boolean startMove = false;
+	
 
 	public Ball() {
 		super();
-		this.color = Color.WHITE;
-		this.x_coord = 240;
-		this.y_coord = 140;
+		this.color = Color.WHITE;		
 		this.height = 15;
 		this.width = 15;
 		this.vx = 3;
@@ -32,6 +31,7 @@ public class Ball extends Actor {
 
 	@Override
 	public void act() {
+		startMove=true;
 
 		// movimento de la pelota sobre el eje x y el eje y
 		this.x_coord += this.vx;
@@ -49,8 +49,7 @@ public class Ball extends Actor {
 	public void collisionWith(Actor actorCollisioned) {
 
 		super.collisionWith(actorCollisioned);
-		// int vX = 3;
-		// int vY = 3;
+		
 
 		if (actorCollisioned instanceof Brick || actorCollisioned instanceof Nave) {
 			vx = -vx;
@@ -90,18 +89,7 @@ public class Ball extends Actor {
 		this.vy = vy;
 	}
 
-	/**
-	 * @return the dimensionBola
-	 */
-	public Rectangle getDimensionBola() {
-		return dimensionBola;
-	}
 
-	/**
-	 * @param dimensionBola the dimensionBola to set
-	 */
-	public void setDimensionBola(Rectangle dimensionBola) {
-		this.dimensionBola = dimensionBola;
-	}
+
 
 }

@@ -13,12 +13,13 @@ import java.awt.image.BufferedImage;
 public class Nave extends Actor implements KeyListener, MouseMotionListener{
 	
 	private BufferedImage image;
-	private boolean left, right; //BANDERAS QUE QUE APUNTARAN A LAS TECLAS CON LAS QUE SE MOVERA LA NAVE
+	private boolean left, right, start, space; //BANDERAS QUE QUE APUNTARAN A LAS TECLAS CON LAS QUE SE MOVERA LA NAVE
 	protected int vx; //cantidad de pixeles que aumentara al moverse de la posicion actual 
 	protected static final int SPEED = 4; // VELOCIDAD DEL MOVIMIENTO DE LA NAVE
 
 	public Nave() {
-		
+
+
 		//definicion de coordenadas del inicio del juego
 		this.x_coord = 165;
 		this.y_coord = 400;
@@ -57,7 +58,8 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener{
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_RIGHT: right = true; break; 	
-		case KeyEvent.VK_LEFT: left = true; break;	
+		case KeyEvent.VK_LEFT: left = true; break;
+		case KeyEvent.VK_SPACE: space = true; break;
 		
 		default:
 			break;
@@ -72,7 +74,8 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener{
 		
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_RIGHT: right = false; break;	
-		case KeyEvent.VK_LEFT: left = false; break;	
+		case KeyEvent.VK_LEFT: left = false; break;
+		case KeyEvent.VK_SPACE: space = false; break;
 
 		default:
 			break;

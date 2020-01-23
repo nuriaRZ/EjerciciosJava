@@ -22,7 +22,7 @@ public class Explosion extends Actor {
 		
 		if (this.currentSprite.equals(this.sprites.get(this.sprites.size()-1))){
 			this.setMarkedForRemoval(true);
-			System.out.println("EXPLOSION");
+			
 		}
 	}
 	
