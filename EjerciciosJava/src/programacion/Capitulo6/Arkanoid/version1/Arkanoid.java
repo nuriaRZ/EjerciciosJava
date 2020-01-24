@@ -109,6 +109,8 @@ public class Arkanoid extends Canvas {
 
 		Ball ball = new Ball(); // creo una pelota
 		this.actors.add(ball); // a�ado la pelota a la lista de actors
+		this.ball = ball;
+		this.addKeyListener(ball);
 
 
 		Nave nave = new Nave(); // creo una nave
@@ -117,15 +119,33 @@ public class Arkanoid extends Canvas {
 		this.addKeyListener(nave); // le agrego un listener de teclado
 		this.addMouseMotionListener(nave);
 		
-		ball.setX_coord(nave.getX_coord());
-		ball.setY_coord(nave.getY_coord()-(nave.getHeight()+2));
+		ball.setX_coord(nave.x_coord);
+		ball.setY_coord(nave.getY_coord() - (nave.getHeight()+5));
+		
 
+		
+
+	}
+
+	/**
+	 * @return the nave
+	 */
+	public Nave getNave() {
+		return nave;
+	}
+
+	/**
+	 * @param nave the nave to set
+	 */
+	public void setNave(Nave nave) {
+		this.nave = nave;
 	}
 
 	/**
 	 * 
 	 */
 	public void updateWorld() {
+		
 		
 		//lista donde a�ado los actores que seran eliminados al colisionar
 		List<Actor> actorsForRemoval = new ArrayList<Actor>();
@@ -179,6 +199,8 @@ public class Arkanoid extends Canvas {
 		for (Actor a : this.actors) {
 			a.act();
 		}
+		
+
 	}
 
 	/**
@@ -227,6 +249,8 @@ public class Arkanoid extends Canvas {
 		strategy.show();
 
 	}
+	
+	
 
 	public static Arkanoid getInstance() {
 		if (instance == null) {

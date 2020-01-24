@@ -4,23 +4,25 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class Ball extends Actor {
+public class Ball extends Actor implements KeyListener{
 
 	protected int vx; // cantidad de pixeles que aumentar� en su movimiento
 	protected int vy;
-	protected boolean startMove = false;
-	
+	protected boolean space;
+	private int contador;
 
 	public Ball() {
 		super();
 		this.color = Color.WHITE;		
 		this.height = 15;
 		this.width = 15;
-		this.vx = 3;
-		this.vy = 3;
-		// dimensionBola = new Rectangle (this.getX_coord(), this.getY_coord(),
-		// this.getWidth(), this.getHeight());
+		this.vx = 0;
+		this.vy = 0;
+		contador = 0;
+
 	}
 
 	public void paint(Graphics2D g) {
@@ -31,7 +33,10 @@ public class Ball extends Actor {
 
 	@Override
 	public void act() {
-		startMove=true;
+		if (contador == 0) {
+			setX_coord(Arkanoid.getInstance().getNave().getX_coord());
+			setY_coord(Arkanoid.getInstance().getNave().getY_coord() - (Arkanoid.getInstance().getHeight()+3));
+		}
 
 		// movimento de la pelota sobre el eje x y el eje y
 		this.x_coord += this.vx;
@@ -60,6 +65,22 @@ public class Ball extends Actor {
 		}
 
 	}
+	
+	public void startMove() {
+		if (contador != 0){	
+			if(space) {
+				vx = 3;
+				vy = 3;
+				contador = 0;
+			}
+			else {
+				// Mover ball a la vez que nave
+				
+			}
+		}		
+	}
+	
+
 
 	/**
 	 * @return the vx
@@ -87,6 +108,35 @@ public class Ball extends Actor {
 	 */
 	public void setVy(int vy) {
 		this.vy = vy;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_SPACE: space = true; break;
+		default:
+			break;
+		}
+		contador++;
+		startMove();
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_SPACE: space = false; break;
+		default:
+			break;
+		}
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
