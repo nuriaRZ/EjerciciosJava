@@ -7,7 +7,7 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Ball extends Actor implements KeyListener{
+public class Ball extends Actor {
 
 	protected int vx; // cantidad de pixeles que aumentar� en su movimiento
 	protected int vy;
@@ -19,9 +19,9 @@ public class Ball extends Actor implements KeyListener{
 		this.color = Color.WHITE;		
 		this.height = 15;
 		this.width = 15;
-		this.vx = 0;
-		this.vy = 0;
-		contador = 0;
+		this.vx = 3;
+		this.vy = 3;	
+
 
 	}
 
@@ -29,15 +29,12 @@ public class Ball extends Actor implements KeyListener{
 		g.setColor(getColor());
 		g.fillOval(this.x_coord, this.y_coord, this.width, this.height);
 
+
 	}
 
 	@Override
 	public void act() {
-		if (contador == 0) {
-			setX_coord(Arkanoid.getInstance().getNave().getX_coord());
-			setY_coord(Arkanoid.getInstance().getNave().getY_coord() - (Arkanoid.getInstance().getHeight()+3));
-		}
-
+		
 		// movimento de la pelota sobre el eje x y el eje y
 		this.x_coord += this.vx;
 		this.y_coord += this.vy;
@@ -48,6 +45,9 @@ public class Ball extends Actor implements KeyListener{
 		if (this.y_coord < 0 || this.y_coord > (Arkanoid.getInstance().getHeight() - this.getHeight())) {
 			vy = -vy;
 		}
+
+		
+	
 	}
 
 	@Override
@@ -65,20 +65,7 @@ public class Ball extends Actor implements KeyListener{
 		}
 
 	}
-	
-	public void startMove() {
-		if (contador != 0){	
-			if(space) {
-				vx = 3;
-				vy = 3;
-				contador = 0;
-			}
-			else {
-				// Mover ball a la vez que nave
-				
-			}
-		}		
-	}
+
 	
 
 
@@ -110,34 +97,7 @@ public class Ball extends Actor implements KeyListener{
 		this.vy = vy;
 	}
 
-	@Override
-	public void keyPressed(KeyEvent e) {
 
-		switch (e.getKeyCode()) {
-		case KeyEvent.VK_SPACE: space = true; break;
-		default:
-			break;
-		}
-		contador++;
-		startMove();
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		switch (e.getKeyCode()) {
-		case KeyEvent.VK_SPACE: space = false; break;
-		default:
-			break;
-		}
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 

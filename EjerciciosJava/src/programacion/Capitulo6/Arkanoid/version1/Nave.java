@@ -10,13 +10,14 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 
-public class Nave extends Actor implements KeyListener, MouseMotionListener{
+public class Nave extends Actor implements KeyListener, MouseMotionListener, MouseListener{
 	
 	private BufferedImage image;
-	private boolean left, right; //BANDERAS QUE QUE APUNTARAN A LAS TECLAS CON LAS QUE SE MOVERA LA NAVE
+	private boolean left, right, space, click; //BANDERAS QUE QUE APUNTARAN A LAS TECLAS CON LAS QUE SE MOVERA LA NAVE
 	protected int vx; //cantidad de pixeles que aumentara al moverse de la posicion actual 
 	protected static final int SPEED = 4; // VELOCIDAD DEL MOVIMIENTO DE LA NAVE
-
+	private int contador = 0;
+	
 	public Nave() {
 
 
@@ -41,6 +42,12 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener{
 
 	@Override 
 	public void act() {
+		
+		if (contador == 0) {
+			Arkanoid.getInstance().getBall().setX_coord(getX_coord() + (getWidth()/2) -6);
+			Arkanoid.getInstance().getBall().setY_coord(getY_coord() - (getHeight()+3));
+		}
+		
 		//la nave solo se mover� sobre el eje x
 		this.x_coord += this.vx;
 		
@@ -59,11 +66,12 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener{
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_RIGHT: right = true; break; 	
 		case KeyEvent.VK_LEFT: left = true; break;
-		
+		case KeyEvent.VK_SPACE: space = true; break;
 		default:
 			break;
 		}
-		updateSpeed();
+		updateSpeed();			
+		
 	}
 	/**
 	 * al dejar de pulsar la tecla se desactiva la bandera
@@ -74,7 +82,7 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener{
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_RIGHT: right = false; break;	
 		case KeyEvent.VK_LEFT: left = false; break;
-		
+		case KeyEvent.VK_SPACE: space = false; break;
 		default:
 			break;
 		}
@@ -89,6 +97,11 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener{
 		vx = 0;
 		if (left) vx = -SPEED;
 		if (right) vx = SPEED;
+		if (space) {
+			contador++;
+			Arkanoid.getInstance().getBall().act();
+			
+		}
 	}
 
 	@Override
@@ -106,6 +119,42 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener{
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		setX_coord(e.getX());
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		switch (e.getButton()) {
+		case MouseEvent.BUTTON1: space = true; break;
+
+
+		default:
+			break;
+		}
+		updateSpeed();
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

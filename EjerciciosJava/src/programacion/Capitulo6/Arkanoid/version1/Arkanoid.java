@@ -110,7 +110,7 @@ public class Arkanoid extends Canvas {
 		Ball ball = new Ball(); // creo una pelota
 		this.actors.add(ball); // a�ado la pelota a la lista de actors
 		this.ball = ball;
-		this.addKeyListener(ball);
+		
 
 
 		Nave nave = new Nave(); // creo una nave
