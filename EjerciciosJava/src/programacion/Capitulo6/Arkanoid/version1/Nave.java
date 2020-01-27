@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
 public class Nave extends Actor implements KeyListener, MouseMotionListener, MouseListener{
 	
 	private BufferedImage image;
-	private boolean left, right, space, click; //BANDERAS QUE QUE APUNTARAN A LAS TECLAS CON LAS QUE SE MOVERA LA NAVE
+	private boolean left, right, space; //BANDERAS QUE QUE APUNTARAN A LAS TECLAS CON LAS QUE SE MOVERA LA NAVE
 	protected int vx; //cantidad de pixeles que aumentara al moverse de la posicion actual 
 	protected static final int SPEED = 4; // VELOCIDAD DEL MOVIMIENTO DE LA NAVE
 	private int contador = 0;
@@ -102,6 +102,7 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 			Arkanoid.getInstance().getBall().act();
 			
 		}
+		
 	}
 
 	@Override
@@ -123,14 +124,15 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		switch (e.getButton()) {
-		case MouseEvent.BUTTON1: space = true; break;
-
-
-		default:
-			break;
+		
+		if(e.getButton() == MouseEvent.BUTTON1 && contador==0){
+			contador++;
+			Arkanoid.getInstance().getBall().act();
 		}
-		updateSpeed();
+
+
+
+		
 	}
 
 	@Override
