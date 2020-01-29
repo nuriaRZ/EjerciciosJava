@@ -16,7 +16,11 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 	private boolean left, right, space; //BANDERAS QUE QUE APUNTARAN A LAS TECLAS CON LAS QUE SE MOVERA LA NAVE
 	protected int vx; //cantidad de pixeles que aumentara al moverse de la posicion actual 
 	protected static final int SPEED = 4; // VELOCIDAD DEL MOVIMIENTO DE LA NAVE
-	private int contador = 0;
+	private int contadorNave = 0;
+	private long startTime;
+	private long usedTime;
+	private int contadorTime = 0;
+	
 	
 	public Nave() {
 
@@ -27,6 +31,7 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 		image = SpritesRepository.getInstance().getSprite("nave-50x15.png"); //carga de la imagen para mas fluidez
 		this.width = this.image.getWidth();
 		this.height = this.image.getHeight();
+		startTime = System.currentTimeMillis();
 		
 		
 	}
@@ -42,8 +47,16 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 
 	@Override 
 	public void act() {
+		usedTime = System.currentTimeMillis() - startTime;
 		
-		if (contador == 0) {
+		if (usedTime >= 5000 && contadorNave == 0 && contadorTime == 0) {
+			contadorNave++;
+			contadorTime++;
+			Arkanoid.getInstance().getBall().act();
+			SoundsRepository.getInstance().playSound("Arkanoid-SFX-02.wav");
+		}
+		
+		if (contadorNave == 0) {
 			Arkanoid.getInstance().getBall().setX_coord(getX_coord() + (getWidth()/2) -6);
 			Arkanoid.getInstance().getBall().setY_coord(getY_coord() - (getHeight()+3));
 		}
@@ -98,8 +111,9 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 		if (left) vx = -SPEED;
 		if (right) vx = SPEED;
 		if (space) {
-			contador++;
+			contadorNave++;
 			Arkanoid.getInstance().getBall().act();
+			SoundsRepository.getInstance().playSound("Arkanoid-SFX-02.wav");
 			
 		}
 		
@@ -125,9 +139,11 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
-		if(e.getButton() == MouseEvent.BUTTON1 && contador==0){
-			contador++;
+		if(e.getButton() == MouseEvent.BUTTON1 && contadorNave==0){
+			contadorNave++;
 			Arkanoid.getInstance().getBall().act();
+			SoundsRepository.getInstance().playSound("Arkanoid-SFX-02.wav");
+			
 		}
 
 

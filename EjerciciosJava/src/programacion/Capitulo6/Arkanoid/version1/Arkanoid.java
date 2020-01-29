@@ -118,7 +118,7 @@ public class Arkanoid extends Canvas {
 		this.nave = nave; // puntero hacia la nave
 		this.addKeyListener(nave); // le agrego un listener de teclado
 		this.addMouseMotionListener(nave);
-		
+		this.addMouseListener(nave);
 		ball.setX_coord(nave.x_coord);
 		ball.setY_coord(nave.getY_coord() - (nave.getHeight()+5));
 		

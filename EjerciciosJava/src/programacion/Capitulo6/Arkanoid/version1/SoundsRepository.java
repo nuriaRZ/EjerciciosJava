@@ -12,13 +12,15 @@ public class SoundsRepository {
 	public static String START_SOUND = "Arkanoid-start-of-stage.wav";
 	public static String EXPLOSION = "explosion.wav";
 	public static String COLISION = "Arkanoid-SFX-01.wav";
+	public static String SOUND_START_MOVE_BALL = "Arkanoid-SFX-02.wav";
 	/**
 	 * 
 	 */
 	public SoundsRepository() {
 		this.getAudioClip(START_SOUND);
-		//this.getAudioClip(SOUND_PLAYER_1);
-		//this.getAudioClip(SOUND_PLAYER_2);		
+		this.getAudioClip(EXPLOSION);
+		this.getAudioClip(COLISION);
+		this.getAudioClip(SOUND_START_MOVE_BALL);
 	}
 	/**
 	 * 
