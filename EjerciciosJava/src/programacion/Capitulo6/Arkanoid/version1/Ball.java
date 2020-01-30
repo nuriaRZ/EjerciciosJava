@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Date;
 
 public class Ball extends Actor {
 
@@ -14,8 +15,13 @@ public class Ball extends Actor {
 	protected boolean space;
 	private int contador;
 	private boolean trayectoriaCreada = false;
-	private PuntoAltaPrecision p = null;
-	private TrayectoriaRecta t = null;
+	private PuntoAltaPrecision coordenadas = null;
+	private TrayectoriaRecta trayectoria = null;
+	private long millisEnInicializacion = 0;
+	private float distanciaSiguienteFrame = 5; 
+	private float aceleracion = 1.0005f;
+	private static int MAX_VELOCIDAD = 14;
+	
 
 	public Ball() {
 		super();
@@ -23,7 +29,8 @@ public class Ball extends Actor {
 		this.height = 15;
 		this.width = 15;
 		this.vx = 3;
-		this.vy = 3;	
+		this.vy = 3;
+		this.millisEnInicializacion = new Date().getTime();
 
 
 	}
@@ -37,25 +44,34 @@ public class Ball extends Actor {
 
 	@Override
 	public void act() {
-		if (trayectoriaCreada == false) {
-			trayectoriaCreada = true;
-			PuntoAltaPrecision p = new PuntoAltaPrecision(x_coord, y_coord);
-			TrayectoriaRecta t = new TrayectoriaRecta(1.7f, p, false);
-		}
+		Nave nave = Arkanoid.getInstance().getNave();
 		
-		// movimento de la pelota sobre el eje x y el eje y
-		this.x_coord += this.vx;
-		this.y_coord += this.vy;
-		// control de la pelota para que no salga del margen de la ventana
-		if (this.x_coord < 0 || this.x_coord > (Arkanoid.getInstance().getWidth() - this.getWidth())) {
-			vx = -vx; // en caso de que toque el limite se le cambia la direccion
+		if (trayectoria == null) {
+			long millisAhora = new Date().getTime();
+			if (millisAhora - millisEnInicializacion > 5000) {
+				lanzarPelota();
+			}
+			else {
+				this.x_coord = nave.getX_coord() + nave.getWidth()/2 - width/2;
+				this.y_coord = nave.getY_coord() - this.height - 1;
+			}
 		}
-		if (this.y_coord < 0 || this.y_coord > (Arkanoid.getInstance().getHeight() - this.getHeight())) {
-			vy = -vy;
+		else {//si ya existe una trayectoria
+			if (this.y_coord < 0 || this.y_coord > Arkanoid.getInstance().getHeight() - this.height) {
+				this.trayectoria.reflejarVerticalmenteRespectoAPunto(coordenadas);
+			}
+			
+			if (this.x_coord < 0 || this.x_coord > Arkanoid.getInstance().getWidth() - this.width) {
+				this.trayectoria.reflejarHorizontalmenteRespectoAPunto(coordenadas);
+			}
+			this.coordenadas = this.trayectoria.getPuntoADistanciaDePunto(this.coordenadas, this.distanciaSiguienteFrame);
+			this.x_coord = Math.round(this.coordenadas.x);
+			this.y_coord = Math.round(this.coordenadas.y);
+			
+			if (this.distanciaSiguienteFrame < MAX_VELOCIDAD) {
+				this.distanciaSiguienteFrame *= aceleracion;
+			}
 		}
-
-		
-	
 	}
 
 	@Override
@@ -63,17 +79,15 @@ public class Ball extends Actor {
 
 		super.collisionWith(actorCollisioned);
 		
-
-		if (actorCollisioned instanceof Brick || actorCollisioned instanceof Nave) {
-			vx = -vx;
-			vy = -vy;
-
-			SoundsRepository.getInstance().playSound("Arkanoid-SFX-01.wav");
-			
-		}
+		
 
 	}
 
+	public void lanzarPelota() {
+		this.coordenadas = new PuntoAltaPrecision(this.x_coord, this.y_coord);
+		this.trayectoria = new TrayectoriaRecta (-1.02f, coordenadas, true);
+		SoundsRepository.getInstance().playSound("Arkanoid-SFX-02.wav");
+	}
 	
 
 
@@ -103,6 +117,76 @@ public class Ball extends Actor {
 	 */
 	public void setVy(int vy) {
 		this.vy = vy;
+	}
+
+	/**
+	 * @return the coordenadas
+	 */
+	public PuntoAltaPrecision getCoordenadas() {
+		return coordenadas;
+	}
+
+	/**
+	 * @param coordenadas the coordenadas to set
+	 */
+	public void setCoordenadas(PuntoAltaPrecision coordenadas) {
+		this.coordenadas = coordenadas;
+	}
+
+	/**
+	 * @return the trayectoria
+	 */
+	public TrayectoriaRecta getTrayectoria() {
+		return trayectoria;
+	}
+
+	/**
+	 * @param trayectoria the trayectoria to set
+	 */
+	public void setTrayectoria(TrayectoriaRecta trayectoria) {
+		this.trayectoria = trayectoria;
+	}
+
+	/**
+	 * @return the millisEnInicializacion
+	 */
+	public long getMillisEnInicializacion() {
+		return millisEnInicializacion;
+	}
+
+	/**
+	 * @param millisEnInicializacion the millisEnInicializacion to set
+	 */
+	public void setMillisEnInicializacion(long millisEnInicializacion) {
+		this.millisEnInicializacion = millisEnInicializacion;
+	}
+
+	/**
+	 * @return the distanciaSiguienteFrame
+	 */
+	public float getDistanciaSiguienteFrame() {
+		return distanciaSiguienteFrame;
+	}
+
+	/**
+	 * @param distanciaSiguienteFrame the distanciaSiguienteFrame to set
+	 */
+	public void setDistanciaSiguienteFrame(float distanciaSiguienteFrame) {
+		this.distanciaSiguienteFrame = distanciaSiguienteFrame;
+	}
+
+	/**
+	 * @return the aceleracion
+	 */
+	public float getAceleracion() {
+		return aceleracion;
+	}
+
+	/**
+	 * @param aceleracion the aceleracion to set
+	 */
+	public void setAceleracion(float aceleracion) {
+		this.aceleracion = aceleracion;
 	}
 
 

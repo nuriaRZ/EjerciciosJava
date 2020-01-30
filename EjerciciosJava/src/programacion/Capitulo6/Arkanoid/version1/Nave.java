@@ -49,18 +49,6 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 	public void act() {
 		usedTime = System.currentTimeMillis() - startTime;
 		
-		if (usedTime >= 5000 && contadorNave == 0 && contadorTime == 0) {
-			contadorNave++;
-			contadorTime++;
-			Arkanoid.getInstance().getBall().act();
-			SoundsRepository.getInstance().playSound("Arkanoid-SFX-02.wav");
-		}
-		
-		if (contadorNave == 0) {
-			Arkanoid.getInstance().getBall().setX_coord(getX_coord() + (getWidth()/2) -6);
-			Arkanoid.getInstance().getBall().setY_coord(getY_coord() - (getHeight()+3));
-		}
-		
 		//la nave solo se mover� sobre el eje x
 		this.x_coord += this.vx;
 		
@@ -112,8 +100,8 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 		if (right) vx = SPEED;
 		if (space) {
 			contadorNave++;
-			Arkanoid.getInstance().getBall().act();
-			SoundsRepository.getInstance().playSound("Arkanoid-SFX-02.wav");
+			Arkanoid.getInstance().getBall().lanzarPelota();
+			
 			
 		}
 		
@@ -141,8 +129,9 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 		
 		if(e.getButton() == MouseEvent.BUTTON1 && contadorNave==0){
 			contadorNave++;
-			Arkanoid.getInstance().getBall().act();
-			SoundsRepository.getInstance().playSound("Arkanoid-SFX-02.wav");
+			
+			Arkanoid.getInstance().getBall().lanzarPelota();;
+
 			
 		}
 
@@ -150,6 +139,8 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 
 		
 	}
+	
+
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
