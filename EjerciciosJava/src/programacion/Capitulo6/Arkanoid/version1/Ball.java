@@ -12,15 +12,13 @@ public class Ball extends Actor {
 
 	protected int vx; // cantidad de pixeles que aumentar� en su movimiento
 	protected int vy;
-	protected boolean space;
-	private int contador;
-	private boolean trayectoriaCreada = false;
+	protected boolean space;	
 	private PuntoAltaPrecision coordenadas = null;
 	private TrayectoriaRecta trayectoria = null;
 	private long millisEnInicializacion = 0;
 	private float distanciaSiguienteFrame = 5; 
-	private float aceleracion = 1.0005f;
-	private static int MAX_VELOCIDAD = 14;
+	private float aceleracion = 1.00005f;
+	private static int MAX_VELOCIDAD = 13;
 	
 
 	public Ball() {
@@ -79,7 +77,9 @@ public class Ball extends Actor {
 
 		super.collisionWith(actorCollisioned);
 		
-		
+		if (actorCollisioned instanceof Brick || actorCollisioned instanceof Nave) {
+			trayectoria.reflejarVerticalmenteRespectoAPunto(coordenadas);
+		}
 
 	}
 

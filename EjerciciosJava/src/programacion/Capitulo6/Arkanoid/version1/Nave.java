@@ -16,10 +16,10 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 	private boolean left, right, space; //BANDERAS QUE QUE APUNTARAN A LAS TECLAS CON LAS QUE SE MOVERA LA NAVE
 	protected int vx; //cantidad de pixeles que aumentara al moverse de la posicion actual 
 	protected static final int SPEED = 4; // VELOCIDAD DEL MOVIMIENTO DE LA NAVE
-	private int contadorNave = 0;
-	private long startTime;
-	private long usedTime;
-	private int contadorTime = 0;
+	private boolean seHaPresionadoBoton = false; 
+	
+	
+	
 	
 	
 	public Nave() {
@@ -31,7 +31,7 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 		image = SpritesRepository.getInstance().getSprite("nave-50x15.png"); //carga de la imagen para mas fluidez
 		this.width = this.image.getWidth();
 		this.height = this.image.getHeight();
-		startTime = System.currentTimeMillis();
+		
 		
 		
 	}
@@ -47,7 +47,7 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 
 	@Override 
 	public void act() {
-		usedTime = System.currentTimeMillis() - startTime;
+	
 		
 		//la nave solo se mover� sobre el eje x
 		this.x_coord += this.vx;
@@ -98,8 +98,8 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 		vx = 0;
 		if (left) vx = -SPEED;
 		if (right) vx = SPEED;
-		if (space) {
-			contadorNave++;
+		if (space && seHaPresionadoBoton == false) {
+			seHaPresionadoBoton = true;
 			Arkanoid.getInstance().getBall().lanzarPelota();
 			
 			
@@ -127,17 +127,12 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
-		if(e.getButton() == MouseEvent.BUTTON1 && contadorNave==0){
-			contadorNave++;
+		if(e.getButton() == MouseEvent.BUTTON1 && seHaPresionadoBoton==false){
+			seHaPresionadoBoton = true;
 			
-			Arkanoid.getInstance().getBall().lanzarPelota();;
-
-			
+			Arkanoid.getInstance().getBall().lanzarPelota();
 		}
-
-
-
-		
+	
 	}
 	
 
