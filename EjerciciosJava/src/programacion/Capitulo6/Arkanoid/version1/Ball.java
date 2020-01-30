@@ -13,6 +13,9 @@ public class Ball extends Actor {
 	protected int vy;
 	protected boolean space;
 	private int contador;
+	private boolean trayectoriaCreada = false;
+	private PuntoAltaPrecision p = null;
+	private TrayectoriaRecta t = null;
 
 	public Ball() {
 		super();
@@ -34,6 +37,11 @@ public class Ball extends Actor {
 
 	@Override
 	public void act() {
+		if (trayectoriaCreada == false) {
+			trayectoriaCreada = true;
+			PuntoAltaPrecision p = new PuntoAltaPrecision(x_coord, y_coord);
+			TrayectoriaRecta t = new TrayectoriaRecta(1.7f, p, false);
+		}
 		
 		// movimento de la pelota sobre el eje x y el eje y
 		this.x_coord += this.vx;
