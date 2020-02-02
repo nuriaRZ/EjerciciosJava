@@ -72,12 +72,19 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 			break;
 		}
 		updateSpeed();
+
 		do {
+			if (e.isControlDown()&&e.getKeyCode()==KeyEvent.VK_Z) {
+				cheat =false;
+				break;
+			}
 		if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_C) {
 			this.x_coord =Arkanoid.getInstance().getBall().getX_coord();
 			cheat = true;
 
+
 		}
+
 		}while(cheat == true);
 
 		
