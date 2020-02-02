@@ -20,6 +20,8 @@ public class Ball extends Actor {
 	private float aceleracion = 1.00005f;
 	private static int MAX_VELOCIDAD = 13;
 	
+	
+	
 
 	public Ball() {
 		super();
@@ -47,7 +49,7 @@ public class Ball extends Actor {
 		if (trayectoria == null) {
 			long millisAhora = new Date().getTime();
 			if (millisAhora - millisEnInicializacion > 5000) {
-				lanzarPelota();
+				//lanzarPelota();
 			}
 			else {
 				this.x_coord = nave.getX_coord() + nave.getWidth()/2 - width/2;
@@ -69,25 +71,44 @@ public class Ball extends Actor {
 			if (this.distanciaSiguienteFrame < MAX_VELOCIDAD) {
 				this.distanciaSiguienteFrame *= aceleracion;
 			}
+			
 		}
+
+		
 	}
+	
+
+
+
 
 	@Override
 	public void collisionWith(Actor actorCollisioned) {
 
 		super.collisionWith(actorCollisioned);
-		
+		Brick brick = Arkanoid.getInstance().getBrick();
 		if (actorCollisioned instanceof Brick || actorCollisioned instanceof Nave) {
 			trayectoria.reflejarVerticalmenteRespectoAPunto(coordenadas);
+		
 		}
+		
+
 
 	}
+	
+
+
 
 	public void lanzarPelota() {
+		Nave nave = Arkanoid.getInstance().getNave();
+		this.x_coord = nave.getX_coord() + nave.getWidth()/2 - width/2;
+		this.y_coord = nave.getY_coord() - this.height - 1;
 		this.coordenadas = new PuntoAltaPrecision(this.x_coord, this.y_coord);
 		this.trayectoria = new TrayectoriaRecta (-1.02f, coordenadas, true);
 		SoundsRepository.getInstance().playSound("Arkanoid-SFX-02.wav");
 	}
+	
+
+
 	
 
 
@@ -188,6 +209,9 @@ public class Ball extends Actor {
 	public void setAceleracion(float aceleracion) {
 		this.aceleracion = aceleracion;
 	}
+	/**
+	 * @return the remainingLives
+	 */
 
 
 

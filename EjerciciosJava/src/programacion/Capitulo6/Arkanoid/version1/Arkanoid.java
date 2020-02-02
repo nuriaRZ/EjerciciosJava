@@ -12,7 +12,9 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -30,6 +32,11 @@ public class Arkanoid extends Canvas {
 	public List<Actor> newIteractionActors = new ArrayList<Actor>();
 	Ball ball = null;
 	Nave nave = null;
+	Brick brick = null;
+	public int remainingLives = 5;
+	public boolean getLevel = false;
+
+
 
 	private long usedTime; // Tiempo usado en cada iteracion del bucle principal
 	private static final int SPEED_FPS = 60; // VELOCIDAD DE FOTOGRAMAS
@@ -77,12 +84,8 @@ public class Arkanoid extends Canvas {
 			System.exit(0);
 		}
 	}
-
-	/**
-	 * Metodo responsable de inicializar el juego de 0
-	 */
-	public void initWorld() {
-		SoundsRepository.getInstance().playSound("Arkanoid-start-of-stage.wav");
+	
+	public void levelOne() {
 		int x_coord = 10;
 		int y_coord = 10;
 		// creacion de ladrillos
@@ -106,7 +109,184 @@ public class Arkanoid extends Canvas {
 			x_coord = 10;
 			y_coord += 17;
 		}
+	}
+	
+	public void levelTwo(){	
+		
+		int x_coord = 10;
+		int y_coord = 10;
+		int constanteSeparacion = 17;
+		 
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < 6; j++) {
+				Brick b = new Brick(); //creo un nuevo ladrillo
+				b.setX_coord(x_coord); //le asigno la coordenada X
+				b.setY_coord(y_coord); //le asigno la coordenada y
+				actors.add(b); //lo a�ado a la lista de actores
+				
+				y_coord += b.getHeight()+2; //por cada ladrillo a la coordenada x le sumo su ancho mas 2u de separacion entre ladrillos
+				if (i==0)b.setColor(Color.YELLOW);
+				if (j==5 && i==0) {
+					b.setColor(Color.GRAY);
+					b.setStrength(3);
+				}
+				if (i==1)  b.setColor(Color.MAGENTA);
+				if (j==5 && i==1) {
+					b.setColor(Color.orange);
+					b.setStrength(-6);
+				}
+	
+			
+			}
+			x_coord += 27;				
+			y_coord =10;
 
+		}
+			
+		y_coord += constanteSeparacion ;
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < 6; j++) {
+				Brick b = new Brick(); //creo un nuevo ladrillo
+				b.setX_coord(x_coord); //le asigno la coordenada X
+				b.setY_coord(y_coord); //le asigno la coordenada y
+				actors.add(b); //lo a�ado a la lista de actores
+				
+				y_coord += b.getHeight()+2; //por cada ladrillo a la coordenada x le sumo su ancho mas 2u de separacion entre ladrillos
+				if (i==0)b.setColor(Color.GREEN);
+				if (j==5 && i==0) {
+					b.setColor(Color.GRAY);
+					b.setStrength(3);
+				}
+				if (i==1)  b.setColor(Color.RED);
+				if (j==5 && i==1) {
+					b.setColor(Color.orange);
+					b.setStrength(-6);
+				}
+	
+			}
+			x_coord += 27;				
+			y_coord = 27;
+
+		}
+		
+		y_coord += constanteSeparacion + 1;
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < 6; j++) {
+				Brick b = new Brick(); //creo un nuevo ladrillo
+				b.setX_coord(x_coord); //le asigno la coordenada X
+				b.setY_coord(y_coord); //le asigno la coordenada y
+				actors.add(b); //lo a�ado a la lista de actores
+				
+				y_coord += b.getHeight()+2; //por cada ladrillo a la coordenada x le sumo su ancho mas 2u de separacion entre ladrillos
+				if (i==0)b.setColor(Color.BLUE);
+				if (j==5 && i==0) {
+					b.setColor(Color.GRAY);
+					b.setStrength(3);
+				}
+				if (i==1)  b.setColor(Color.CYAN);
+				if (j==5 && i==1) {
+					b.setColor(Color.orange);
+					b.setStrength(-6);
+				}
+	
+			}
+			x_coord += 27;				
+			y_coord =45;
+
+		}
+		
+		y_coord += constanteSeparacion+1;
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < 6; j++) {
+				Brick b = new Brick(); //creo un nuevo ladrillo
+				b.setX_coord(x_coord); //le asigno la coordenada X
+				b.setY_coord(y_coord); //le asigno la coordenada y
+				actors.add(b); //lo a�ado a la lista de actores
+				
+				y_coord += b.getHeight()+2; //por cada ladrillo a la coordenada x le sumo su ancho mas 2u de separacion entre ladrillos
+				if (i==0)b.setColor(Color.BLUE);
+				if (j==5 && i==0) {
+					b.setColor(Color.GRAY);
+					b.setStrength(3);
+				}
+				if (i==1)  b.setColor(Color.RED);
+				if (j==5 && i==1) {
+					b.setColor(Color.orange);
+					b.setStrength(-6);
+				}
+	
+			}
+			x_coord += 27;				
+			y_coord = 63;
+
+		}
+		
+		y_coord += constanteSeparacion+1;
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < 6; j++) {
+				Brick b = new Brick(); //creo un nuevo ladrillo
+				b.setX_coord(x_coord); //le asigno la coordenada X
+				b.setY_coord(y_coord); //le asigno la coordenada y
+				actors.add(b); //lo a�ado a la lista de actores
+				
+				y_coord += b.getHeight()+2; //por cada ladrillo a la coordenada x le sumo su ancho mas 2u de separacion entre ladrillos
+				if (i==0)b.setColor(Color.GREEN);
+				if (j==5 && i==0) {
+					b.setColor(Color.GRAY);
+					b.setStrength(3);
+				}
+				if (i==1)  b.setColor(Color.CYAN);
+				if (j==5 && i==1) {
+					b.setColor(Color.orange);
+					b.setStrength(-6);
+				}
+				
+	
+			}
+			x_coord += 27;				
+			y_coord =81;
+
+		}
+		
+		y_coord += constanteSeparacion + 1;
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < 6; j++) {
+				Brick b = new Brick(); //creo un nuevo ladrillo
+				b.setX_coord(x_coord); //le asigno la coordenada X
+				b.setY_coord(y_coord); //le asigno la coordenada y
+				actors.add(b); //lo a�ado a la lista de actores
+				
+				y_coord += b.getHeight()+2; //por cada ladrillo a la coordenada x le sumo su ancho mas 2u de separacion entre ladrillos
+				if (i==0)b.setColor(Color.WHITE);
+				if (j==5 && i==0) {
+					b.setColor(Color.GRAY);
+					b.setStrength(3);
+				}
+				if (i==1)  b.setColor(Color.PINK);
+				if (j==5 && i==1) {
+					b.setColor(Color.ORANGE);
+					b.setStrength(-6);
+				}
+				
+			
+
+			}
+			x_coord += 27;				
+			y_coord =99;
+		}	
+							
+	}
+	
+
+	/**
+	 * Metodo responsable de inicializar el juego de 0
+	 */
+	public void initWorld() {
+		SoundsRepository.getInstance().playSound("Arkanoid-start-of-stage.wav");
+		
+		levelOne();
+		//levelTwo();
+		
 		Ball ball = new Ball(); // creo una pelota
 		this.actors.add(ball); // a�ado la pelota a la lista de actors
 		this.ball = ball;
@@ -116,9 +296,12 @@ public class Arkanoid extends Canvas {
 		Nave nave = new Nave(); // creo una nave
 		this.actors.add(nave); // a�ado la nave a la lista de actors
 		this.nave = nave; // puntero hacia la nave
+		if (getLevel == true) {
+			levelTwo();
+		}
 		this.addKeyListener(nave); // le agrego un listener de teclado
 		this.addMouseMotionListener(nave);
-		this.addMouseListener(nave);
+		this.addMouseListener(nave);		
 		ball.setX_coord(nave.x_coord);
 		ball.setY_coord(nave.getY_coord() - (nave.getHeight()+5));
 		
@@ -150,6 +333,7 @@ public class Arkanoid extends Canvas {
 		//lista donde a�ado los actores que seran eliminados al colisionar
 		List<Actor> actorsForRemoval = new ArrayList<Actor>();
 		for (Actor a : this.actors) {
+
 			if (a.isMarkedForRemoval()) {
 				actorsForRemoval.add(a);
 			}
@@ -184,7 +368,7 @@ public class Arkanoid extends Canvas {
 							actor1.collisionWith(actor2);
 							actor2.collisionWith(actor1);
 
-							if (actor1 instanceof Ball && actor2 instanceof Brick) {
+							if (actor1 instanceof Ball && actor2 instanceof Brick) {								
 								break;
 							}
 						}
@@ -213,9 +397,24 @@ public class Arkanoid extends Canvas {
 		while (isVisible()) {
 			long startTime = System.currentTimeMillis(); // capturo los milis antes de crear el siguiente frame
 			// actualizo y pinto escena
-			updateWorld();
+			updateWorld();			
 			paintWorld();
 			usedTime = System.currentTimeMillis() - startTime;
+			if (getLevel == true) {
+				Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
+				long nowMillis = new Date().getTime();
+				while(new Date().getTime() - nowMillis < 5000) {
+					BufferedImage gameOverImage = SpritesRepository.getInstance().getSprite("game-over.png");
+					g.drawImage(gameOverImage, 50, 200, this);
+				}
+				levelTwo();
+			}
+			if (getBall().getY_coord() > this.getHeight() + 20) {
+				remainingLives--;
+				getNave().setX_coord(this.WIDTH/2);
+				
+			 
+			}
 			// hago que el bucle pare unos millis antes de crear la siguiente escena
 			try {
 				int millisToSleep = (int) (1000 / SPEED_FPS - usedTime);
@@ -227,15 +426,40 @@ public class Arkanoid extends Canvas {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			paintWorld();
 
 		}
 	}
+	
+	public void loseLives () {
+		if (getBall().getY_coord() > this.getHeight() + 20) {
+			remainingLives--;
+		 
+		}
+	}
+	
+	public void paintLives (Graphics2D g) {
+
+		for (int i = 0; i < this.remainingLives; i++) {
+			BufferedImage life = SpritesRepository.getInstance().getSprite("life.png");
+			int y_lives = 450;
+			g.drawImage(life, i*life.getWidth(), y_lives, 25, 19, null );
+			
+			
+		}
+	}
+	
+
+	
+	
+	
+
 
 	/**
 	 * 
 	 */
 	public void paintWorld() {
-
+		
 		Toolkit.getDefaultToolkit().sync();
 		Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
 		// pinto el fondo con un rectangulo negro ocupand todo el canvas
@@ -243,8 +467,20 @@ public class Arkanoid extends Canvas {
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		// llamo al metodo paint de todos los objetos de la lista actors para que se
 		// representen
+		getLevel = true;
 		for (Actor a : this.actors) {
 			a.paint(g);
+			if ( a instanceof Brick) {
+				getLevel = false;
+			}
+		}
+		paintLives(g);
+		
+		
+		if (remainingLives == 0) {
+			BufferedImage gameOverImage = SpritesRepository.getInstance().getSprite("game-over.png");
+			g.drawImage(gameOverImage, 50, 200, this);
+			this.strategy.show();
 		}
 		strategy.show();
 
@@ -296,6 +532,19 @@ public class Arkanoid extends Canvas {
 	 */
 	public void setBall(Ball ball) {
 		this.ball = ball;
+	}
+	/**
+	 * @return the brick
+	 */
+	public Brick getBrick() {
+		return brick;
+	}
+
+	/**
+	 * @param brick the brick to set
+	 */
+	public void setBrick(Brick brick) {
+		this.brick = brick;
 	}
 	
 	

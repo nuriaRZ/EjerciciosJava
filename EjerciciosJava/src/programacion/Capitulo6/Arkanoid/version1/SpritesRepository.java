@@ -12,13 +12,21 @@ public class SpritesRepository {
 	private static SpritesRepository instance = null;
 	private static String RESOURCES_FOLDER = "../res/images/";
 	public static String NAVE_IMAGE = "nave-50x15.png";
+	public static String WALLPAPER_LEVEL1 = "level1.jpg";
+	public static String WALLPAPER_LEVEL2 = "level2.jpg";
+	public static String LIFE = "life.png";
+	public static String GAME_OVER_IMAGE = "game-over.png";
 	
 
 	/**
 	 * 
 	 */
 	public SpritesRepository() {
-		this.getSprite(NAVE_IMAGE);		
+		this.getSprite(NAVE_IMAGE);	
+		this.getSprite(WALLPAPER_LEVEL1);
+		this.getSprite(WALLPAPER_LEVEL2);
+		this.getSprite(LIFE);
+		this.getSprite(GAME_OVER_IMAGE);
 	}
 
 	/**
