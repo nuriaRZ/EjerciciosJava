@@ -35,6 +35,7 @@ public class Arkanoid extends Canvas {
 	Brick brick = null;
 	public int remainingLives = 5;
 	public boolean getLevel = false;
+	public boolean nextBackGround = false;
 
 
 
@@ -405,16 +406,14 @@ public class Arkanoid extends Canvas {
 				long nowMillis = new Date().getTime();
 				while(new Date().getTime() - nowMillis < 5000) {
 					BufferedImage gameOverImage = SpritesRepository.getInstance().getSprite("game-over.png");
-					g.drawImage(gameOverImage, 50, 200, this);
+					g.drawImage(gameOverImage, 10, this.HEIGHT/2, 50, 70,null);
 				}
+				getBall().resetBall();
 				levelTwo();
 			}
-			if (getBall().getY_coord() > this.getHeight() + 20) {
-				remainingLives--;
-				getNave().setX_coord(this.WIDTH/2);
-				
-			 
-			}
+			loseLives();
+			//if (remainingLives == 0) getBall().setMarkedForRemoval(true);
+
 			// hago que el bucle pare unos millis antes de crear la siguiente escena
 			try {
 				int millisToSleep = (int) (1000 / SPEED_FPS - usedTime);
@@ -432,10 +431,14 @@ public class Arkanoid extends Canvas {
 	}
 	
 	public void loseLives () {
-		if (getBall().getY_coord() > this.getHeight() + 20) {
+		if (getBall().y_coord > Arkanoid.getInstance().getHeight() - getBall().height) {
 			remainingLives--;
-		 
+			SoundsRepository.getInstance().playSound(SoundsRepository.LOSE_LIVES);
+			getBall().resetBall();
+			
+
 		}
+
 	}
 	
 	public void paintLives (Graphics2D g) {
@@ -451,7 +454,15 @@ public class Arkanoid extends Canvas {
 	
 
 	
+	public void paintBackgroundLevel1(Graphics2D g) {
+		BufferedImage levelOneBG = SpritesRepository.getInstance().getSprite("level1.jpg");
+		g.drawImage(levelOneBG, 0, 0, this.getWidth(), this.getHeight(), null);
+	}
 	
+	public void paintBackgroundLevel2(Graphics2D g) {
+		BufferedImage levelTwoBG = SpritesRepository.getInstance().getSprite("level2.jpg");
+		g.drawImage(levelTwoBG, 0, 0, this.getWidth(), this.getHeight(), null);
+	}
 	
 
 
@@ -463,8 +474,11 @@ public class Arkanoid extends Canvas {
 		Toolkit.getDefaultToolkit().sync();
 		Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
 		// pinto el fondo con un rectangulo negro ocupand todo el canvas
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, this.getWidth(), this.getHeight());
+		
+		
+			paintBackgroundLevel2(g);
+			
+		
 		// llamo al metodo paint de todos los objetos de la lista actors para que se
 		// representen
 		getLevel = true;
@@ -473,14 +487,17 @@ public class Arkanoid extends Canvas {
 			if ( a instanceof Brick) {
 				getLevel = false;
 			}
+			
 		}
 		paintLives(g);
 		
 		
 		if (remainingLives == 0) {
+			
 			BufferedImage gameOverImage = SpritesRepository.getInstance().getSprite("game-over.png");
-			g.drawImage(gameOverImage, 50, 200, this);
+			g.drawImage(gameOverImage, 5, this.HEIGHT-350, this.WIDTH-10, gameOverImage.getHeight(),null);
 			this.strategy.show();
+			
 		}
 		strategy.show();
 

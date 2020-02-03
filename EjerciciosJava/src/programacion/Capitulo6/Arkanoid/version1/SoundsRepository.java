@@ -14,6 +14,7 @@ public class SoundsRepository {
 	public static String COLISION = "Arkanoid-SFX-01.wav";
 	public static String SOUND_START_MOVE_BALL = "Arkanoid-SFX-02.wav";
 	public static String BRICK_HARD_SOUND = "Arkanoid-SFX-08.wav";
+	public static String LOSE_LIVES = "Arkanoid-SFX-04.wav";
 	/**
 	 * 
 	 */

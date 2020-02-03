@@ -49,7 +49,7 @@ public class Ball extends Actor {
 		if (trayectoria == null) {
 			long millisAhora = new Date().getTime();
 			if (millisAhora - millisEnInicializacion > 5000) {
-				//lanzarPelota();
+				lanzarPelota();
 			}
 			else {
 				this.x_coord = nave.getX_coord() + nave.getWidth()/2 - width/2;
@@ -57,7 +57,7 @@ public class Ball extends Actor {
 			}
 		}
 		else {//si ya existe una trayectoria
-			if (this.y_coord < 0 || this.y_coord > Arkanoid.getInstance().getHeight() - this.height) {
+			if (this.y_coord < 0 ) {
 				this.trayectoria.reflejarVerticalmenteRespectoAPunto(coordenadas);
 			}
 			
@@ -99,12 +99,18 @@ public class Ball extends Actor {
 
 
 	public void lanzarPelota() {
-		Nave nave = Arkanoid.getInstance().getNave();
-		this.x_coord = nave.getX_coord() + nave.getWidth()/2 - width/2;
-		this.y_coord = nave.getY_coord() - this.height - 1;
+				
 		this.coordenadas = new PuntoAltaPrecision(this.x_coord, this.y_coord);
 		this.trayectoria = new TrayectoriaRecta (-1.02f, coordenadas, true);
 		SoundsRepository.getInstance().playSound("Arkanoid-SFX-02.wav");
+	}
+	
+	public void resetBall() {
+		Nave nave = Arkanoid.getInstance().getNave();
+		millisEnInicializacion = new Date().getTime();
+		trayectoria = null;
+		nave.setX_coord(Arkanoid.getInstance().getWidth()/2);
+		nave.setSeHaPresionadoBoton(false);
 	}
 	
 
