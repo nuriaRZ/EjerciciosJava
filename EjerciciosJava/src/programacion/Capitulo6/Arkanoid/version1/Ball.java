@@ -109,6 +109,7 @@ public class Ball extends Actor {
 		Nave nave = Arkanoid.getInstance().getNave();
 		millisEnInicializacion = new Date().getTime();
 		trayectoria = null;
+		distanciaSiguienteFrame = 5;
 		nave.setX_coord(Arkanoid.getInstance().getWidth()/2);
 		nave.setSeHaPresionadoBoton(false);
 	}
