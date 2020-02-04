@@ -72,32 +72,19 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 			break;
 		}
 		updateSpeed();
-		if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_X) {
-			this.x_coord = Arkanoid.getInstance().getWidth()/2;
-			cheat = false;
-		}
-		do {
-			if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_X) {
-				this.x_coord = Arkanoid.getInstance().getWidth()/2;
-				cheat = false;
-				break;
-			}
+
 
 		if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_C) {
 			this.x_coord =Arkanoid.getInstance().getBall().getX_coord();
-			cheat = true;
+			//cheat = true;
 
 
 		}
 
-		}while(cheat == true);
-		
 
 
 		
 	}
-
-
 	/**
 	 * al dejar de pulsar la tecla se desactiva la bandera
 	 */
@@ -112,10 +99,7 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 			break;
 		}
 		updateSpeed();
-		if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_C) { cheat = true;
-		}
 		
-		if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_X)  cheat = false;
 
 			
 	}	
@@ -164,17 +148,7 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 	
 	}
 	
-	
-	
 
-
-	@Override
-	public void collisionWith(Actor actorCollisioned) {
-		super.collisionWith(actorCollisioned);
-		if (actorCollisioned instanceof Ball) {
-			SoundsRepository.getInstance().playSound(SoundsRepository.COLISION);
-		}
-	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
@@ -199,6 +173,7 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 		// TODO Auto-generated method stub
 		
 	}
+
 	/**
 	 * @return the seHaPresionadoBoton
 	 */
@@ -212,6 +187,8 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 	public void setSeHaPresionadoBoton(boolean seHaPresionadoBoton) {
 		this.seHaPresionadoBoton = seHaPresionadoBoton;
 	}
+	
+	
 
 
 }
