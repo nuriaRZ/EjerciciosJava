@@ -7,7 +7,8 @@ import java.awt.Transparency;
 
 public class Brick extends Actor {
 	public int strength;
-	public static final int TRANSLUCENT = 3;
+	public static final int SCORE_FOR_BROKE_BRICK = 5;
+	public static final int SCORE_FOR_BROKE_HARD_BRICK = 2;
 
 	public Brick() {
 		super();
@@ -16,6 +17,7 @@ public class Brick extends Actor {
 		this.width = 25;
 		this.height = 15;
 		this.strength = 1;
+		
 		
 		
 	}
@@ -37,12 +39,6 @@ public class Brick extends Actor {
 		
 	}
 
-	/**
-	 * @return the translucent
-	 */
-	public static float getTranslucent() {
-		return TRANSLUCENT;
-	}
 
 	@Override
 	public void act() {
@@ -66,10 +62,11 @@ public class Brick extends Actor {
 				this.setMarkedForRemoval(true);
 				SoundsRepository.getInstance().playSound("Arkanoid-SFX-01.wav");
 				explosion();
+				Arkanoid.getInstance().getNave().addScore(SCORE_FOR_BROKE_BRICK);
 			}
-			if (strength != 0) {
-			
+			if (strength != 0) {			
 				SoundsRepository.getInstance().playSound("Arkanoid-SFX-08.wav");
+				Arkanoid.getInstance().getNave().addScore(SCORE_FOR_BROKE_HARD_BRICK);
 				
 			}
 	

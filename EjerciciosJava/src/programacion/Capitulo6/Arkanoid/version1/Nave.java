@@ -17,11 +17,13 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 	protected int vx; //cantidad de pixeles que aumentara al moverse de la posicion actual 
 	protected static final int SPEED = 4; // VELOCIDAD DEL MOVIMIENTO DE LA NAVE
 	private boolean seHaPresionadoBoton = false; 
+	private int score = 0;
 	
 	
 	
 	
-	
+
+
 	public Nave() {
 
 
@@ -186,6 +188,24 @@ public class Nave extends Actor implements KeyListener, MouseMotionListener, Mou
 	 */
 	public void setSeHaPresionadoBoton(boolean seHaPresionadoBoton) {
 		this.seHaPresionadoBoton = seHaPresionadoBoton;
+	}
+	
+	/**
+	 * @return the score
+	 */
+	public int getScore() {
+		return score;
+	}
+
+	/**
+	 * @param score the score to set
+	 */
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
+	public void addScore(int score) {
+		this.score += score;
 	}
 	
 	

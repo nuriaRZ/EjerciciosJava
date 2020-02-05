@@ -3,6 +3,7 @@ package programacion.Capitulo6.Arkanoid.version1;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -307,9 +308,9 @@ public class Arkanoid extends Canvas {
 			a.paint(g);
 		}
 		paintLives(g);
+		paintScore(g);
 		
-		
-		if (remainingLives == 0) {
+		if (getBall().isMarkedForRemoval()==true) {
 			
 			BufferedImage gameOverImage = SpritesRepository.getInstance().getSprite("game-over.png");
 			g.drawImage(gameOverImage, 5, this.HEIGHT-350, this.WIDTH-10, gameOverImage.getHeight(),null);
@@ -318,6 +319,15 @@ public class Arkanoid extends Canvas {
 		}
 		strategy.show();
 
+	}
+	
+	public void paintScore(Graphics2D g) {
+		g.setFont(new Font("Arial", Font.BOLD,20));
+		g.setPaint(Color.green);
+		g.drawString("Score:", this.WIDTH-100, this.HEIGHT-60 + 20);
+		// En rojo pinta una cadena de texto con la puntuaci�n conseguida
+		g.setPaint(Color.red);
+		g.drawString(nave.getScore() + "", this.WIDTH-30, this.HEIGHT-60 + 20);
 	}
 	
 	

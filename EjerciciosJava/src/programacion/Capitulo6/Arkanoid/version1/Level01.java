@@ -5,6 +5,11 @@ import java.awt.Color;
 public class Level01 extends Level {
 
 	public Level01() {
+
+	}
+
+	@Override
+	public void inicializarFase() {
 		int x_coord = 10;
 		int y_coord = 10;
 		// creacion de ladrillos
@@ -28,11 +33,6 @@ public class Level01 extends Level {
 			x_coord = 10;
 			y_coord += 17;
 		}
-	}
-
-	@Override
-	public void inicializarFase() {
-		// TODO Auto-generated method stub
 
 	}
 
