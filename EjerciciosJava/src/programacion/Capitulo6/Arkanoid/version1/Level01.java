@@ -33,6 +33,11 @@ public class Level01 extends Level {
 			x_coord = 10;
 			y_coord += 17;
 		}
+//		Brick b = new Brick();
+//		actors.add(b);
+//		b.setColor(Color.blue);
+//		b.setX_coord(x_coord);
+//		b.setY_coord(y_coord);
 
 	}
 
