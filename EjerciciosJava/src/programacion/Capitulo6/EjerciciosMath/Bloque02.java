@@ -25,11 +25,39 @@ public class Bloque02 {
 	
 	public static void ejercicio03() {
 		
+		float x = 4;
+		float y = 1;
+		float miPi = 0;
+		int contador = 0;
+		do {
+			contador++;
+			if (contador % 2  == 0) {
+				miPi -= x/y;
+				
+			}
+			
+			else {
+				miPi+= x/y;
+				
+			}
+			y+=2;
+			
+			
+		}while(!(Math.abs(Math.PI - miPi) < 0.000001));
+		System.out.println("num PI: "+ Math.PI +"\nmi PI: "+ miPi +"\ncontador: "+ contador);
+		
+	}
+	
+	public static void ejercicio04() {
+		int c1 = 4;
+		int c2 = 5;
+		
+		System.out.println("hipotenusa:"+ Math.hypot(c1, c2));
 	}
 
 
 	public static void main(String[] args) {
-		ejercicio02();
+		ejercicio04();
 
 	}
 
