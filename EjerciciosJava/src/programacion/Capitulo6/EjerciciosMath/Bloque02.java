@@ -54,10 +54,30 @@ public class Bloque02 {
 		
 		System.out.println("hipotenusa:"+ Math.hypot(c1, c2));
 	}
+	
+	public static void ejercicio05() {
+		float x = 0;
+		float xAnt = 0, xSig = 0;
+		int contador = 0;
+		do {
+			if (x * Math.sin(x) > xAnt * Math.sin(xAnt) && x * Math.sin(x) > xSig * Math.sin(xSig)){
+				System.out.println(x + "es un máximo");
+				contador++;
+			}
+			x += 0.01f;
+			xAnt = x - 0.01f;
+			xSig = x + 0.01f;
+			
+			
+		}while (!(contador == 5));
+		
+		
+		
+	}
 
 
 	public static void main(String[] args) {
-		ejercicio04();
+		ejercicio05();
 
 	}
 
