@@ -32,14 +32,16 @@ public class Bloque03_Wrappers {
 	
 	public static void ejercicio02() {
 	
-	String str = JOptionPane.showInputDialog("Introduce una contraseña, debe contener:\n"+
-	"- Al menos una mayúscula.\n-Al menos una minúscula.\n-Al menos un dígito.\n- Al menos un carácter no alfanumérico.");
+	String str = JOptionPane.showInputDialog("Introduce una contraseï¿½a, debe contener:\n"+
+	"- Al menos una mayï¿½scula.\n-Al menos una minï¿½scula.\n-Al menos un dï¿½gito.\n- Al menos un carï¿½cter no alfanumï¿½rico.");
 	
 	boolean mayuscula = false;
 	boolean minuscula = false;
 	boolean digito = false;
 	boolean noAlfanumerico = false;
 	char cadenaCaracteres[] = new char [str.length()] ;
+	
+	
 		
 		for (int i = 0; i < cadenaCaracteres.length; i++) {
 			cadenaCaracteres[i] = str.charAt(i);
@@ -51,12 +53,13 @@ public class Bloque03_Wrappers {
 			if (!(Character.isLetterOrDigit(cadenaCaracteres[i]))) noAlfanumerico = true;
 				
 		}
-		System.out.println("La contraseña introducida es:" + str.toString());
+
+		System.out.println("La contraseï¿½a introducida es:" + str.toString());
 		if (mayuscula == true && minuscula == true && digito == true && noAlfanumerico == true) {
 			
-			System.out.println("Tu contraseña es válida");
+			System.out.println("Tu contraseï¿½a es vï¿½lida");
 		}else {
-			System.out.println("Su contraseña no es válida");
+			System.out.println("Su contraseï¿½a no es vï¿½lida");
 		}	
 	
 	}
