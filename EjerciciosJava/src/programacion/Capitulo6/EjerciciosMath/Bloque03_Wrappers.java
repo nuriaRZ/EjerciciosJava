@@ -11,21 +11,15 @@ public class Bloque03_Wrappers {
 	}
 	
 	public static void ejercicio01() {
-		System.out.println("*********************"+"********************"+"********************"+
-						   "\n*      UNIDAD       *"+"      MAXIMO       *"+"      MINIMO       *"+
-						  "\n*********************"+"***********************"+"*****************************"+
-						"\n*      byte         *"+"\t"+Byte.MAX_VALUE+"\t"+"*"+"\t\t"+Byte.MIN_VALUE+"\t"+"*"+
-						 "\n*********************"+"*************************"+"******************************"+
-						"\n*      int         *"+"\t"+Integer.MAX_VALUE+"\t"+"*"+"\t"+Integer.MIN_VALUE+"\t"+"*"+
-						"\n*********************"+"**************************"+"*******************************"+
-						"\n*      short         *"+ "\t"+Short.MAX_VALUE+"\t"+   "*"+"\t\t"+Short.MIN_VALUE+"\t"+"*"+
-						"\n*********************"+"**************************"+"*******************************"+
-						"\n*      long         *"+"\t"+Long.MAX_VALUE+"\t"+   "*"+"\t"+Long.MIN_VALUE+"\t"+"*"+
-						"\n*********************"+"**************************"+"*******************************"+
-						"\n*      Float        *"+"\t"+Float.MAX_VALUE+"\t"+   "*"+"\t"+Float.MIN_VALUE+"\t"+"*"+
-						"\n*********************"+"**************************"+"********************************"+
-						"\n*      Double        *"+"\t"+Double.MAX_VALUE+"\t"+"*"+"\t"+Double.MIN_VALUE+"\t"+"*"+
-						"\n*********************"+"***************************"+"******************************");
+		System.out.println(
+						   "\tUNIDAD\tMAXIMO\t\t\tMINIMO"+
+						  
+						"\n\t byte\t"+Byte.MAX_VALUE+"\t\t\t"+Byte.MIN_VALUE+
+						"\n\t int\t "+Integer.MAX_VALUE+"\t\t"+Integer.MIN_VALUE+
+						"\n\t short\t "+Short.MAX_VALUE+"\t\t\t"+Short.MIN_VALUE+
+						"\n\t longt\t "+Long.MAX_VALUE+"\t"+Long.MIN_VALUE+
+						"\n\t float\t"+Float.MAX_VALUE+"\t\t"+Float.MIN_VALUE+
+						"\n\t double\t"+Double.MAX_VALUE+"\t"+Double.MIN_VALUE);
 		
 
 	}
@@ -76,7 +70,7 @@ public class Bloque03_Wrappers {
 	}
 
 	public static void main(String[] args) {
-		ejercicio02();
+		ejercicio01();
 
 	}
 
