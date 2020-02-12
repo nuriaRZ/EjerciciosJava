@@ -1,5 +1,6 @@
 package programacion.Capitulo6.date_y_calendar;
 
+import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,10 +21,10 @@ public class Ejercicio01_Bloque05 {
 
 		}
 		catch (ParseException e) {
-			System.out.println("Fecha introducida no válida");
+			System.out.println("Fecha introducida no vï¿½lida");
 		}
 		System.out.println("Fecha introducida: " + fechaParseada);		
-		System.out.println("Date / Anio: "+ fechaParseada.getYear());
+		System.out.println("Date / Anio: "+ new SimpleDateFormat("yyyy").format(fechaParseada));
 	
 		System.out.println();
 		Calendar calendar = Calendar.getInstance();
