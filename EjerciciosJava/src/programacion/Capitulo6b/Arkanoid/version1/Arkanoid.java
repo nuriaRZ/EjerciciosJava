@@ -278,15 +278,15 @@ public class Arkanoid extends Canvas {
 	
 
 	
-//	public void paintBackgroundLevel1(Graphics2D g) {
-//		BufferedImage levelOneBG = SpritesRepository.getInstance().getSprite("level1.jpg");
-//		g.drawImage(levelOneBG, 0, 0, this.getWidth(), this.getHeight(), null);
-//	}
-//	
-//	public void paintBackgroundLevel2(Graphics2D g) {
-//		BufferedImage levelTwoBG = SpritesRepository.getInstance().getSprite("level2.jpg");
-//		g.drawImage(levelTwoBG, 0, 0, this.getWidth(), this.getHeight(), null);
-//	}
+	public void paintBackgroundLevel1(Graphics2D g) {
+		BufferedImage levelOneBG = SpritesRepository.getInstance().getSprite("level1.jpg");
+		g.drawImage(levelOneBG, 0, 0, this.getWidth(), this.getHeight(), null);
+	}
+	
+	public void paintBackgroundLevel2(Graphics2D g) {
+		BufferedImage levelTwoBG = SpritesRepository.getInstance().getSprite(Propiedades.getProperty("WALLPAPER_LEVEL2"));
+		g.drawImage(levelTwoBG, 0, 0, this.getWidth(), this.getHeight(), null);
+	}
 	
 	
 	
@@ -302,10 +302,9 @@ public class Arkanoid extends Canvas {
 		// pinto el fondo con un rectangulo negro ocupand todo el canvas
 		
 		
-		//	paintBackgroundLevel2(g);
+			paintBackgroundLevel2(g);
 		
-		File file = new File("./src/arkanoid.propierties");
-		System.out.println("Fichero encontrado: " + file.exists());
+	
 		
 			
 		

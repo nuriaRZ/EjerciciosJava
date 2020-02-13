@@ -2,8 +2,13 @@ package programacion.Capitulo6b.Arkanoid.version1;
 
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 
@@ -73,6 +78,8 @@ public class SpritesRepository {
 		return img;
 	
 	}
+	
+
 	
 
 }
