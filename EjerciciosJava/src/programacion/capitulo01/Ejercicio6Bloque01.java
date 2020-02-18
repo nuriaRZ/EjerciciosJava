@@ -1,4 +1,4 @@
-package programacion.Capitulo01;
+package programacion.capitulo01;
 
 import javax.swing.JOptionPane;
 
