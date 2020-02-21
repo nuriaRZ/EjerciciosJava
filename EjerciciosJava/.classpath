@@ -3,5 +3,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="libs/mysql-connector-java-8.0.19.jar"/>
+	<classpathentry kind="lib" path="libs/Apache_Commons_FileUpload/commons-fileupload-1.4.jar"/>
+	<classpathentry kind="lib" path="libs/JDBC_Oracle_Connection_Pool/ucp.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
