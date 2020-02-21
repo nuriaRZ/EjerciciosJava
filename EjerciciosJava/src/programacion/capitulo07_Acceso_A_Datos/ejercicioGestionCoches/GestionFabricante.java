@@ -92,9 +92,7 @@ public class GestionFabricante {
 				break;
 			case 0:
 				break;
-	
-			default:
-				break;
+
 			}
 			
 			getID(conn, id);
