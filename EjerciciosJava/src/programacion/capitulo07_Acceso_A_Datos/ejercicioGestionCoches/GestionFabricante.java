@@ -38,6 +38,11 @@ public class GestionFabricante {
 				removeFabricante(conn);
 			
 			case 0: Menu.menuPrincipal(conn); break;
+			
+			default: 
+				if (opcion > 4 || opcion < 0) {
+					System.out.println("Elija una de las opciones existentes...");
+				}
 
 			
 			}

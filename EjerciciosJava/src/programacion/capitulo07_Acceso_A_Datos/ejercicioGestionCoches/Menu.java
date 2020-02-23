@@ -33,9 +33,15 @@ public class Menu {
 					
 				case 1:
 					GestionFabricante.menuFabricante(conn);	
-					
+				
+				default: 	
+					if(opcion > 5 || opcion < 0) {
+						System.out.println("Elija una de las opciones existentes...");
+					}
 			
 				}
+				
+					
 				System.out.println();
 			
 		}while(opcion != 0);
