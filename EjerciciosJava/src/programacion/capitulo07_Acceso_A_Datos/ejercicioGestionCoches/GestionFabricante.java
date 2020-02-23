@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class GestionFabricante {
+		
 
 	public static void menuFabricante(Connection conn) throws SQLException {
 		Scanner sc;
@@ -32,9 +33,13 @@ public class GestionFabricante {
 			case 3:
 				updateFabricante(conn);
 				break;
+				
+			case 4:
+				removeFabricante(conn);
+			
+			case 0: Menu.menuPrincipal(conn); break;
 
-			default:
-				break;
+			
 			}
 			
 		}while (opcion != 0);
@@ -51,7 +56,8 @@ public class GestionFabricante {
 			+ " " + rs.getString(3) );
 		}
 		rs.close();
-		s.close();		
+		s.close();	
+		System.out.println();
 	}
 	
 	private static void addFabricante(Connection conn) throws SQLException {
@@ -77,48 +83,122 @@ public class GestionFabricante {
 	private static void updateFabricante(Connection conn) throws SQLException {
 		
 		Statement s = (Statement) conn.createStatement();
-		int opcion;
-		Scanner sc = new Scanner(System.in);
 		int id;
+		
+		int idEnTabla;
+		boolean cifEditado = true, nombreEditado = true;
+		
+			
 		do {			
-			System.out.println("Introduzca id del fabricante a modificar"+
-					"\n-1 Para ver listado de fabricantes, 0- Para salir");
+			idEnTabla=getIdEnTabla(conn);
+			Scanner sc = new Scanner(System.in);
 			
-			 id = sc.nextInt();
+			String sql;
+			System.out.println("Introduzca el nuevo CIF, 0 para no modificar");
+			String cif = sc.next();	
+			if (cif.equals(String.valueOf(0))) cifEditado = false;
+			System.out.println("Introduzca el nuevo nombre, 0 para no modificar");
+			String nombre = sc.next();	
+			if (nombre.equals(String.valueOf(0))) nombreEditado = false;
 			
+			
+			if (cifEditado && nombreEditado) {
+				sql= "update fabricante set cif= '"+cif+"',nombre= '"+nombre+"' where id= "+ idEnTabla+";";
+			}
+			else {
+				if (cifEditado) {
+					sql= "update fabricante set cif= '"+cif+"' where id= "+ idEnTabla+";";
+				}
+				else {
+					sql= "update fabricante set nombre= '"+nombre+"' where id= "+ idEnTabla+";";
+				}
+			}
+			
+			s.execute(sql);
+			 s.close();
+			
+		}while(idEnTabla != 0);
+				
+	}
+	/**
+	 * 
+	 * @param conn
+	 * @return
+	 * @throws SQLException
+	 */
+	
+	private static  int getIdEnTabla(Connection conn) throws SQLException {
+		Statement s = (Statement) conn.createStatement();
+		ResultSet rs;
+		int idEnTabla = 0;
+		int id;
+		
+		
+			boolean idValido = true;
+			
+			
+			System.out.println("System.out.println(\"Introduzca id del fabricante" + 
+										"\n-1) Para ver listado de fabricantes, 0) Para salir");
+			Scanner sc = new Scanner(System.in); 
+			id = sc.nextInt();
 			switch (id) {
 			case -1:
 				listadoDeDatos(conn);
-				break;
-			case 0:
-				break;
+				
+				
+			case 0: menuFabricante(conn);
+				
 
+			default:
+				do {
+					
+					
+					rs= s.executeQuery("select id from tutorialjavacoches.fabricante order by id");
+					
+					while(rs.next()) {
+						idValido = false;
+						if (id == rs.getInt(1)) {
+							
+							idValido = true;
+							idEnTabla = rs.getInt(1);
+						}
+					}
+					
+					
+				}while(!idValido);
+				s.close();
+				rs.close();
+				
 			}
 			
-			getID(conn, id);
-			System.out.println(id);
-		}while (id != 0);
-				
 		
 		
-				
+
+		return idEnTabla;
+		
 	}
 	
-	private static  void getID(Connection conn, int id) throws SQLException {
+	private static void removeFabricante(Connection conn) throws SQLException {
 		Statement s = (Statement) conn.createStatement();
-		ResultSet rs;
-		boolean idExistente = false;
+		int id;
 		
-		do {
-			System.out.println("entro a consulta");
+		int idEnTabla;
+		boolean cifEditado = true, nombreEditado = true;
 			
-			rs= s.executeQuery("select * from tutorialjavacoches.fabricante where id ="+ id);
+		do {			
+			idEnTabla=getIdEnTabla(conn);
+			Scanner sc = new Scanner(System.in);
 			
+			String sql;
+			sql= "delete from fabricante where id="+ idEnTabla+";";
 			
-		}while(!rs.next());
+			System.out.println("Dato borrado");
+			s.execute(sql);
+			 s.close();
+			
+		}while(idEnTabla != 0);
 		
-		s.close();
-		rs.close();
+		
 		
 	}
 	

@@ -9,7 +9,7 @@ import programacion.Capitulo04_POO.bloque03.Ejercicio02_Preguntas.Opc_Correcta;
 
 public class Menu {
 	
-	private static void menuPrincipal(Connection conn) throws SQLException {
+	public static void menuPrincipal(Connection conn) throws SQLException {
 		Scanner sc;
 		int opcion;
 		do {
@@ -28,7 +28,7 @@ public class Menu {
 				
 				switch (opcion) {
 				case 0:
-					System.out.println("Saliendo del programa");
+					System.out.println("Adios");
 					break;
 					
 				case 1:
