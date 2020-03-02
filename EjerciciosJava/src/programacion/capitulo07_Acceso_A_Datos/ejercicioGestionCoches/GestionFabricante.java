@@ -1,212 +1,168 @@
 package programacion.capitulo07_Acceso_A_Datos.ejercicioGestionCoches;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
+import java.util.List;
+
+import programacion.capitulo07_Acceso_A_Datos.ejercicioGestionCoches.modelo.Fabricante;
+import programacion.capitulo07_Acceso_A_Datos.ejercicioGestionCoches.modelo.controladores.ControladorFabricante;
+import programacion.capitulo07_Acceso_A_Datos.ejercicioGestionCoches.modelo.controladores.ErrorBBDDException;
+
 
 public class GestionFabricante {
-		
 
-	public static void menuFabricante(Connection conn) throws SQLException {
-		Scanner sc;
-		int opcion;
-		do {
-			System.out.println("GESTION DE FABRICANTE: "+
-					"\n1.-Listado de Fabricantes."+
-					"\n2.- Alta a un Fabricante"+
-					"\n3.- Modificar un Fabricante"+
-					"\n4.- Baja a un Fabricante"+					
-					"\n Pulse 0 para salir");
-			
-				sc = new Scanner(System.in);
-				opcion = sc.nextInt();
-			switch (opcion) {
-			case 1:
-					listadoDeDatos(conn);
-				break;
-			case 2:
-				addFabricante(conn);
-				break;
-				
-			case 3:
-				updateFabricante(conn);
-				break;
-				
-			case 4:
-				removeFabricante(conn);
-			
-			case 0: Menu.menuPrincipal(conn); break;
-			
-			default: 
-				if (opcion > 4 || opcion < 0) {
-					System.out.println("Elija una de las opciones existentes...");
-				}
-
-			
-			}
-			
-		}while (opcion != 0);
-
-	}
-	
-	private static void listadoDeDatos(Connection conn) throws SQLException {
-		Statement s = (Statement) conn.createStatement();
-		
-		ResultSet rs = s.executeQuery("select * from fabricante");
-		
-		while (rs.next()) {
-			System.out.println(rs.getInt("id") + " " + rs.getString(2)
-			+ " " + rs.getString(3) );
-		}
-		rs.close();
-		s.close();	
-		System.out.println();
-	}
-	
-	private static void addFabricante(Connection conn) throws SQLException {
-		Statement s = (Statement) conn.createStatement();
-		
-		Scanner sc = new Scanner(System.in);
-
-		System.out.println("Introduce un id para el fabricante");
-		int id = sc.nextInt();
-		System.out.println("Introduce un cif para el fabricante");
-		String cif = sc.next();
-		System.out.println("Introduce un nombre para el fabricante");
-		String nombre = sc.next();
-		
-		String sql ="INSERT INTO tutorialjavacoches.fabricante (id, cif, nombre) " +
-				"VALUES  (" + id + ", '" + cif + "', '" + nombre + "')";
-		s.executeUpdate(sql);
-	
-		s.close();
-		
-	}
-	
-	private static void updateFabricante(Connection conn) throws SQLException {
-		
-		Statement s = (Statement) conn.createStatement();
-		int id;
-		
-		int idEnTabla;
-		boolean cifEditado = true, nombreEditado = true;
-		
-			
-		do {			
-			idEnTabla=getIdEnTabla(conn);
-			Scanner sc = new Scanner(System.in);
-			
-			String sql;
-			System.out.println("Introduzca el nuevo CIF, 0 para no modificar");
-			String cif = sc.next();	
-			if (cif.equals(String.valueOf(0))) cifEditado = false;
-			System.out.println("Introduzca el nuevo nombre, 0 para no modificar");
-			String nombre = sc.next();	
-			if (nombre.equals(String.valueOf(0))) nombreEditado = false;
-			
-			
-			if (cifEditado && nombreEditado) {
-				sql= "update fabricante set cif= '"+cif+"',nombre= '"+nombre+"' where id= "+ idEnTabla+";";
-			}
-			else {
-				if (cifEditado) {
-					sql= "update fabricante set cif= '"+cif+"' where id= "+ idEnTabla+";";
-				}
-				else {
-					sql= "update fabricante set nombre= '"+nombre+"' where id= "+ idEnTabla+";";
-				}
-			}
-			
-			s.execute(sql);
-			 s.close();
-			
-		}while(idEnTabla != 0);
-				
-	}
 	/**
 	 * 
-	 * @param conn
-	 * @return
-	 * @throws SQLException
 	 */
-	
-	private static  int getIdEnTabla(Connection conn) throws SQLException {
-		Statement s = (Statement) conn.createStatement();
-		ResultSet rs;
-		int idEnTabla = 0;
-		int id;
-		
-		
-			boolean idValido = true;
-			
-			
-			System.out.println("System.out.println(\"Introduzca id del fabricante" + 
-										"\n-1) Para ver listado de fabricantes, 0) Para salir");
-			Scanner sc = new Scanner(System.in); 
-			id = sc.nextInt();
-			switch (id) {
-			case -1:
-				listadoDeDatos(conn);
-				
-				
-			case 0: menuFabricante(conn);
-				
+	public static void menuGestion() {
 
-			default:
-				do {
-					
-					
-					rs= s.executeQuery("select id from tutorialjavacoches.fabricante order by id");
-					
-					while(rs.next()) {
-						idValido = false;
-						if (id == rs.getInt(1)) {
-							
-							idValido = true;
-							idEnTabla = rs.getInt(1);
-						}
-					}
-					
-					
-				}while(!idValido);
-				s.close();
-				rs.close();
+		int opcionElegida = -1;
+		do {
+			try {
+				System.out.println("\n\t\t\tGESTIÓN DE FABRICANTES");
 				
+				System.out.println("\n\t1.- Listado de fabricantes.");
+				System.out.println("\t2.- Alta de fabricante.");
+				System.out.println("\t3.- Modificación de fabricante.");
+				System.out.println("\t4.- Baja de fabricante.");
+				System.out.println("\t0.- Salir");
+				System.out.println("\n\tElija una opción: ");
+				
+				opcionElegida = Utils.getIntConsola(0, 4);
+				
+				switch (opcionElegida) {
+				case 0:
+					break;
+				case 1:
+					listado(true);
+					break;
+				case 2: 
+					alta();
+					break;
+				case 3: 
+					modificacion();
+					break;
+				case 4: 
+					baja();
+					break;
+				}
+			} catch (ErrorBBDDException e) {
+				System.out.println("\n\t\t\tError de acceso a datos: " + e.getMessage() + "\n");
+				e.printStackTrace();
 			}
-			
-		
-		
-
-		return idEnTabla;
-		
+		} while (opcionElegida != 0);
 	}
+
 	
-	private static void removeFabricante(Connection conn) throws SQLException {
-		Statement s = (Statement) conn.createStatement();
-		int id;
-		
-		int idEnTabla;
-		boolean cifEditado = true, nombreEditado = true;
-			
-		do {			
-			idEnTabla=getIdEnTabla(conn);
-			Scanner sc = new Scanner(System.in);
-			
-			String sql;
-			sql= "delete from fabricante where id="+ idEnTabla+";";
-			
-			System.out.println("Dato borrado");
-			s.execute(sql);
-			 s.close();
-			
-		}while(idEnTabla != 0);
-		
-		
-		
+	/**
+	 * 
+	 * @throws ErrorBBDDException
+	 */
+	public static void listado(boolean pausafinal) throws ErrorBBDDException {
+		List<Fabricante> fabricantes = ControladorFabricante.getAll();
+		System.out.println("\n\tListado de fabricantes: \n");
+		for (Fabricante fab : fabricantes) {
+			System.out.println("\t" + fab.toString());
+		}
+		if (pausafinal) {
+			System.out.println("\n\tPulse 'Intro' tecla para continuar");
+			Utils.pausa();
+		}
 	}
 	
 	
+	/**
+	 * 
+	 * @throws ErrorBBDDException
+	 */
+	private static void alta () throws ErrorBBDDException {
+		System.out.println("\n\tAlta de fabricante\n");
+		
+		Fabricante fab = new Fabricante();
+		System.out.print("\nIntroduzca 'CIF' del fabricante: ");
+		fab.setCif(Utils.getStringConsola());
+		System.out.print("\nIntroduzca 'Nombre' del fabricante: ");
+		fab.setNombre(Utils.getStringConsola());
+		
+		ControladorFabricante.almacenar(fab);  
 
+		System.out.println("\n\tInsertado correctamente!. Pulse 'Intro' para continuar");
+		Utils.pausa();
+	}
+
+
+
+	/**
+	 * 
+	 * @throws ErrorBBDDException
+	 */
+	private static void modificacion () throws ErrorBBDDException {
+		System.out.println("\n\tModificación de fabricante\n");
+		
+		Fabricante fab = seleccionPorUsuario();
+		
+		if (fab != null) {		
+			System.out.print("\nIntroduzca 'CIF' del fabricante ('Intro' para no modificar): ");
+			String str = Utils.getStringConsola();
+			if (!str.equals("")) 
+				fab.setCif(str);
+			System.out.print("\nIntroduzca 'Nombre' del fabricante  ('Intro' para no modificar): ");
+			str = Utils.getStringConsola();
+			if (!str.equals("")) 
+				fab.setNombre(str);
+		
+			ControladorFabricante.almacenar(fab);  
+
+			System.out.println("\n\tModificado correctamente!. Pulse 'Intro' para continuar");
+			Utils.pausa();
+		}
+	}
+
+	
+	
+	/**
+	 * 
+	 * @throws ErrorBBDDException
+	 */
+	private static void baja () throws ErrorBBDDException {
+		System.out.println("\n\tBaja de fabricante\n");
+		
+		Fabricante fab = seleccionPorUsuario();
+		
+		if (fab != null) {		
+			System.out.print("\n¿Realmente desea eliminar el registro? (S/N): ");
+			String str = Utils.getStringConsola();
+			if (str.equalsIgnoreCase("S")) { 		 
+				ControladorFabricante.eliminar(fab);  
+				System.out.println("\n\tEliminado correctamente!. Pulse 'Intro' para continuar");
+				Utils.pausa();
+			}
+		}
+	}
+
+	
+	
+	/**
+	 * 
+	 * @return
+	 * @throws ErrorBBDDException
+	 */
+	private static Fabricante seleccionPorUsuario () throws ErrorBBDDException {
+		Fabricante fab = null;
+		int id = -2;
+		do {
+			System.out.println("\n\tIntroduzca ID del fabricante ('-1' - ver listado, '0' - salir): ");
+			id = Utils.getIntConsola(-1);
+			if (id == -1) {
+				listado(false);
+			}
+			else {
+				if (id != 0) {
+					fab = ControladorFabricante.get(id);
+					if (fab == null) {
+						System.out.println("\tError. Ha especificado un ID inválido.");
+					}
+				}
+			}
+		} while (fab == null && id != 0);
+		return fab;
+	}
 }

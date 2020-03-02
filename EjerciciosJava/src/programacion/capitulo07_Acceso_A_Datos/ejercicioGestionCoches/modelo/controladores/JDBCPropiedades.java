@@ -1,4 +1,4 @@
-package programacion.capitulo07_Acceso_A_Datos.ejercicioGestionCoches;
+package programacion.capitulo07_Acceso_A_Datos.ejercicioGestionCoches.modelo.controladores;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,7 +24,7 @@ public class JDBCPropiedades {
 			propiedades = new Properties();
 		    
 			try {
-				File file = new File("./src/programacion/capitulo07_Acceso_A_Datos/ejercicioGestionCoches/jdbc.properties");
+				File file = new File("./src/programacion/capitulo07_Acceso_A_Datos/ejercicioGestionCoches/modelo/controladores/jdbc.properties");
 				propiedades.load(new FileReader(file));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
