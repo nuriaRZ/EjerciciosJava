@@ -77,17 +77,38 @@ public class GestionVenta {
 				+ "\n");
 		
 		Venta ven = new Venta();
-		System.out.print("\nIntroduzca 'id del cliente' de la venta: ");
-		ven.setIdCliente(Utils.getIntConsola(-1));
-		System.out.print("\nIntroduzca 'id del concesionario' de la venta: ");
-		ven.setIdConcesionario(Utils.getIntConsola(-1));	
-		System.out.print("\nIntroduzca 'id del coche' de la venta: ");
-		ven.setIdCoche(Utils.getIntConsola(-1));
+		
+		do {
+			System.out.print("\nIntroduzca 'id del cliente' de la venta ('-1' - ver lista de Fabricante, '0' - salir): ");
+			ven.setIdCliente(Utils.getIntConsola(-1));
+			
+				if (ven.getIdCliente() == -1) {
+				GestionCliente.listado(true);
+				}
+		}while (ven.getIdCliente() == -1);
+		
+		do {
+			System.out.print("\nIntroduzca 'id del concesionario' de la venta ('-1' - ver lista de Fabricante, '0' - salir): ");
+			ven.setIdConcesionario(Utils.getIntConsola(-1));
+			
+				if (ven.getIdConcesionario() == -1) {
+				GestionConcesionario.listado();
+				}
+		}while (ven.getIdConcesionario() == -1);
+		
+		do {
+			System.out.print("\nIntroduzca 'id del coche' de la venta ('-1' - ver lista de Fabricante, '0' - salir): ");
+			ven.setIdCoche(Utils.getIntConsola(-1));
+			
+				if (ven.getIdCoche() == -1) {
+				GestionCoche.listado();
+				}
+		}while (ven.getIdCoche() == -1);
+		
 		System.out.print("\nIntroduzca 'fecha' de la venta: ");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		ven.setFecha(sdf.parse(Utils.getStringConsola()));
-		System.out.println("\nIntroduzca 'precio venta': ");		
-		
+		System.out.println("\nIntroduzca 'precio venta': ");
 		ven.setPrecioVenta(Float.parseFloat(Utils.getStringConsola()));
 		
 		ControladorVenta.almacenar(ven);  

@@ -27,7 +27,7 @@ public class GestionCliente {
 					opcion = sc.nextInt();
 				switch (opcion) {
 				case 1:
-						listado();
+						listado(true);
 					break;
 				case 2:
 						alta();
@@ -61,7 +61,7 @@ public class GestionCliente {
 	 * @throws ParseException 
 	 * 
 	 */
-	private static void listado() throws ParseException {
+	public static void listado(boolean pausafinal) throws ParseException {
 		List<Cliente> clientes = ControladorCliente.getAll();
 		System.out.println("Listado de clientes:\n");
 		for (Cliente cli: clientes) {
@@ -113,7 +113,7 @@ public class GestionCliente {
 			id = Utils.getIntConsola(-1);
 			
 			if (id == -1) {
-				listado();
+				listado(true);
 			}
 			else {
 				if (id != 0) {

@@ -60,7 +60,7 @@ public class GestionConcesionario {
 	/**
 	 * 
 	 */	
-	private static void listado() {
+	public static void listado() {
 		List<Concesionario> concesionarios = ControladorConcesionario.getAll();
 		System.out.println("Listado de concesionarios:\n");
 		for (Concesionario conc : concesionarios) {

@@ -59,7 +59,7 @@ public class GestionCoche {
 	/**
 	 * 
 	 */
-	private static void listado() {
+	public static void listado() {
 		List<Coche> coches = ControladorCoche.getAll();
 		System.out.println("Listado de coches:\n");
 		for (Coche co : coches) {
@@ -131,9 +131,17 @@ public class GestionCoche {
 		Coche co = seleccionPorUsuario();
 		
 		
-		if (co != null) {
-			System.out.println("\nIntroduzca 'id del fabricante' del coche ('Intro' para no modificar):");
+		if (co != null) {				
 			String str = Utils.getStringConsola();
+			
+			do {
+				System.out.println("Introduzca 'id' del fabricante ('-1' - ver lista de Fabricante, '0' - salir):");
+					co.setIdFabricante(Utils.getIntConsola(-1));
+				
+					if (co.getIdFabricante() == -1) {
+					GestionFabricante.listado(true);
+					}
+			}while (co.getIdFabricante() == -1);
 			
 			if (!str.equals("")) {
 				co.setIdFabricante(Integer.parseInt(str));

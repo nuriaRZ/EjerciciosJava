@@ -125,6 +125,7 @@ public class Cliente {
 	 * @return the fechaNac
 	 */
 	public String getFechaNac() {
+		System.out.println("fecha");
 		return fechaNac;
 	}
 
@@ -133,7 +134,9 @@ public class Cliente {
 	 * @param fechaNac the fechaNac to set
 	 */
 	public void setFechaNac(Date date) throws ParseException{
-		this.fechaNac = sdf.format(date);
+		if (date != null) {
+			this.fechaNac = sdf.format(date);
+		}
 	}
 
 

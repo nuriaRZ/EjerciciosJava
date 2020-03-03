@@ -111,6 +111,7 @@ public class ControladorFabricante extends ControladorBBDD {
 					"INSERT INTO fabricante (id, cif, nombre) VALUES  (?, ?, ?)");
 			int registrosInsertados;
 			
+			System.out.println("nextId fab: " + nextIdEnTabla(conn, "fabricante"));
 			ps.setInt(1, nextIdEnTabla(conn, "fabricante")); 
 			ps.setString(2, fab.getCif());
 			ps.setString(3, fab.getNombre());

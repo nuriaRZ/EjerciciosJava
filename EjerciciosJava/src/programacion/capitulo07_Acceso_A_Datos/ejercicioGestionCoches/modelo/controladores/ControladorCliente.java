@@ -31,10 +31,11 @@ public class ControladorCliente  extends ControladorBBDD {
 				cli.setLocalidad(rs.getString("localidad"));
 				cli.setDni(rs.getString("dniNie"));
 				cli.setFechaNac(rs.getDate("fechaNac"));
+				
 				cli.setActivo(rs.getBoolean("activo"));
 				clientes.add(cli);
 			}
-			rs.close();
+			
 			s.close();
 			
 		}catch (SQLException | ImposibleConectarException e) {
@@ -66,7 +67,7 @@ public class ControladorCliente  extends ControladorBBDD {
 				cli.setLocalidad(rs.getString("localidad"));
 				cli.setDni(rs.getString("dniNie"));
 				cli.setFechaNac(rs.getDate("fechaNac"));
-				cli.setActivo(rs.getBoolean("activo"));
+				cli.setActivo(true);
 				
 			}
 			rs.close();
