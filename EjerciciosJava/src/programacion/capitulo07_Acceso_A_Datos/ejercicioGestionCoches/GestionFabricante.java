@@ -1,5 +1,6 @@
 package programacion.capitulo07_Acceso_A_Datos.ejercicioGestionCoches;
 
+import java.text.ParseException;
 import java.util.List;
 
 import programacion.capitulo07_Acceso_A_Datos.ejercicioGestionCoches.modelo.Fabricante;
@@ -10,9 +11,10 @@ import programacion.capitulo07_Acceso_A_Datos.ejercicioGestionCoches.modelo.cont
 public class GestionFabricante {
 
 	/**
+	 * @throws ParseException 
 	 * 
 	 */
-	public static void menuGestion() {
+	public static void menuGestion() throws ParseException {
 
 		int opcionElegida = -1;
 		do {
@@ -30,7 +32,7 @@ public class GestionFabricante {
 				
 				switch (opcionElegida) {
 				case 0:
-					break;
+					Menu.menuPrincipal();
 				case 1:
 					listado(true);
 					break;

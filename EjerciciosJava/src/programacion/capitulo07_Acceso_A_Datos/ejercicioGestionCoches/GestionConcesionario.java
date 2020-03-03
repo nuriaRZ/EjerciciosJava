@@ -41,7 +41,7 @@ public class GestionConcesionario {
 				case 4:
 					baja();
 				
-				case 0: Menu.menuPrincipal(); break;
+				case 0: Menu.menuPrincipal(); 
 				
 				default: 
 					if (opcion > 4 || opcion < 0) {

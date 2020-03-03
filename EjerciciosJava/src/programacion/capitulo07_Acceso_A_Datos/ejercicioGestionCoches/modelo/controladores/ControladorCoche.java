@@ -114,7 +114,7 @@ public class ControladorCoche extends ControladorBBDD {
 		try {
 			conn = ConnectionManagerV2.getConexion();
 			PreparedStatement ps = (PreparedStatement) conn.
-					prepareStatement("update coche set idfabricante = ?, bastidor = ?, modelo = ?, color = ?, where id = ?");
+					prepareStatement("update coche set idfabricante = ?, bastidor = ?, modelo = ?, color = ? where id = ?");
 			
 			int registrosInsertados;
 			ps.setInt(1, co.getIdFabricante());

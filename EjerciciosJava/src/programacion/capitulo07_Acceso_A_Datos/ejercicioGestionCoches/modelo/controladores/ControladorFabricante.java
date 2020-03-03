@@ -82,6 +82,7 @@ public class ControladorFabricante extends ControladorBBDD {
 				fab.setCif(rs.getString("cif"));
 				fab.setNombre(rs.getString("nombre"));
 			}
+			rs.close();
 			s.close();
 			
 		} catch (SQLException | ImposibleConectarException e) {			

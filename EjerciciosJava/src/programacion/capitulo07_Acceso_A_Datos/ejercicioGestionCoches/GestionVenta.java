@@ -139,10 +139,10 @@ public class GestionVenta {
 				ven.setIdCoche(Integer.parseInt(str));
 			System.out.print("\nIntroduzca 'fecha' de la venta  ('Intro' para no modificar): ");
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			String fecha;
-			fecha = Utils.getStringConsola();
+			
+			str = Utils.getStringConsola();
 			if (!str.equals("")) 
-				ven.setFecha(sdf.parse(fecha));
+				ven.setFecha(sdf.parse(str));
 			System.out.print("\nIntroduzca 'precio venta' de la venta  ('Intro' para no modificar): ");
 			str = Utils.getStringConsola();
 			if (!str.equals("")) 

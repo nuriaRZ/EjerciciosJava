@@ -40,7 +40,7 @@ public class GestionCoche {
 				case 4:
 					baja();
 				
-				case 0: Menu.menuPrincipal(); break;
+				case 0: Menu.menuPrincipal();
 				
 				default: 
 					if (opcion > 4 || opcion < 0) {
@@ -129,27 +129,27 @@ public class GestionCoche {
 		System.out.println("\nModificación de coche\n");
 		
 		Coche co = seleccionPorUsuario();
-		Scanner sc = new Scanner(System.in);
+		
 		
 		if (co != null) {
 			System.out.println("\nIntroduzca 'id del fabricante' del coche ('Intro' para no modificar):");
-			String str = sc.next();
-			int idFab = Integer.parseInt(str);
+			String str = Utils.getStringConsola();
+			
 			if (!str.equals("")) {
-				co.setIdFabricante(idFab);
+				co.setIdFabricante(Integer.parseInt(str));
 			}
 			System.out.println("\nIntroduzca 'bastidor' del coche ('Intro' para no modificar):");
-			
+			str = Utils.getStringConsola();
 			if (!str.equals("")) {
 				co.setBastidor(str);
 			}
 			System.out.println("\nIntroduzca 'modelo' del coche ('Intro' para no modificar):");
-			str = sc.nextLine();
+			Utils.getStringConsola();
 			if (!str.equals("")) {
 				co.setModelo(str);
 			}
 			System.out.println("\nIntroduzca 'color' del concesionario ('Intro' para no modificar):");
-			str = sc.nextLine();
+			Utils.getStringConsola();
 			if (!str.equals("")) {
 				co.setColor(str);
 			} 
