@@ -1,5 +1,6 @@
 package programacion.capitulo08.gestionEntidad;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -36,10 +37,13 @@ public class PanelGestionFabricante extends JPanel {
 		c.gridy = 0;
 		c.gridwidth = 2;
 		c.insets = new Insets(0, 0, 25, 0);
-		
+		this.add(getPanelNavegacion(), c);
 	}
 	
-	private Jpanel getPanelNavegacion() {
+	private JPanel getPanelNavegacion() {
 		JPanel pnl = new JPanel();
+		pnl.setBackground(Color.RED);
+		
+		return pnl;
 	}
 }
