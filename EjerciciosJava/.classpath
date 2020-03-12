@@ -5,5 +5,6 @@
 	<classpathentry kind="lib" path="libs/mysql-connector-java-8.0.19.jar"/>
 	<classpathentry kind="lib" path="libs/Apache_Commons_FileUpload/commons-fileupload-1.4.jar"/>
 	<classpathentry kind="lib" path="libs/JDBC_Oracle_Connection_Pool/ucp.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/VentaDeCochesJPA"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
